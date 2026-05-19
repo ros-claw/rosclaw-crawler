@@ -4,7 +4,7 @@ ROSClaw LLM Annotator - Singapore Node Multi-Threaded
 使用新加坡API Key，5并发高速标注
 """
 
-API_KEY = "SG_KEY_PLACEHOLDER"
+API_KEY = ""${DEEPSEEK_API_KEY}""
 BASE_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"

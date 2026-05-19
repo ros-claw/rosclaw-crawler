@@ -11,7 +11,7 @@ import time
 import requests
 from typing import List, Dict, Set
 
-GITHUB_TOKEN = "GITHUB_TOKEN_PLACEHOLDER"
+GITHUB_TOKEN = ""${GITHUB_TOKEN}""
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 def fetch_file(owner: str, repo: str, path: str) -> str:

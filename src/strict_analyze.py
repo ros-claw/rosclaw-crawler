@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 DB_PATH = '/home/ubuntu/.openclaw/workspace/rosclaw_crawler/rosclaw_hub.db'
 
 # DeepSeek V4 Pro
-API_KEY = 'DEEPSEEK_KEY_PLACEHOLDER'
+API_KEY = '"${DEEPSEEK_API_KEY}"'
 API_URL = 'https://api.deepseek.com/v1/chat/completions'
 MODEL = 'deepseek-v4-pro'
 

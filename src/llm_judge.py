@@ -8,7 +8,7 @@ import urllib.request
 import urllib.error
 from typing import Optional
 
-DEEPSEEK_API_KEY = "DEEPSEEK_KEY_PLACEHOLDER"
+DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-pro"
 

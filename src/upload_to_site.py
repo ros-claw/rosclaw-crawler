@@ -8,7 +8,7 @@ import urllib.request
 import sqlite3
 import sys
 
-API_KEY = "ROSCALW_KEY_PLACEHOLDER"
+API_KEY = ""${ROSCALW_API_KEY}""
 BASE_URL = "https://www.rosclaw.io"
 
 HEADERS = {

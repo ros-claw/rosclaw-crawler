@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ROSClaw Annotator - Beijing Node (id%3==0)"""
-API_KEY = "BAILIAN_KEY_PLACEHOLDER"
+API_KEY = ""${DEEPSEEK_API_KEY}""
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"

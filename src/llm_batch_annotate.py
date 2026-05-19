@@ -12,7 +12,7 @@ import time
 import sys
 import signal
 
-API_KEY = "BAILIAN_KEY_PLACEHOLDER"
+API_KEY = ""${DEEPSEEK_API_KEY}""
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 

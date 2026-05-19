@@ -12,7 +12,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 
 DB_PATH = '/home/ubuntu/.openclaw/workspace/rosclaw_crawler/rosclaw_hub.db'
-API_KEY = 'ROSCALW_KEY_PLACEHOLDER'
+API_KEY = '"${ROSCALW_API_KEY}"'
 BASE_URL = 'https://www.rosclaw.io'
 MCP_ENDPOINT = f'{BASE_URL}/api/mcp-packages'
 SKILL_ENDPOINT = f'{BASE_URL}/api/skills'

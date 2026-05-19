@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ROSClaw Annotator - DeepSeek Node (id%3==2)"""
-API_KEY = "DEEPSEEK_KEY_PLACEHOLDER"
+API_KEY = ""${DEEPSEEK_API_KEY}""
 BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-flash"
 DB_PATH = "rosclaw_hub.db"

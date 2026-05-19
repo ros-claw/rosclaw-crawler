@@ -11,7 +11,7 @@ import time
 from datetime import datetime, timezone
 
 DB_PATH = '/home/ubuntu/.openclaw/workspace/rosclaw_crawler/rosclaw_hub.db'
-GITHUB_TOKEN = 'GITHUB_TOKEN_PLACEHOLDER'
+GITHUB_TOKEN = '"${GITHUB_TOKEN}"'
 
 # 深度搜索策略 - 多维度组合
 DEEP_QUERIES = [

@@ -1,0 +1,378 @@
+{
+  "timestamp": "2026-05-18",
+  "total": 62,
+  "items": [
+    {
+      "id": "e792e056-124c-4b5e-b2f4-b64e168ceb0c",
+      "name": "moveit/moveit2",
+      "type": "skill",
+      "reason": "Not a recognized MCP Server or Agent Skill (embodied_score=2)"
+    },
+    {
+      "id": "0684a8a8-cd3e-4dea-9f73-86ee68380dc9",
+      "name": "thu-ml/roboticsdiffusiontransformer",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: roboticsdiffusiontransformer"
+    },
+    {
+      "id": "7765130a-ada3-48f2-84ac-5ef6231643cb",
+      "name": "nvlabs/gr00t-wholebodycontrol",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: gr00t"
+    },
+    {
+      "id": "f8799b01-4a82-4327-8230-b7e3227a9d0e",
+      "name": "lecar-lab/asap",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: asap"
+    },
+    {
+      "id": "94d19afa-9e67-4c67-8147-c7b52c85a651",
+      "name": "zhefan-xu/navrl",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: navrl"
+    },
+    {
+      "id": "c585db54-c7b4-436f-a6df-517da1b2341b",
+      "name": "physical-superintelligence-lab/psi0",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: psi0"
+    },
+    {
+      "id": "30bbba18-a2b0-4081-b4ff-0c635db174d7",
+      "name": "allenzren/open-pi-zero",
+      "type": "skill",
+      "reason": "Pure algorithm/model without MCP/Skill interface: open-pi-zero"
+    },
+    {
+      "id": "09b30fe7-56f6-4d55-bf94-c4a4e8883326",
+      "name": "enactic/openarm",
+      "type": "skill",
+      "reason": "Pure hardware project without MCP/Skill interface: openarm"
+    },
+    {
+      "id": "f87e1073-2e03-41cf-a97c-605bad7112d0",
+      "name": "MarinX/lg-thermav-mcp-server",
+      "type": "mcp",
+      "reason": "Hard exclude: matches heat\\s+pump"
+    },
+    {
+      "id": "a1beeed8-26ee-4c1c-9eb9-97df50777d88",
+      "name": "pavel-kirienko/webcam_mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "4c9c55b8-f0df-4c47-80de-743ca3257974",
+      "name": "brianegge/dahua-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "55c09e1f-4800-410f-bc01-71e8ac608214",
+      "name": "Showdown76py/BeaconMCP",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "1470a040-2df3-4413-a125-17ee5ec59598",
+      "name": "raibid-labs/dgx-spark-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "2892edfe-b442-46bb-b60e-f10ee80ea144",
+      "name": "martydill/yolink-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "b1a52423-e7fd-4bdb-8e89-47097e585f8b",
+      "name": "Acceleronix/acc-mcp-server-local",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "0168840b-768d-43d0-bb90-be47e8d4027c",
+      "name": "Danielmark001/iota_evm_mcp_server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "7cd544c5-f26c-47c8-be8f-718a9fbacb9d",
+      "name": "KenosInc/sigrok-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "853e6d40-27d1-41b2-baf2-94282889606d",
+      "name": "monthop-gmail/iot-mcp-claude",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "a1578fcb-8dda-49ac-93f0-c92222ad9cfe",
+      "name": "cyanheads/pixoo-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "e744fb2f-856b-4fd7-a636-d2bc471bbafa",
+      "name": "ag2-mcp-servers/aws-iot-data-plane",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "95fc7963-aa40-4b60-945d-00569430a06a",
+      "name": "ekakit/lightfast-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "72d94608-edb5-418a-9992-d8078c6cbbfc",
+      "name": "SingTown/openmv-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "a6131abd-2e72-406a-aca5-5f1c6c948834",
+      "name": "u1f992/camera-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "9a2cd414-001a-4ae8-a6d3-c46bb98b27ae",
+      "name": "jrutanen/acap-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "7bb0614a-324b-4f13-9f1b-1ba3e96457d1",
+      "name": "ag2-mcp-servers/aws-iot-greengrass-v2",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "6b287994-0424-4b4c-bfad-6c8bc216711b",
+      "name": "gloveboxes/continuity-camera-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "32c04bd8-f069-417d-94ee-3de6a86af6db",
+      "name": "JanGoebel/NI-Hardware-MCP-Server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "5487b58b-bec7-44c9-89dd-17096596f477",
+      "name": "AiAgentKarl/iot-device-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "58a75b69-a2c3-4b3d-b90c-468c51bcc1f5",
+      "name": "bhupendra1011/iot_mcp_server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "772c25f9-1467-4753-80ad-e1245d9da50e",
+      "name": "es617/ble-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "86417b57-6db3-4e03-9c1b-395aa6f32232",
+      "name": "tkumata/mcp-iot",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "7cf5e5a5-47cb-4ac6-8577-fd7d8630bda8",
+      "name": "yiuting927/aws-iot-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "bc2fbf15-db11-4e23-bfcb-d7207c9aad76",
+      "name": "aws-samples/sample-MCP_server-for-Amazon_IoT_Core",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "1df4c2ae-ea56-493e-b3a8-5fca50b2d339",
+      "name": "ag2-mcp-servers/aws-iot-sitewise",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "8d005e11-09fa-43c3-9a2a-bab7c9c6f61f",
+      "name": "ag2-mcp-servers/aws-iot-secure-tunneling",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "8ba638ce-5620-4126-9e9a-7b29dbb483d1",
+      "name": "ag2-mcp-servers/aws-iot-fleet-hub",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "1747ed01-fde5-4758-89fd-94c76b48d115",
+      "name": "ag2-mcp-servers/aws-iot-events",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "557fa5c6-96c6-4cf8-8a00-1d53acd0989b",
+      "name": "ag2-mcp-servers/aws-iot-core-device-advisor",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "9b5516df-2e9d-4674-b18a-2e35075b17d3",
+      "name": "ag2-mcp-servers/aws-iot-1-click-projects-service",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "cc284b21-23a5-45fd-8356-ae5ed8341b9c",
+      "name": "ag2-mcp-servers/aws-iot-jobs-data-plane",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "4fb2a413-e20b-4c20-bfaa-7fd9a71389e3",
+      "name": "ag2-mcp-servers/aws-iot",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "47959d15-2b51-449d-a648-f75283366f62",
+      "name": "TomasGomezWagner/cameras-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "63e6a3fd-786f-4396-ae88-7905093348a9",
+      "name": "ag2-mcp-servers/motor-vehicle-department-odisha",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "0fc53a53-2e6c-41ba-9c74-7490960ffaa8",
+      "name": "ag2-mcp-servers/motor-vehicle-department-maharashtra",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "6d583cf8-b430-4726-b32f-24d466a71879",
+      "name": "ag2-mcp-servers/motor-vehicle-department-kerala",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "43ef886a-d474-4120-8670-18d773cc85f4",
+      "name": "mattdeeds/oak-camera-mcp",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "916fc911-a23c-4be8-9be1-5b5b6a8993ff",
+      "name": "dennisonbertram/mcp-ledger",
+      "type": "mcp",
+      "reason": "Hard exclude: matches ledger\\s+hardware\\s+wallet"
+    },
+    {
+      "id": "4797da2d-44df-4d68-af19-73792c3233eb",
+      "name": "ag2-mcp-servers/cloud-iot-api",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "b553f795-a2ef-4931-ba35-c5893d63800b",
+      "name": "ag2-mcp-servers/aws-iot-wireless",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "8ec9e430-145e-4438-a116-1e54f383b8e9",
+      "name": "ag2-mcp-servers/aws-iot-events-data",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "272106eb-aabf-4df3-a491-a769ad752779",
+      "name": "ag2-mcp-servers/aws-iot-1-click-devices-service",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "ba42e2d0-6de1-4fb1-b942-695f658f8f6c",
+      "name": "codeandcloud/cnc-youtube-mcp-server",
+      "type": "mcp",
+      "reason": "Hard exclude: matches youtube"
+    },
+    {
+      "id": "5d3ca29e-0183-4db5-9d8a-6b5d022e7877",
+      "name": "agentled/mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "2a127ee4-3a59-449d-88dd-946ba7ab728e",
+      "name": "daniguzman32/mcp-server-industrial",
+      "type": "mcp",
+      "reason": "Hard exclude: matches b2b"
+    },
+    {
+      "id": "76a7ef33-355f-4fbf-b326-125e80e7501b",
+      "name": "jastill/SensorMCPServer",
+      "type": "mcp",
+      "reason": "Hard exclude: matches exploring"
+    },
+    {
+      "id": "aa772682-e6f3-42ce-a507-818959714218",
+      "name": "ag2-mcp-servers/motor-vehicle-department-nagaland",
+      "type": "mcp",
+      "reason": "Hard exclude: matches generated\\s+by\\s+mcp\\.ag2\\.ai"
+    },
+    {
+      "id": "a151d6f9-ce40-409f-bf98-50a8cad942cb",
+      "name": "es617/serial-mcp-server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "3d3b080f-0f02-4e70-b911-59d790eb3d0f",
+      "name": "robotmcp/demos-ros-mcp-server",
+      "type": "mcp",
+      "reason": "Hard exclude: matches tutorial"
+    },
+    {
+      "id": "23256dd2-ffe2-4b8b-af06-9393b741ebd3",
+      "name": "kubja/ros2_turtlebot_mcp_server_tutorial",
+      "type": "mcp",
+      "reason": "Hard exclude: matches tutorial"
+    },
+    {
+      "id": "1e8b99f0-2c3f-4df3-9dff-3ab84d80da32",
+      "name": "lwsinclair/akramiot_zta_mcp_server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "f1184c21-4835-43b7-be98-ba32ae09d0a9",
+      "name": "jordy33/iot_mcp_server",
+      "type": "mcp",
+      "reason": "MCP but no embodied relevance"
+    },
+    {
+      "id": "424ba50f-df6c-4457-bf01-43c970f2f7eb",
+      "name": "MushroomFleet/Robot-Team-discord-MCP",
+      "type": "mcp",
+      "reason": "Hard exclude: matches discord"
+    }
+  ]
+}

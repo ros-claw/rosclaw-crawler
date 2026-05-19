@@ -11,12 +11,12 @@ import re
 from datetime import datetime
 
 DB_PATH = '/home/ubuntu/.openclaw/workspace/rosclaw_crawler/rosclaw_hub.db'
-API_KEY = 'ROSCALW_KEY_PLACEHOLDER'
+API_KEY = '"${ROSCALW_API_KEY}"'
 BASE_URL = 'https://www.rosclaw.io'
 MCP_ENDPOINT = f'{BASE_URL}/api/mcp-packages'
 SKILL_ENDPOINT = f'{BASE_URL}/api/skills'
 
-DEEPSEEK_API_KEY = 'DEEPSEEK_KEY_PLACEHOLDER'
+DEEPSEEK_API_KEY = '"${DEEPSEEK_API_KEY}"'
 DEEPSEEK_BASE_URL = 'https://api.deepseek.com'
 DEEPSEEK_MODEL = 'deepseek-v4-pro'
 

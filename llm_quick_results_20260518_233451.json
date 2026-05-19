@@ -1,0 +1,82 @@
+[
+  {
+    "name": "robotmcp/ros-mcp-server",
+    "stars": 1227,
+    "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Repo enables LLMs to interact with robots via ROS and MCP, directly serving as an MCP server for embodied AI/robotics applications."
+    }
+  },
+  {
+    "name": "manykarim/rf-mcp",
+    "stars": 95,
+    "description": "A Robot Framework MCP Server ",
+    "llm": {
+      "relevant": false,
+      "confidence": 98,
+      "reason": "The repo is a test automation tool for Robot Framework, not related to embodied AI or robotics."
+    }
+  },
+  {
+    "name": "IliaLarchenko/robot_MCP",
+    "stars": 78,
+    "description": "A simple MCP server for the SO-ARM100 control",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "The repo provides an MCP server for controlling a physical robot arm (SO-ARM100), enabling LLM agents to perform embodied tasks."
+    }
+  },
+  {
+    "name": "robotmcp/ros-mcp-server",
+    "stars": 1227,
+    "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "This repository is an MCP server that connects LLMs to robots via ROS, enabling embodied AI control and observation."
+    }
+  },
+  {
+    "name": "kakimochi/ros2-mcp-server",
+    "stars": 81,
+    "description": null,
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Integrates MCP with ROS 2 to control robot movement via /cmd_vel, enabling AI assistants to command robots. Directly relevant as an MCP Server for robotics."
+    }
+  },
+  {
+    "name": "wise-vision/ros2_mcp",
+    "stars": 77,
+    "description": "Advanced MCP Server ROS 2 bridging AI agents straight into robotics",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 31 (char 30)"
+    }
+  },
+  {
+    "name": "arpitg1304/robotics-agent-skills",
+    "stars": 203,
+    "description": "Agent skills that make AI coding assistants write production-grade robotics software. ROS1, ROS2, design patterns, SOLID principles, and testing — for Claude Code, Cursor, Copilot, and any SKILL.md-compatible agent.",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "The repo is a collection of agent skills (SKILL.md files) specifically for robotics software development, directly matching 'Agent Skill' in embodied AI/robotics."
+    }
+  },
+  {
+    "name": "dacrypt/xiao",
+    "stars": 1,
+    "description": "Control a Xiaomi Robot Vacuum X20+ via the xiao CLI. Agent-ready: AGENTS.md, llms.txt, SKILL.md, --json output, canonical exit codes.",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 43 (char 42)"
+    }
+  }
+]

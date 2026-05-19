@@ -19,12 +19,12 @@ sys.path.insert(0, '/home/ubuntu/rosclaw/rosclaw_crawler/src')
 from database import insert_item, record_crawl_run
 
 # DeepSeek Config
-DEEPSEEK_API_KEY = "DEEPSEEK_KEY_PLACEHOLDER"
+DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-pro"
 
 # GitHub Config
-GITHUB_TOKEN = "GITHUB_TOKEN_PLACEHOLDER"
+GITHUB_TOKEN = ""${GITHUB_TOKEN}""
 GITHUB_HEADERS = {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'rosclaw-llm-crawler-v2',

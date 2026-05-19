@@ -27,7 +27,7 @@ HEADERS = {
 }
 
 # NOTE: Replace with actual admin API key
-ADMIN_API_KEY = 'ROSCALW_KEY_PLACEHOLDER'
+ADMIN_API_KEY = '"${ROSCALW_API_KEY}"'
 
 
 def fetch_all(endpoint_name: str) -> list:

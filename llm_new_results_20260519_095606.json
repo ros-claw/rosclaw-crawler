@@ -1,0 +1,156 @@
+[
+  {
+    "name": "SkullsEye/Robotics-MCP-Servers",
+    "stars": 1,
+    "description": "Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision",
+    "url": "https://github.com/SkullsEye/Robotics-MCP-Servers",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "The repo provides MCP servers for controlling diverse robots and sensors, enabling embodied AI agents to interact with physical systems through natural language."
+    }
+  },
+  {
+    "name": "ros-claw/g1-isaac-sim-mcp",
+    "stars": 1,
+    "description": "ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim",
+    "url": "https://github.com/ros-claw/g1-isaac-sim-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "The repository is explicitly an MCP Server for the Unitree G1 humanoid robot in NVIDIA Isaac Sim, directly relevant to embodied AI/robotics as an MCP server or agent skill."
+    }
+  },
+  {
+    "name": "sandraschi/bumi-mcp",
+    "stars": 1,
+    "description": "Noetix Bumi humanoid robot — MCP 3.1 server + webapp. virtual bot now, real bot asap",
+    "url": "https://github.com/sandraschi/bumi-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 43 (char 42)"
+    }
+  },
+  {
+    "name": "marcelmarais/spotify-mcp-server",
+    "stars": 340,
+    "description": "Lightweight MCP server for Spotify",
+    "url": "https://github.com/marcelmarais/spotify-mcp-server",
+    "llm": {
+      "relevant": false,
+      "confidence": 100,
+      "reason": "This is a Spotify music streaming control server, unrelated to embodied AI or robotics."
+    }
+  },
+  {
+    "name": "okx/agent-trade-kit",
+    "stars": 302,
+    "description": "OKX trading MCP server — connect AI agents to spot, swap, futures, options & grid bots via the Model Context Protocol.  ",
+    "url": "https://github.com/okx/agent-trade-kit",
+    "llm": {
+      "relevant": false,
+      "confidence": 100,
+      "reason": "This is a cryptocurrency trading MCP server, unrelated to embodied AI or robotics."
+    }
+  },
+  {
+    "name": "gensecaihq/Wazuh-MCP-Server",
+    "stars": 175,
+    "description": "AI-powered security operations for Wazuh SIEM—use any MCP-compatible client to ask security questions in plain English. Faster threat detection, incident triage, and compliance checks with real-time monitoring and anomaly spotting. Production-ready MCP server for conversational SOC workflows.",
+    "url": "https://github.com/gensecaihq/Wazuh-MCP-Server",
+    "llm": {
+      "relevant": false,
+      "confidence": 100,
+      "reason": "The repo is an MCP server for conversational security operations with Wazuh SIEM, not related to embodied AI or robotics."
+    }
+  },
+  {
+    "name": "lpigeon/unitree-go2-mcp-server",
+    "stars": 78,
+    "description": "The Unitree Go2 MCP Server is a server built on the MCP that enables users to control the Unitree Go2 robot using natural language commands interpreted by a LLM.",
+    "url": "https://github.com/lpigeon/unitree-go2-mcp-server",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "This repository provides an MCP server for controlling the Unitree Go2 robot via natural language commands, directly integrating embodied AI/robotics as an Agent Skill."
+    }
+  },
+  {
+    "name": "ros-claw/unitree-mujoco-mcp",
+    "stars": 4,
+    "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
+    "url": "https://github.com/ros-claw/unitree-mujoco-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 44 (char 43)"
+    }
+  },
+  {
+    "name": "shaoxiang/unitree-mujoco-mcp",
+    "stars": 1,
+    "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
+    "url": "https://github.com/shaoxiang/unitree-mujoco-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "This repo is an MCP server for simulating and controlling Unitree robots via MuJoCo, directly enabling LLM agents to perform embodied AI/robotics tasks."
+    }
+  },
+  {
+    "name": "ros-claw/ur-ros2-mcp",
+    "stars": 1,
+    "description": "ROSClaw MCP Server for Universal Robots UR5/UR5e via ROS2",
+    "url": "https://github.com/ros-claw/ur-ros2-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "It is an MCP server enabling LLM agents to control a UR5/UR5e robotic arm via ROS2, directly serving embodied AI/robotics applications."
+    }
+  },
+  {
+    "name": "Surya7702-VSS/ROS-MC-Server-Kinova-Mico2-ROS-LLM-Integration.",
+    "stars": 0,
+    "description": "This project demonstrates a ROS-based pick-and-stack robotic system using the Kinova Mico 2 robotic arm, where high-level task planning is handled using a Claude Large Language Model (LLM).  The robot autonomously performs pick and stacking operations using natural-language, ros-mcp-server and executing them through a ROS control pipeline.",
+    "url": "https://github.com/Surya7702-VSS/ROS-MC-Server-Kinova-Mico2-ROS-LLM-Integration.",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Directly implements an MCP server bridging LLMs with ROS for robot control, enabling embodied AI agent skills."
+    }
+  },
+  {
+    "name": "ros-claw/rosclaw-vision-mcp",
+    "stars": 2,
+    "description": "ROSClaw MCP Server for Intel RealSense RGB-D Camera via ROS2 — Semantic-HAL vision layer",
+    "url": "https://github.com/ros-claw/rosclaw-vision-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Provides vision skill for LLM agents via MCP server for RealSense camera, enabling embodied AI tasks like object localization."
+    }
+  },
+  {
+    "name": "ros-claw/realsense-ros-mcp",
+    "stars": 1,
+    "description": "Intel RealSense ROS2 MCP Server - 封装 realsense2_camera 的 ROS2 接口，提供 25 个 MCP tools",
+    "url": "https://github.com/ros-claw/realsense-ros-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 44 (char 43)"
+    }
+  },
+  {
+    "name": "ros-claw/librealsense-mcp",
+    "stars": 1,
+    "description": "Intel RealSense MCP Server - 直接封装 pyrealsense2 SDK，提供 26 个 MCP tools",
+    "url": "https://github.com/ros-claw/librealsense-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Provides MCP tools for AI agents to control RealSense depth cameras, which are essential for embodied AI/robotics perception."
+    }
+  }
+]

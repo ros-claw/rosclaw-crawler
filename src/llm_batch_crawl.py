@@ -10,8 +10,8 @@ import time
 import sys
 from datetime import datetime
 
-DEEPSEEK_API_KEY = "DEEPSEEK_KEY_PLACEHOLDER"
-GITHUB_TOKEN = "GITHUB_TOKEN_PLACEHOLDER"
+DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
+GITHUB_TOKEN = ""${GITHUB_TOKEN}""
 
 HEADERS_GH = {
     'Accept': 'application/vnd.github.v3+json',
