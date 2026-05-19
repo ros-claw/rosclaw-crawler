@@ -12,8 +12,9 @@ import requests
 from typing import List, Dict, Set
 from database import init_db, get_session, RosclawHubResource
 from utils import normalize_github_url, extract_repo_owner_name
+import os
 
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 def fetch_file(owner: str, repo: str, path: str) -> str:

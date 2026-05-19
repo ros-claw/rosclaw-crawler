@@ -8,8 +8,9 @@ import json
 import re
 import time
 from datetime import datetime
+import os
 
-API_KEY = '"${ROSCALW_API_KEY}"'
+API_KEY = os.getenv("ROSCALW_API_KEY", "")
 BASE_URL = 'https://www.rosclaw.io'
 MCP_ENDPOINT = f'{BASE_URL}/api/mcp-packages'
 HEADERS = {'Content-Type': 'application/json', 'X-API-Key': API_KEY}

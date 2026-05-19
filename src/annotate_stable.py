@@ -4,13 +4,14 @@ ROSClaw LLM Annotator - Conservative Single-Threaded
 避免限流，稳定推进
 """
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
 
 import json, sqlite3, requests, time
 from datetime import datetime
+import os
 
 def log(msg):
     ts = datetime.now().strftime('%H:%M:%S')

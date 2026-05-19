@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ROSClaw Annotator - DeepSeek Multi-Worker (all remaining repos)"""
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-flash"
 DB_PATH = "rosclaw_hub.db"
@@ -10,6 +10,7 @@ NUM_WORKERS = 5  # 并发数
 import json, sqlite3, requests, time, threading
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
 
 lock = threading.Lock()
 total_done = 0

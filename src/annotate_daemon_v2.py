@@ -4,7 +4,7 @@ ROSClaw LLM Annotator Daemon v2
 后台持续标注，自动处理crawler冲突，带数据库重试
 """
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
@@ -12,6 +12,7 @@ CRAWLER_PID = 503963
 
 import json, sqlite3, requests, time, os, signal
 from datetime import datetime
+import os
 
 def log(msg):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)

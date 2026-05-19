@@ -10,8 +10,9 @@ import re
 import time
 import requests
 from typing import List, Dict, Set
+import os
 
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 def fetch_file(owner: str, repo: str, path: str) -> str:

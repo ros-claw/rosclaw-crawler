@@ -14,12 +14,12 @@ from datetime import datetime
 from typing import Optional
 
 # DeepSeek Config
-DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-pro"
 
 # GitHub Config
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 GITHUB_HEADERS = {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'rosclaw-llm-crawler',

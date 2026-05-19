@@ -7,8 +7,9 @@ import json
 import urllib.request
 import sqlite3
 import time
+import os
 
-API_KEY = '"${ROSCALW_API_KEY}"'
+API_KEY = os.getenv("ROSCALW_API_KEY", "")
 BASE_URL = 'https://www.rosclaw.io'
 
 HEADERS = {

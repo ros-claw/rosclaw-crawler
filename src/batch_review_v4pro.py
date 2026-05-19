@@ -12,6 +12,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from config import DB_PATH
+import os
 
 # 日志配置
 LOG_FILE = Path(__file__).parent / "batch_review_v4pro.log"
@@ -27,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # DeepSeek API配置
 API_BASE = "https://api.deepseek.com"
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 MODEL = "deepseek-v4-pro"
 CONCURRENCY = 3  # v4-pro较慢，降低并发
 

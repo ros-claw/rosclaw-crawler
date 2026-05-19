@@ -10,9 +10,10 @@ import urllib.request
 import urllib.parse
 import time
 from datetime import datetime, timezone
+import os
 
 DB_PATH = '/home/ubuntu/.openclaw/workspace/rosclaw_crawler/rosclaw_hub.db'
-GITHUB_TOKEN = '"${GITHUB_TOKEN}"'
+GITHUB_TOKEN = 'os.getenv("GITHUB_TOKEN", "")'
 
 # 定向搜索查询 - 必须同时命中具身+Agent
 TARGETED_QUERIES = [

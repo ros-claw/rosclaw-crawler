@@ -13,8 +13,9 @@ import sys
 import signal
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
+import os
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 MAX_WORKERS = 10  # 10并发

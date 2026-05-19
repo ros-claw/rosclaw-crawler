@@ -10,9 +10,10 @@ import time
 import sys
 sys.path.insert(0, '/home/ubuntu/rosclaw/rosclaw_crawler/src')
 from database import insert_item
+import os
 
-DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
 HEADERS_GH = {
     'Accept': 'application/vnd.github.v3+json',

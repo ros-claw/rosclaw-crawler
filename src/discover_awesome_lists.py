@@ -6,8 +6,9 @@
 import json
 import requests
 import time
+import os
 
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 def search_awesome_lists():

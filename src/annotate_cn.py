@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ROSClaw Annotator - Beijing Node (id%3==0)"""
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
@@ -9,6 +9,7 @@ API_TIMEOUT = 120
 
 import json, sqlite3, requests, time
 from datetime import datetime
+import os
 
 def log(msg):
     ts = datetime.now().strftime('%H:%M:%S')

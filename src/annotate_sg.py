@@ -4,7 +4,7 @@ ROSClaw LLM Annotator - Singapore Node Multi-Threaded
 使用新加坡API Key，5并发高速标注
 """
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
@@ -15,6 +15,7 @@ API_TIMEOUT = 90   # 增加超时
 import json, sqlite3, requests, time, threading
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
 
 log_lock = threading.Lock()
 

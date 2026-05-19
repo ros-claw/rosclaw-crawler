@@ -11,6 +11,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from config import LLM_API_BASE, LLM_API_KEY, DB_PATH
+import os
 
 # 日志配置
 LOG_FILE = Path(__file__).parent / "annotate_remaining_81.log"
@@ -26,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 # DeepSeek API配置
 API_BASE = "https://api.deepseek.com"
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 MODEL = "deepseek-v4-flash"
 CONCURRENCY = 5
 

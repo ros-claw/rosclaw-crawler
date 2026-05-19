@@ -4,7 +4,7 @@ ROSClaw LLM Annotator - Multi-Threaded High Performance Version
 使用线程池并发调用阿里云API，大幅提升标注速度
 """
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
@@ -20,6 +20,7 @@ import time
 import threading
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import os
 
 # 线程锁保护日志写入
 log_lock = threading.Lock()

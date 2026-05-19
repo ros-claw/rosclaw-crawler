@@ -9,9 +9,10 @@ import base64
 import time
 import sys
 from datetime import datetime
+import os
 
-DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
-GITHUB_TOKEN = ""${GITHUB_TOKEN}""
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
 HEADERS_GH = {
     'Accept': 'application/vnd.github.v3+json',

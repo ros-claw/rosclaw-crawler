@@ -6,9 +6,10 @@ LLM Judge - Use DeepSeek API to evaluate if a repo is truly relevant to embodied
 import json
 import urllib.request
 import urllib.error
+import os
 from typing import Optional
 
-DEEPSEEK_API_KEY = ""${DEEPSEEK_API_KEY}""
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-pro"
 

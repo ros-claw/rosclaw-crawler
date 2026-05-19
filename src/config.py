@@ -5,7 +5,7 @@ import os
 # API Tokens
 GITHUB_TOKEN = os.getenv(
     "GITHUB_TOKEN",
-    ""${GITHUB_TOKEN}"",
+    "os.getenv("GITHUB_TOKEN", "")",
 )
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY", "")
 GOOGLE_CLOUD_API_KEY = os.getenv(

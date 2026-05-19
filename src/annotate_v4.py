@@ -4,7 +4,7 @@ ROSClaw LLM Annotator - Optimized Concurrent Version v4
 使用requests.Session和适配器，控制并发避免限流
 """
 
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"  # 北京节点（API Key仅在此有效）
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"
@@ -20,6 +20,7 @@ import threading
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from requests.adapters import HTTPAdapter
+import os
 
 # 创建带连接池的session
 def create_session():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ROSClaw Annotator - SG Node (id%3==1) using DeepSeek API"""
-API_KEY = ""${DEEPSEEK_API_KEY}""
+API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
 BASE_URL = "https://api.deepseek.com"
 MODEL = "deepseek-v4-flash"
 DB_PATH = "rosclaw_hub.db"
@@ -9,6 +9,7 @@ API_TIMEOUT = 90
 
 import json, sqlite3, requests, time
 from datetime import datetime
+import os
 
 def log(msg):
     ts = datetime.now().strftime('%H:%M:%S')
