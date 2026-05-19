@@ -1,0 +1,254 @@
+[
+  {
+    "name": "SkullsEye/Robotics-MCP-Servers",
+    "stars": 1,
+    "description": "Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision",
+    "url": "https://github.com/SkullsEye/Robotics-MCP-Servers",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "Provides MCP servers for multi-robot control including humanoid, arm, gimbal, vision, and navigation, directly enabling embodied AI/robotics interaction.",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "ros-claw/g1-isaac-sim-mcp",
+    "stars": 1,
+    "description": "ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim",
+    "url": "https://github.com/ros-claw/g1-isaac-sim-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "sandraschi/bumi-mcp",
+    "stars": 1,
+    "description": "Noetix Bumi humanoid robot — MCP 3.1 server + webapp. virtual bot now, real bot asap",
+    "url": "https://github.com/sandraschi/bumi-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Directly controls a humanoid robot via MCP server and ROS 2, fitting embodied AI/robotics.",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "nonead/Nonead-Universal-Robots-MCP",
+    "stars": 6,
+    "description": "nUR_MCP_SERVER is an intelligent industrial collaborative robot control middleware system built based on the MCP (Model Control Protocol) interface protocol. It realizes the natural language interactive control of industrial robots by integrating a large language model (LLM).",
+    "url": "https://github.com/nonead/Nonead-Universal-Robots-MCP",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "The repository implements an MCP server for controlling Universal Robots industrial collaborative robots, enabling natural language interaction for robot control, which is directly relevant to embodied AI/robotics.",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "underautomation/UniversalRobots-MCP",
+    "stars": 0,
+    "description": "POC for a Model Context Protocol (MCP) server for Universal Robots, enabling AI agents and applications to control and monitor UR robots through a standardized interface.",
+    "url": "https://github.com/underautomation/UniversalRobots-MCP",
+    "llm": {
+      "relevant": true,
+      "confidence": 100,
+      "reason": "MCP server for Universal Robots control and monitoring, directly enabling AI agents to interact with physical robots.",
+      "category": "manipulation"
+    }
+  },
+  {
+    "name": "kukapay/kukapay-mcp-servers",
+    "stars": 24,
+    "description": "A comprehensive suite of Model Context Protocol (MCP) servers  from Kukapay.",
+    "url": "https://github.com/kukapay/kukapay-mcp-servers",
+    "llm": {
+      "relevant": false,
+      "confidence": 100,
+      "reason": "Repo focuses solely on cryptocurrency and blockchain MCP servers, with no connection to embodied AI or robotics.",
+      "category": "general"
+    }
+  },
+  {
+    "name": "kukapay/kukapay-news-mcp",
+    "stars": 1,
+    "description": "Publicly hosted MCP server for aggregated crypto news and actionable market insights.",
+    "url": "https://github.com/kukapay/kukapay-news-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "eliasbitsch/abb-robotstudio-mcp",
+    "stars": 0,
+    "description": "MCP server for ABB RobotStudio (SDK Add-In) and ABB controllers (Robot Web Services)",
+    "url": "https://github.com/eliasbitsch/abb-robotstudio-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "donneeers/mcp-abbreviations",
+    "stars": 0,
+    "description": "MCP Server for Abbreviations/Acronyms and Reverse Search capabilities with embeddings",
+    "url": "https://github.com/donneeers/mcp-abbreviations",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "Abba-Baba/abbababa-mcp",
+    "stars": 0,
+    "description": "Official MCP server for Abba Baba — Claude Desktop integration for agent-to-agent commerce",
+    "url": "https://github.com/Abba-Baba/abbababa-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 95,
+      "reason": "This MCP server facilitates agent-to-agent commerce and orchestration, not physical robotics or embodied AI tasks.",
+      "category": "general"
+    }
+  },
+  {
+    "name": "0xKoda/drone-mcp",
+    "stars": 25,
+    "description": "A MCP server for controlling a drone",
+    "url": "https://github.com/0xKoda/drone-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "ion-g-ion/MAVLinkMCP",
+    "stars": 16,
+    "description": "MCP server for LLM to drone communication via MAVLink",
+    "url": "https://github.com/ion-g-ion/MAVLinkMCP",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Provides MCP server for LLM to drone communication via MAVLink, enabling embodied AI control of drones.",
+      "category": "drone"
+    }
+  },
+  {
+    "name": "hfujikawa77/ardupilot-mcp-server",
+    "stars": 8,
+    "description": "ArduPilotドローンをAIエージェントから操作するMCPサーバーです。",
+    "url": "https://github.com/hfujikawa77/ardupilot-mcp-server",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "uavopsys/uavcrew-mcp-server",
+    "stars": 0,
+    "description": null,
+    "url": "https://github.com/uavopsys/uavcrew-mcp-server",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 18 (char 17)"
+    }
+  },
+  {
+    "name": "Project-GrADyS/uav_mcp",
+    "stars": 0,
+    "description": "MCP Server for Drone Control through Autonomous Agents",
+    "url": "https://github.com/Project-GrADyS/uav_mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Unterminated string starting at: line 1 column 43 (char 42)"
+    }
+  },
+  {
+    "name": "CSOAI-ORG/drone-airspace-governance-mcp",
+    "stars": 0,
+    "description": "Drone airspace governance MCP — FAA Part 107 + EASA Open/Specific + CASA Part 101 compliance checks for UAV operations and BVLOS flights.",
+    "url": "https://github.com/CSOAI-ORG/drone-airspace-governance-mcp",
+    "llm": {
+      "relevant": true,
+      "confidence": 95,
+      "reason": "Provides MCP tools for drone governance and compliance, directly relevant to drone robotics.",
+      "category": "drone"
+    }
+  },
+  {
+    "name": "qkilani/px4-mcp-server",
+    "stars": 1,
+    "description": null,
+    "url": "https://github.com/qkilani/px4-mcp-server",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "salimbentounsi/proximity",
+    "stars": 0,
+    "description": "🔍 Scan MCP servers for security vulnerabilities with Proximity, ensuring your Model Context Protocol environment remains safe and secure.",
+    "url": "https://github.com/salimbentounsi/proximity",
+    "llm": {
+      "relevant": false,
+      "confidence": 95,
+      "reason": "The repo is a security scanner for MCP servers, unrelated to embodied AI or robotics.",
+      "category": "general"
+    }
+  },
+  {
+    "name": "tolenonetwork/toleno-mcp",
+    "stars": 151,
+    "description": "Toleno Network MCP Server — Control your Toleno mining account directly from Claude AI using natural language.",
+    "url": "https://github.com/tolenonetwork/toleno-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "7gugu/whistle-mcp",
+    "stars": 37,
+    "description": "A Whistle proxy management tool based on Model Context Protocol that allows AI assistants to directly control local Whistle proxy servers, simplifying network debugging, API testing, and proxy rule configuration through natural language interaction.",
+    "url": "https://github.com/7gugu/whistle-mcp",
+    "llm": {
+      "relevant": false,
+      "confidence": 95,
+      "reason": "Repo is a network debugging tool, not related to embodied AI or robotics.",
+      "category": "general"
+    }
+  },
+  {
+    "name": "UnlikeOtherAI/AppReveal",
+    "stars": 27,
+    "description": "Debug-only in-app MCP server for iOS/macOS/Android/Flutter/ReactNative. Gives LLM agents Playwright-like control over native apps — UI, state, navigation, and diagnostics over the local network.",
+    "url": "https://github.com/UnlikeOtherAI/AppReveal",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  },
+  {
+    "name": "Cmtovar/tensor-framework",
+    "stars": 0,
+    "description": "MCP server: structural completeness linter for cross-domain energy path topology in cyber-physical system designs",
+    "url": "https://github.com/Cmtovar/tensor-framework",
+    "llm": {
+      "relevant": false,
+      "confidence": 0,
+      "reason": "Error: Expecting value: line 1 column 1 (char 0)"
+    }
+  }
+]
