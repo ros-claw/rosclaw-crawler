@@ -1,74 +1,9 @@
 [
   {
-    "name": "jjmartres/reachy-mini-sdk-skill",
-    "description": "Comprehensive Claude Skill for programming Reachy Mini robots with Python SDK and REST API. Expert guidance for controlling Reachy Mini robots, integrating AI models, and building interactive applications with Claude AI.",
-    "url": "https://github.com/jjmartres/reachy-mini-sdk-skill",
-    "stars": 7,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "swh/openscad-skill",
-    "description": "A Claude Skill for building OpenSCAD models for 3D printers",
-    "url": "https://github.com/swh/openscad-skill",
-    "stars": 4,
-    "reason": "True Skill with embodied indicator: 3d printer",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "chuongdlb/agent-skills",
-    "description": "40 agent skills for RL/robotics organized in a 4-layer architecture (Theory → Core → Platforms → Frameworks)",
-    "url": "https://github.com/chuongdlb/agent-skills",
-    "stars": 1,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "manykarim/robotframework-agentguard",
-    "description": "Robot Framework library for testing MCP servers, Agent Skills, Hooks, SubAgents, and coding-agent CLIs — provider-agnostic via LiteLLM, BFCL-grade tool-call matching, statistical N≥10 by default.",
-    "url": "https://github.com/manykarim/robotframework-agentguard",
-    "stars": 1,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "viam-devrel/agent-skills",
-    "description": "A set of skills to help when building robotics applications using Viam",
-    "url": "https://github.com/viam-devrel/agent-skills",
-    "stars": 0,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "bomber2020/ag-drone-skill",
-    "description": "Agricultural drone application calculator skill for Claude Cowork",
-    "url": "https://github.com/bomber2020/ag-drone-skill",
-    "stars": 0,
-    "reason": "True Skill with embodied indicator: drone",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
-    "name": "toprak1919/flashforge-3d-print-skill",
-    "description": "Claude Code skill for FlashForge 3D printer network printing - discovery, slicing, G-code conversion (M82→M83), upload & streaming",
-    "url": "https://github.com/toprak1919/flashforge-3d-print-skill",
-    "stars": 0,
-    "reason": "True Skill with embodied indicator: 3d printer",
-    "confidence": 0.85,
-    "type": "skill"
-  },
-  {
     "name": "hemantkamalakar/nordic-thingy52-mcp",
     "description": "A Model Context Protocol (MCP) server that bridges physical sensor data with AI reasoning. Control and monitor your Nordic Thingy:52 IoT device through natural language conversations with Claude.",
     "url": "https://github.com/hemantkamalakar/nordic-thingy52-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -76,8 +11,6 @@
     "description": "An MCP server which uses pyads to communicate from Beckhoff PLCs. ",
     "url": "https://github.com/malcolm-mill/beckhoff_mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -85,8 +18,6 @@
     "description": "MCP server for ROS to control robots via topics, services, and actions.",
     "url": "https://github.com/Yutarop/ros-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -94,8 +25,6 @@
     "description": "Advanced MCP Server ROS 2 bridging AI agents straight into robotics",
     "url": "https://github.com/wise-vision/ros2_mcp",
     "stars": 77,
-    "reason": "LLM judged relevant: Real MCP server for ROS 2 that enables AI agents to directly interact with physical robots via topics, services, and actions.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -103,8 +32,6 @@
     "description": "Collects Ruuvi sensor reading an exposing them to an MCP client",
     "url": "https://github.com/juhapellotsalo/ruuvi-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -112,8 +39,6 @@
     "description": "MCP server for ROS2-MCP-Server",
     "url": "https://github.com/YI-TING-EE13/ROS2-MCP-Server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -121,8 +46,6 @@
     "description": "MCP Server to interface with and analyze rosbags offline",
     "url": "https://github.com/binabik-ai/mcp-rosbags",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -130,8 +53,6 @@
     "description": "Allow AI models connect to ESP32 and read connected sensors NMEA2k, ODB/ODBII, NMEA0183. AI generated MCP server.",
     "url": "https://github.com/navado/ESP32MCPServer",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: esp32",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -139,8 +60,6 @@
     "description": "Rosbag mcp server",
     "url": "https://github.com/cjh1995-ros/rosbag-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -148,8 +67,6 @@
     "description": "an mcp-server to interact with ros2 node,topics , etc...",
     "url": "https://github.com/0xenesbayram/ros2-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -157,8 +74,6 @@
     "description": "MCP server for Bambu Lab 3D printers — MQTT control, FTP upload, X.509 certificate auth, camera, AMS, and more",
     "url": "https://github.com/schwarztim/bambu-mcp",
     "stars": 15,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -166,8 +81,6 @@
     "description": "M5 StamPLC MCP Server Integration w/ n8n Agentic AI workflow",
     "url": "https://github.com/rezasaadat1/stamplc-mcp-server-io",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -175,8 +88,6 @@
     "description": "MCP server for 3D-printable CAD modeling with build123d, targeting Bambu Lab X1C",
     "url": "https://github.com/brs077/3dp-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: bambu",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -184,8 +95,6 @@
     "description": "MCP server for managing Klipper 3D printer configs via Moonraker API",
     "url": "https://github.com/mikehatch/KlipperMCP",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -193,8 +102,6 @@
     "description": "mcpx-mcp-server is an MCP server that allows generative AI to access Mitsubishi PLC devices in real time.",
     "url": "https://github.com/YudaiKitamura/mcpx-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -202,8 +109,6 @@
     "description": "A Model Context Protocol (MCP) server for Modbus.",
     "url": "https://github.com/ezhuk/modbus-mcp",
     "stars": 2,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -211,8 +116,6 @@
     "description": "Agent can communicate and manage PLCs",
     "url": "https://github.com/OlubunmiAde/plc-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -220,8 +123,6 @@
     "description": "S7 MCP Bridge is a MCP Server that connects AI agents to Siemens industrial PLCs (specifically S7-1500 and S7-1200 models).",
     "url": "https://github.com/cadugrillo/s7-mcp-bridge",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -229,8 +130,6 @@
     "description": null,
     "url": "https://github.com/kakimochi/ros2-mcp-server",
     "stars": 81,
-    "reason": "LLM: Integrates MCP with ROS 2 to control robot movement via /cmd_vel, enabling AI assistants to command robots. Directly relevant as an MCP Server for robotics.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -238,8 +137,6 @@
     "description": "An MCP server that standardizes and contextualizes industrial Modbus data.",
     "url": "https://github.com/kukapay/modbus-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -247,8 +144,6 @@
     "description": "A MCP server for controlling a drone",
     "url": "https://github.com/0xKoda/drone-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -256,8 +151,6 @@
     "description": "Bambu Lab MCP server — LAN-mode control over Bambu Lab 3D printers via MQTT and FTPS",
     "url": "https://github.com/synman/bambu-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -265,8 +158,6 @@
     "description": "Connects MCP to major 3D printer APIs (Orca, Bambu, OctoPrint, Klipper, Duet, Repetier, Prusa, Creality). Control prints, monitor status, and perform advanced STL operations like scaling, rotation, se",
     "url": "https://github.com/VisualBoy/mcp-3D-printer-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -274,8 +165,6 @@
     "description": "MCP server for LLM to drone communication via MAVLink",
     "url": "https://github.com/ion-g-ion/MAVLinkMCP",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -283,8 +172,6 @@
     "description": "MCP server for Bambu Lab 3D printers — STL manipulation, BambuStudio slicing, and direct printer control",
     "url": "https://github.com/DMontgomery40/bambu-printer-mcp",
     "stars": 42,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -292,8 +179,6 @@
     "description": "MCP server for ros-mcp-server",
     "url": "https://github.com/ashank4595/ros-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -301,8 +186,6 @@
     "description": "MCP server + ROS 2 bridge for controlling the SO-101 robotic arm with LLM agents",
     "url": "https://github.com/anshuman-dev/ros-mcp-plugin",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -310,8 +193,6 @@
     "description": "ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2 topics via command-line tools. List topics, get topic info, and fetch data without initializing ROS2 nodes.",
     "url": "https://github.com/Yiro13/ros2-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -319,8 +200,6 @@
     "description": "llm mcp server",
     "url": "https://github.com/chomi14/ros-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -328,8 +207,6 @@
     "description": "MCP server for ros-mcp-server-test",
     "url": "https://github.com/OMS524/ros-mcp-server-test",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -337,8 +214,6 @@
     "description": "An open source Arduino MCP server that enables AI assistants to interact with Arduino using structured tool access via the Model Context Protocol.",
     "url": "https://github.com/hardware-mcp/arduino-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -346,8 +221,6 @@
     "description": "MCP server for ros-mcp-server",
     "url": "https://github.com/Raizinmaru/ros-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -355,8 +228,6 @@
     "description": "Model Context Protocol server for controlling Zigbee2MQTT-paired lights and sensors from LLM agents like Claude Code.",
     "url": "https://github.com/LachlanB96/zigbee-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -364,8 +235,6 @@
     "description": "MCP server for OpenThread CLI on Arduino Nano Matter",
     "url": "https://github.com/swannman/openthread-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -373,8 +242,6 @@
     "description": "MCP server for US drone airspace intelligence and mission planning — 24 tools for airspace queries, mission generation, Part 107 compliance, and flight plan export",
     "url": "https://github.com/markpdxt/dronelytics-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -382,8 +249,6 @@
     "description": "MCP Server for Drone Control through Autonomous Agents",
     "url": "https://github.com/Project-GrADyS/uav_mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -391,8 +256,6 @@
     "description": "MCP server for tello drone",
     "url": "https://github.com/linsun/tello-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -400,8 +263,6 @@
     "description": "A system where an AI model can interface with an MCP server to control an LED on an Arduino microcontroller.",
     "url": "https://github.com/Starvern/mcp-led-controller",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -409,8 +270,6 @@
     "description": "An MCP server for integrating ESP32/Arduino C++ code with Firebase/Firestore using the mobizt/FirebaseClient library",
     "url": "https://github.com/adamdturner/mcp-esp32-firebase",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -418,8 +277,6 @@
     "description": "MCP server for Arduino-Uno-with-MCP-server",
     "url": "https://github.com/shahidhustles/Arduino-Uno-with-MCP-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -427,8 +284,6 @@
     "description": "A simple Model Context Protocol (MCP) server that enables AI agents to interact with Arduino boards for development and testing",
     "url": "https://github.com/amahpour/arduino-mcp-server-simple",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -436,8 +291,6 @@
     "description": "MCP server for QIDI 3D printers via Moonraker API — control, monitor, and automate prints from Claude/AI agents",
     "url": "https://github.com/CSOAI-ORG/qidi-printer-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -445,8 +298,6 @@
     "description": "MCP server for controlling Prusa 3D printers via Prusa Connect",
     "url": "https://github.com/gioelemo/prusa-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -454,8 +305,6 @@
     "description": "",
     "url": "https://github.com/gn00191283-afk/cnc-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: cnc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -463,8 +312,6 @@
     "description": "MCP server for Arduino_MCP_Server",
     "url": "https://github.com/AimanMadan/Arduino_MCP_Server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -472,8 +319,6 @@
     "description": "a MCP server to allow you to monitor your Bambu Labs 3D printer from Claude Desktop",
     "url": "https://github.com/Shockedrope/bambu-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -481,8 +326,6 @@
     "description": "CP server for MQTT-PLC communication with real-time data collection",
     "url": "https://github.com/Manusevl/mcp-mqtt-plc",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -490,8 +333,6 @@
     "description": "remote MCP server for Modbus with multiple connection to multiple sessions",
     "url": "https://github.com/devidasjadhav/modbus-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -499,8 +340,6 @@
     "description": "MCP server with multiple connections to handle",
     "url": "https://github.com/theoriginalaiexplorer/modbus-mcp-remote-multiple-connection",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -508,8 +347,6 @@
     "description": "PyBullet MCP Server  Model Context Protocol server for AI-controlled physics simulations",
     "url": "https://github.com/M1ndSmith/pybullet-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: imu",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -517,8 +354,6 @@
     "description": "A publish-subscribe system consisting of a *ERN stack web application that reads temperature and humidity measurements from a Pico sensor through MQTT and makes them available via a public MCP Server",
     "url": "https://github.com/jotamunz/SoftwareArchitecture-SensorReadingMCPServer",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -526,8 +361,6 @@
     "description": "MCP server for ambient_sensors_mcp_server",
     "url": "https://github.com/apicov/ambient_sensors_mcp_server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -535,8 +368,6 @@
     "description": "AI-generated MCP server for the Lidarr API v1",
     "url": "https://github.com/abl030/lidarr-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: lidar",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -544,8 +375,6 @@
     "description": "MCP server for ouster-lidar-mcp-server",
     "url": "https://github.com/jmdaly/ouster-lidar-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: lidar",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -553,8 +382,6 @@
     "description": "ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim",
     "url": "https://github.com/ros-claw/g1-isaac-sim-mcp",
     "stars": 1,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -562,8 +389,6 @@
     "description": "MCP server for Motor Current Signature Analysis (MCSA) — spectral analysis and fault detection in electric motors in natural language through LLMs",
     "url": "https://github.com/LGDiMaggio/mcp-motor-current-signature-analysis",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: motor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -571,8 +396,6 @@
     "description": "Desktop MCP server that gives AI agents the ability to see and control your macOS and Windows desktop.",
     "url": "https://github.com/d11r/servo-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: servo",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -580,8 +403,6 @@
     "description": "Intel RealSense ROS2 MCP Server - 封装 realsense2_camera 的 ROS2 接口，提供 25 个 MCP tools",
     "url": "https://github.com/ros-claw/realsense-ros-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -589,8 +410,6 @@
     "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
     "url": "https://github.com/robotmcp/ros-mcp-server",
     "stars": 1226,
-    "reason": "LLM: This repo directly bridges LLMs and ROS-based robots via an MCP server, enabling embodied AI control and observation, fitting both MCP server and agent skill for robotics.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -598,8 +417,6 @@
     "description": "Model Context Protocol (MCP) server for MoveIt2 motion planning, providing AI assistants with the ability to control and plan robot motions.",
     "url": "https://github.com/gtoff/moveit-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -607,8 +424,6 @@
     "description": "ROSClaw MCP Server for Intel RealSense RGB-D Camera via ROS2 — Semantic-HAL vision layer",
     "url": "https://github.com/ros-claw/rosclaw-vision-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -616,8 +431,6 @@
     "description": "fork ros-mcp-server-minipi",
     "url": "https://github.com/saintrain0/ros-mcp-server-minipi",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -625,8 +438,6 @@
     "description": "MCP Server for Arduino",
     "url": "https://github.com/amahpour/arduino-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -634,8 +445,6 @@
     "description": "Connects MCP to major 3D printer APIs (Orca, FULU's Orca/Bambu, OctoPrint, Klipper, Duet, Repetier, Prusa, Creality). Control prints, monitor status, and perform advanced STL operations like scaling, rotation, sectional editing, and base extension. Includes slicing and visualization.",
     "url": "https://github.com/DMontgomery40/mcp-3D-printer-server",
     "stars": 190,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -643,8 +452,6 @@
     "description": "Modbus TCP MCP Server — let AI agents read/write PLC registers by name, not by raw address",
     "url": "https://github.com/KerberosClaw/kc_modbus_mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -652,8 +459,6 @@
     "description": "MCP server for controlling Bambu Lab 3D printers — multi-printer fleet management, print control, file ops, AMS, camera, and more",
     "url": "https://github.com/griches/bambu-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -661,8 +466,6 @@
     "description": "MuJoCo physics simulation as MCP tools for Claude Code — sim, render, analyze, control robots, and run RL environments.",
     "url": "https://github.com/Rongxuan-Zhou/mujoco-mcp-server",
     "stars": 3,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -670,8 +473,6 @@
     "description": "ROS MCP server to debug, monitor and run ROS nodes",
     "url": "https://github.com/husain-zaidi/ROS-MCP",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -679,8 +480,6 @@
     "description": "ROS1 MCP Server",
     "url": "https://github.com/lopisan/ros-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -688,8 +487,6 @@
     "description": "MCP server for sensorbio-mcp-server",
     "url": "https://github.com/GetSensr-io/sensorbio-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -697,8 +494,6 @@
     "description": "MCP server for robotmcp--ros-mcp-server",
     "url": "https://github.com/image-scale/robotmcp--ros-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -706,8 +501,6 @@
     "description": "ROS MCP Server — connect AI agents to ROS 2 robots",
     "url": "https://github.com/jonasneves/ros-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -715,8 +508,6 @@
     "description": "MCP server for mcp_server_ros_2",
     "url": "https://github.com/gavindev14/mcp_server_ros_2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -724,8 +515,6 @@
     "description": "MCP server for ros-mcp-server-minipi",
     "url": "https://github.com/moneypiaorui/ros-mcp-server-minipi",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -733,8 +522,6 @@
     "description": "An arduino mcp server written in go",
     "url": "https://github.com/dido18/arduino-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -742,8 +529,6 @@
     "description": "MCP server for docker-ros2-mcp-server",
     "url": "https://github.com/frankjoshua/docker-ros2-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -751,8 +536,6 @@
     "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
     "url": "https://github.com/robotmcp/ros-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -760,8 +543,6 @@
     "description": "Advanced MCP Server ROS 2 bridging AI agents straight into robotics",
     "url": "https://github.com/wise-vision/ros2_mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -769,8 +550,6 @@
     "description": "MCP Server for Drone.io",
     "url": "https://github.com/yusiwen/drone-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -778,8 +557,6 @@
     "description": "Full stack end to end, MCP server for Arduino using Claude Code",
     "url": "https://github.com/pparth230/MCP-Server-for-Arduino",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -787,8 +564,6 @@
     "description": "Minimal MCP server for non-blocking serial communication with Arduino, ESP32, and other devices",
     "url": "https://github.com/bmdragos/serial-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -796,8 +571,6 @@
     "description": "MCP server for Bambu Lab 3D printing — mesh repair, slicing, and printer control. Built with codrsync.dev",
     "url": "https://github.com/gusjarendt-maker/bambu-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: bambu",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -805,8 +578,6 @@
     "description": "MCP server for ROS to control robots via topics, services, and actions.",
     "url": "https://github.com/Yutarop/ros-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -814,8 +585,6 @@
     "description": "MCP Server for Sensors",
     "url": "https://github.com/sukeesh/mcp-iot-go",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: sensor",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -823,8 +592,6 @@
     "description": "ROSClaw-Native Nav2 MCP Server - Production-grade autonomous navigation for mobile robots",
     "url": "https://github.com/ros-claw/rosclaw-nav2-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -832,8 +599,6 @@
     "description": "ROSClaw-Native MoveIt2 MCP Server - Production-grade motion planning for robotic arms",
     "url": "https://github.com/ros-claw/rosclaw-moveit2-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -841,8 +606,6 @@
     "description": "ROSClaw MCP Server for Xianfei GCU Gimbal (Z-2Mini/A5) - 先飞技术双光吊舱云台",
     "url": "https://github.com/ros-claw/gcu-gimbal-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -850,8 +613,6 @@
     "description": "nUR_MCP_SERVER is an intelligent industrial collaborative robot control middleware system built based on the MCP (Model Control Protocol) interface protocol. It realizes the natural language interactive control of industrial robots by integrating a large language model (LLM).",
     "url": "https://github.com/nonead/Nonead-Universal-Robots-MCP",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -859,8 +620,6 @@
     "description": "A Model Context Protocol interface to the ROS 2 command line interface allowing language models to introspect ROS",
     "url": "https://github.com/Ranch-Hand-Robotics/rde-mcp-ros-2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -868,8 +627,6 @@
     "description": "ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2 topics via command-line tools. List topics, get topic info, and fetch data without initializing ROS2 nodes.",
     "url": "https://github.com/Yiro13/ros2-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -877,8 +634,6 @@
     "description": "e-URDF Safety Firewall - MuJoCo Physics Simulation MCP Server for Robot Safety Validation",
     "url": "https://github.com/ros-claw/mjlab-mcp-server",
     "stars": 1,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -886,8 +641,6 @@
     "description": "LLM sample application for model context protocol and ros2 openrmf adapter",
     "url": "https://github.com/kouichiume/llm_mcp_ros2_adapter",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -895,8 +648,6 @@
     "description": "NWO Robotics MCP Server Package",
     "url": "https://github.com/redciprianpater/mcp-server-robotics",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -904,8 +655,6 @@
     "description": "A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3",
     "url": "https://github.com/darshan-kt/turtlebot_mcp_ros2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -913,8 +662,6 @@
     "description": "A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3",
     "url": "https://github.com/darshankt/turtle_mcp_ros2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -922,8 +669,6 @@
     "description": "ROS2 MCP Server",
     "url": "https://github.com/kiminbean/ros2_mcp_rosa",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -931,8 +676,6 @@
     "description": "This project is used to let LLM control the ros2 robot by using MCP",
     "url": "https://github.com/hirasawagen/mcp_ros2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -940,8 +683,6 @@
     "description": "ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2",
     "url": "https://github.com/yi-ting-ee13/ros2-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -949,8 +690,6 @@
     "description": "A modular Model Context Protocol (MCP) server with automatic submodule integration",
     "url": "https://github.com/robotmcp/robotmcp_server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -958,8 +697,6 @@
     "description": "Full-featured Vicon DataStream MCP Server - Motion capture data streaming via Model Context Protocol",
     "url": "https://github.com/ros-claw/vicon-datastream-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -967,8 +704,6 @@
     "description": "A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3",
     "url": "https://github.com/darshan-kt/turtle_mcp_ros2",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: ros",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -976,8 +711,6 @@
     "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
     "url": "https://github.com/ros-claw/unitree-mujoco-mcp",
     "stars": 4,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -985,8 +718,6 @@
     "description": "ROSClaw MCP Server for Unitree Robots via DDS (G1, Go2, H1, B2, A2, R1)",
     "url": "https://github.com/ros-claw/unitree-sdk2-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -994,8 +725,6 @@
     "description": "Intel RealSense MCP Server - 直接封装 pyrealsense2 SDK，提供 26 个 MCP tools",
     "url": "https://github.com/ros-claw/librealsense-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -1003,8 +732,6 @@
     "description": "ROSClaw MCP Server for Inspire Robots RH56 Dexterous Hand (CAN 2.0B)",
     "url": "https://github.com/ros-claw/inspire-rh56-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -1012,8 +739,6 @@
     "description": "ROSClaw MCP Server for Universal Robots via ur_rtde (RTDE protocol, no ROS2 required)",
     "url": "https://github.com/ros-claw/ur-rtde-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -1021,8 +746,6 @@
     "description": "ROSClaw MCP Server for Universal Robots UR5/UR5e via ROS2",
     "url": "https://github.com/ros-claw/ur-ros2-mcp",
     "stars": 0,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -1030,8 +753,6 @@
     "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
     "url": "https://github.com/robotmcp/robotmcp_client",
     "stars": 12,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1039,8 +760,6 @@
     "description": " Reachy Mini MCP | Give your AI a body.  This MCP server lets AI systems control the Pollen Robotics Reachy Mini robot. | Speak, listen, see you, and express emotions through physical movement and voice. | Works with Claude, Windsurf, Cursor, or any MCP-compatible AI.  | Zero robotics expertise required.",
     "url": "https://github.com/jackccrawford/reachy-mini-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1048,8 +767,6 @@
     "description": "MCP server for Industrial IoT, SCADA and PLC systems. Unifies MQTT sensors, Modbus devices and industrial equipment into a single AI-orchestrable API. Features real-time monitoring, alarms, time-series storage and actuator control.",
     "url": "https://github.com/poly-mcp/IoT-Edge-MCP-Server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arm",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1057,8 +774,6 @@
     "description": "MCP server for Johnny-Five robotics. Let LLMs control Arduino, Raspberry Pi, and other hardware.",
     "url": "https://github.com/monteslu/robot-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1066,8 +781,6 @@
     "description": "The Unitree Go2 MCP Server is a server built on the MCP that enables users to control the Unitree Go2 robot using natural language commands interpreted by a LLM.",
     "url": "https://github.com/lpigeon/unitree-go2-mcp-server",
     "stars": 78,
-    "reason": "LLM judged relevant: This is an actual MCP server implementation that directly controls the physical Unitree Go2 robot using natural language commands over ROS2, enabling AI agents to interact with a legged robot.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -1075,8 +788,6 @@
     "description": "A simple MCP server for the SO-ARM100 control",
     "url": "https://github.com/IliaLarchenko/robot_MCP",
     "stars": 78,
-    "reason": "LLM: The repo provides an MCP server for controlling a physical robot arm (SO-ARM100), enabling LLM agents to perform embodied tasks.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -1084,8 +795,6 @@
     "description": "mcp server for robot and automations",
     "url": "https://github.com/showkeyjar/robot-mcp-server",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1093,8 +802,6 @@
     "description": "Robot Framework library for evaluating AI coding agents (skills, subagents, hooks, MCP servers, tools). Apache-2.0.",
     "url": "https://github.com/manykarim/robotframework-agenteval",
     "stars": 1,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1102,8 +809,6 @@
     "description": "TinyRobot 是一个 AI 对话组件库，提供了丰富的 AI 交互组件，助力开发者快速构建企业级 AI 应用；同时也是一个智能助手，支持普通 AI 问答、也支持集成 MCP Server，让 AI 真正帮人“干活”。",
     "url": "https://github.com/opentiny/tiny-robot",
     "stars": 29,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1111,8 +816,6 @@
     "description": "openclaw / openfang inspired experiment. adds mcp server fleet and robotics",
     "url": "https://github.com/sandraschi/robofang",
     "stars": 2,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1120,8 +823,6 @@
     "description": "FastMCP 3.1 MCP server and webapp for the Dreame D20 Pro Plus robot vacuum.",
     "url": "https://github.com/sandraschi/dreame-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1129,8 +830,6 @@
     "description": "FastMCP 3.2 server plus Webapp for Yahboom Raspbot v2 robot car, ros2, raspberry pi ",
     "url": "https://github.com/sandraschi/yahboom-mcp",
     "stars": 1,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1138,8 +837,6 @@
     "description": "Native ROS 2 MCP server for AI-assisted robotics",
     "url": "https://github.com/proxi666/amazing-ros2-mcp",
     "stars": 6,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1147,8 +844,6 @@
     "description": "ArduPilotドローンをAIエージェントから操作するMCPサーバーです。",
     "url": "https://github.com/hfujikawa77/ardupilot-mcp-server",
     "stars": 7,
-    "reason": "True MCP with embodied indicator: ardupilot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1156,8 +851,6 @@
     "description": "FastMCP server exposing ResQ platform capabilities—including digital twin simulations, drone coordination, and incident response—to AI clients like Claude Desktop and Cursor.",
     "url": "https://github.com/resq-software/pypi",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1165,8 +858,6 @@
     "description": "DroneFleet MCP Server",
     "url": "https://github.com/spillala/dronefleet-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1174,8 +865,6 @@
     "description": "Drone and aircraft flight logging. Log flights, track compliance, view history, and manage maintenance. By MEOK AI Labs.",
     "url": "https://github.com/CSOAI-ORG/flight-logger-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1183,8 +872,6 @@
     "description": "Drone airspace governance MCP — FAA Part 107 + EASA Open/Specific + CASA Part 101 compliance checks for UAV operations and BVLOS flights.",
     "url": "https://github.com/CSOAI-ORG/drone-airspace-governance-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: drone",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1192,8 +879,6 @@
     "description": "MCP Server for Spoolman — manage your 3D printer filament inventory through AI assistants",
     "url": "https://github.com/Disane87/spoolman-mcp",
     "stars": 2,
-    "reason": "True MCP with embodied indicator: 3d printer",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1201,8 +886,6 @@
     "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
     "url": "https://github.com/shaoxiang/unitree-mujoco-mcp",
     "stars": 1,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1210,8 +893,6 @@
     "description": "MCP server for Isaac Sim and Lab",
     "url": "https://github.com/kvgork/isaac-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: isaac sim",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1219,8 +900,6 @@
     "description": "MCP server bridging LLMs with a UR10 robotic arm in NVIDIA Isaac Sim — control robots through natural language",
     "url": "https://github.com/MarijanMiletic/RoboPilot",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1228,8 +907,6 @@
     "description": "MCP Server for Isaac Sim (Running on Nebius)",
     "url": "https://github.com/chloepilonv/mcp-server-isaaclab",
     "stars": 1,
-    "reason": "True MCP with embodied indicator: isaac sim",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1237,8 +914,6 @@
     "description": "MCP server for Gazebo. Made mostly with Claude",
     "url": "https://github.com/kvgork/gazebo-mcp",
     "stars": 16,
-    "reason": "True MCP with embodied indicator: gazebo",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1246,8 +921,6 @@
     "description": "MCP server for SLAM Gadget Shopify SQLite databases",
     "url": "https://github.com/valljo888ai/mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: slam",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1255,8 +928,6 @@
     "description": "🚀 MCP server for Dynamics 365 Finance & Operations with standard and custom indexed X++ objects. Provides IntelliSense-like code navigation, intelligent EDT suggestions, AI-driven table/form generation, and pattern-based code completion for GitHub Copilot integration.",
     "url": "https://github.com/dynamics365ninja/d365fo-mcp-server",
     "stars": 77,
-    "reason": "True MCP with embodied indicator: navigation",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1264,8 +935,6 @@
     "description": "🛠️ Build a flexible search and navigation tool for RimWorld’s source code and XML definitions, enabling AI-assisted retrieval and exploration.",
     "url": "https://github.com/Mezo1122/RiMCP_hybrid",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: navigation",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1273,8 +942,6 @@
     "description": "A blazingly fast, keyboard-driven web environment for developers. Native tiling. Lua-configurable. Zero-extension ad-blocking. And an integrated AI MCP server so your LLMs can finally see the web. Built in Rust, powered by Servo.",
     "url": "https://github.com/WyattAu/aileron",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: servo",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1282,8 +949,6 @@
     "description": "IoT and robotics interface: list devices, send serial/HTTP commands, read sensors, control servos, send G-code, and emergency stop. Part of MEOK AI Labs' HARVI project.",
     "url": "https://github.com/CSOAI-ORG/robotics-control-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1291,8 +956,6 @@
     "description": "An end-to-end voice-to-hardware pipeline: speech → Whisper STT → Claude LLM → MCP server → Arduino REST API → servo motor. Built incrementally from a single servo to a full robotic arm.",
     "url": "https://github.com/debrunbaix/S.P.E.A.K",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1300,8 +963,6 @@
     "description": "MCP server for Spring Boot Actuator analysis — health, metrics, beans, and environment diagnostics",
     "url": "https://github.com/Dmitriusan/mcp-spring-boot-actuator",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: actuator",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1309,8 +970,6 @@
     "description": "MCP server for AI powered control of the EMDO701 Relay 16 blind actuator via Claude Desktop. Modbus RTU over RS485 or TCP gateway",
     "url": "https://github.com/swissembedded/emdo70x-mcpserver",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1318,8 +977,6 @@
     "description": "MCP server for Spring Boot Actuator — let AI assistants monitor, debug, and interact with your running Spring Boot applications",
     "url": "https://github.com/sigachev/spring-ops-mcp",
     "stars": 1,
-    "reason": "True MCP with embodied indicator: actuator",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1327,8 +984,6 @@
     "description": "Spring Boot MCP server — exposes build/test (Maven) and Actuator tools to GitHub Copilot Agent Mode",
     "url": "https://github.com/internet-dot/spring-inspector",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: actuator",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1336,8 +991,6 @@
     "description": "Industrial-grade PLC runtime in Go. IEC 61131-3 Structured Text, 14+ protocol drivers, Web IDE, AI-native MCP server. Runs on Windows or Linux.",
     "url": "https://github.com/fixstuff/GOPLC-Showcase",
     "stars": 1,
-    "reason": "MCP evidence + embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1345,8 +998,6 @@
     "description": "MCP server — TIA Portal Openness API Copilot tools (create, write, compile PLC blocks)",
     "url": "https://github.com/eponce00/tiaopen-mcp",
     "stars": 1,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1354,8 +1005,6 @@
     "description": "FARCOM Industrial MCP Server — 3,499 industrial products catalog with live pricing (VFDs, Softstarters, PFC, Sensors, PLCs)",
     "url": "https://github.com/farcomiot/farcom-mcp-catalog",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: plc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1363,8 +1012,6 @@
     "description": "Universal MCP server for AI agents to interact with physical hardware. Supports sensors, CAN bus, I2C, SPI, UART, MQTT, Modbus & GPIO. Protocol-agnostic, LLM-agnostic, hardware simulator included. Built for embedded & hardtech developers.",
     "url": "https://github.com/Amrit-R-M/HardwareMCP",
     "stars": 2,
-    "reason": "True MCP with embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1372,8 +1019,6 @@
     "description": "MCP server for Victron GX devices — real-time solar, battery, grid, and inverter data over Modbus TCP + MQTT. Local LAN, no cloud.",
     "url": "https://github.com/lubosstrejcek/victron-tcp",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: modbus",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1381,8 +1026,6 @@
     "description": "Simple MCP server to communicate with OTTO robot over Bluetooth",
     "url": "https://github.com/evgenijovchintsev/arduino-otto-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1390,8 +1033,6 @@
     "description": "Simple Arduino Beep Music Control using MCP",
     "url": "https://github.com/tkjskanesga/beep-music-arduino-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: arduino",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1399,8 +1040,6 @@
     "description": "MCP server for loading FPGA bit files and ESP32 firmware over the network to Papilio boards",
     "url": "https://github.com/Papilio-Labs/papilio-loader-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: esp32",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1408,8 +1047,6 @@
     "description": "MCP server for CNCS (Centro Nacional de Cibersegurança) cybersecurity guidelines and advisories",
     "url": "https://github.com/Ansvar-Systems/portuguese-cybersecurity-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: cnc",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1417,8 +1054,6 @@
     "description": "MCP server and EasyEDA Pro bridge for AI-assisted PCB review, component sourcing, manufacturing export, and JLCPCB ordering workflows.",
     "url": "https://github.com/Spectoda/easyeda-mcp",
     "stars": 2,
-    "reason": "True MCP with embodied indicator: manufacturing",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1426,8 +1061,6 @@
     "description": "Operations Intelligence Engineer | OR-Tools, MCP Servers, Manufacturing Optimization",
     "url": "https://github.com/MicheleCampi/MicheleCampi",
     "stars": 0,
-    "reason": "MCP evidence + embodied indicator: manufacturing",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1435,8 +1068,6 @@
     "description": "Agent skill for production-grade ROS 2 development. Progressive-disclosure SKILL.md covering workspace, nodes, executors, QoS, ros2_control, Nav2, MoveIt 2, real-time, and deployment. Works with Claude Code, Codex, Cursor, Gemini CLI.",
     "url": "https://github.com/dbwls99706/ros2-engineering-skills",
     "stars": 70,
-    "reason": "Trusted publisher",
-    "confidence": 1.0,
     "type": "mcp"
   },
   {
@@ -1444,8 +1075,6 @@
     "description": "Agent skills that make AI coding assistants write production-grade robotics software. ROS1, ROS2, design patterns, SOLID principles, and testing — for Claude Code, Cursor, Copilot, and any SKILL.md-compatible agent.",
     "url": "https://github.com/arpitg1304/robotics-agent-skills",
     "stars": 202,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1453,8 +1082,6 @@
     "description": "",
     "url": "https://github.com/aleixurbano/claude-skillpack-robotics",
     "stars": 0,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1462,8 +1089,6 @@
     "description": "76 audit-ready Claude skills automating the industrial robot, cobot, AMR, ROS2, V&V, AI/ML, and IEC 62443 lifecycle. 38 builder + reviewer pairs anchored to ISO 10218, 13849, 62061, 12100, 9283, 15066, 3691-4, and IEC 62443.",
     "url": "https://github.com/jherrodthomas/robotics-skills-suite",
     "stars": 519,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1471,8 +1096,6 @@
     "description": "Local agent skill for ROS 2 robot control",
     "url": "https://github.com/adityakamath/ros2-skill",
     "stars": 12,
-    "reason": "True Skill with embodied indicator: robot",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1480,8 +1103,6 @@
     "description": "Claude Code skill: Read, write, and manipulate Google Docs, Sheets, and Slides via gog CLI + Google APIs",
     "url": "https://github.com/juuc/claude-skill-google-workspace",
     "stars": 1,
-    "reason": "True Agent Skill",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1489,8 +1110,6 @@
     "description": "Agent Skill for building, manipulating, executing, and version-controlling Jupyter notebooks programmatically. Cell CRUD, parameterised execution (papermill), validation, output management, and git-friendly diffing (nbdime). Works with Claude Code, Codex, Cursor, Copilot, and any SKILL.md-compatible agent.",
     "url": "https://github.com/marcinmiklitz/jupyter-notebooks-skill",
     "stars": 1,
-    "reason": "True Agent Skill",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1498,8 +1117,6 @@
     "description": "Claude Code skill for creating and manipulating Penpot designs. Build UI components, layouts, and generate production-ready code.",
     "url": "https://github.com/soyasis/claude-penpot-design-skill",
     "stars": 3,
-    "reason": "True Agent Skill",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1507,8 +1124,6 @@
     "description": "A Claude Code skill for scientific visualization with ParaView. This skill trying to enable Claude CLI to help you create and manipulate 3D scientific visualizations including volume rendering, isosurfaces, streamlines, and more.",
     "url": "https://github.com/TouKaienn/Paraview-Skills",
     "stars": 1,
-    "reason": "True Agent Skill",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1516,8 +1131,6 @@
     "description": "HiveExchange MCP Server — autonomous agent prediction markets, perps, derivatives. 429 markets, 58 genesis agents.",
     "url": "https://github.com/srotzin/hive-mcp-exchange",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: autonomous",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1525,8 +1138,6 @@
     "description": "An MCP Server to control an agent in Habitat Simulator",
     "url": "https://github.com/pj0620/habitat-sim-mcp",
     "stars": 0,
-    "reason": "True MCP with embodied indicator: imu",
-    "confidence": 0.85,
     "type": "mcp"
   },
   {
@@ -1534,8 +1145,6 @@
     "description": "MCP server that provides tools and resources to control and monitor robots using Nav2.",
     "url": "https://github.com/ajtudela/nav2_mcp_server",
     "stars": 73,
-    "reason": "LLM judged relevant: This is an actual MCP server implementation that provides tools and resources to control and monitor Nav2-enabled robots, directly enabling AI agents to interact with physical robotic systems.",
-    "confidence": 95.0,
     "type": "mcp"
   },
   {
@@ -1543,8 +1152,6 @@
     "description": "Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision",
     "url": "https://github.com/SkullsEye/Robotics-MCP-Servers",
     "stars": 1,
-    "reason": "LLM: The repo provides MCP servers for controlling diverse robots and sensors, enabling embodied AI agents to interact with physical systems through natural language.",
-    "confidence": 100.0,
     "type": "mcp"
   },
   {
@@ -1552,8 +1159,27 @@
     "description": "This project demonstrates a ROS-based pick-and-stack robotic system using the Kinova Mico 2 robotic arm, where high-level task planning is handled using a Claude Large Language Model (LLM).  The robot autonomously performs pick and stacking operations using natural-language, ros-mcp-server and executing them through a ROS control pipeline.",
     "url": "https://github.com/Surya7702-VSS/ROS-MC-Server-Kinova-Mico2-ROS-LLM-Integration.",
     "stars": 0,
-    "reason": "LLM: Directly implements an MCP server bridging LLMs with ROS for robot control, enabling embodied AI agent skills.",
-    "confidence": 95.0,
+    "type": "mcp"
+  },
+  {
+    "name": "sandraschi/bumi-mcp",
+    "description": "Noetix Bumi humanoid robot — MCP 3.1 server + webapp. virtual bot now, real bot asap",
+    "url": "https://github.com/sandraschi/bumi-mcp",
+    "stars": 1,
+    "type": "mcp"
+  },
+  {
+    "name": "nonead/Nonead-Universal-Robots-MCP",
+    "description": "nUR_MCP_SERVER is an intelligent industrial collaborative robot control middleware system built based on the MCP (Model Control Protocol) interface protocol. It realizes the natural language interactive control of industrial robots by integrating a large language model (LLM).",
+    "url": "https://github.com/nonead/Nonead-Universal-Robots-MCP",
+    "stars": 6,
+    "type": "mcp"
+  },
+  {
+    "name": "underautomation/UniversalRobots-MCP",
+    "description": "POC for a Model Context Protocol (MCP) server for Universal Robots, enabling AI agents and applications to control and monitor UR robots through a standardized interface.",
+    "url": "https://github.com/underautomation/UniversalRobots-MCP",
+    "stars": 0,
     "type": "mcp"
   }
 ]

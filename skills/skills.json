@@ -4,62 +4,55 @@
     "description": "Comprehensive Claude Skill for programming Reachy Mini robots with Python SDK and REST API. Expert guidance for controlling Reachy Mini robots, integrating AI models, and building interactive applications with Claude AI.",
     "url": "https://github.com/jjmartres/reachy-mini-sdk-skill",
     "stars": 7,
-    "reason": "True Skill with embodied indicator: robot",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: robot"
   },
   {
     "name": "swh/openscad-skill",
     "description": "A Claude Skill for building OpenSCAD models for 3D printers",
     "url": "https://github.com/swh/openscad-skill",
     "stars": 4,
-    "reason": "True Skill with embodied indicator: 3d printer",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: 3d printer"
   },
   {
     "name": "chuongdlb/agent-skills",
     "description": "40 agent skills for RL/robotics organized in a 4-layer architecture (Theory → Core → Platforms → Frameworks)",
     "url": "https://github.com/chuongdlb/agent-skills",
     "stars": 1,
-    "reason": "True Skill with embodied indicator: robot",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: robot"
   },
   {
     "name": "manykarim/robotframework-agentguard",
     "description": "Robot Framework library for testing MCP servers, Agent Skills, Hooks, SubAgents, and coding-agent CLIs — provider-agnostic via LiteLLM, BFCL-grade tool-call matching, statistical N≥10 by default.",
     "url": "https://github.com/manykarim/robotframework-agentguard",
     "stars": 1,
-    "reason": "MCP evidence + embodied indicator: robot",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "MCP evidence + embodied indicator: robot"
   },
   {
     "name": "viam-devrel/agent-skills",
     "description": "A set of skills to help when building robotics applications using Viam",
     "url": "https://github.com/viam-devrel/agent-skills",
     "stars": 0,
-    "reason": "True Skill with embodied indicator: robot",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: robot"
   },
   {
     "name": "bomber2020/ag-drone-skill",
     "description": "Agricultural drone application calculator skill for Claude Cowork",
     "url": "https://github.com/bomber2020/ag-drone-skill",
     "stars": 0,
-    "reason": "True Skill with embodied indicator: drone",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: drone"
   },
   {
     "name": "toprak1919/flashforge-3d-print-skill",
     "description": "Claude Code skill for FlashForge 3D printer network printing - discovery, slicing, G-code conversion (M82→M83), upload & streaming",
     "url": "https://github.com/toprak1919/flashforge-3d-print-skill",
     "stars": 0,
-    "reason": "True Skill with embodied indicator: 3d printer",
     "confidence": 0.85,
-    "type": "skill"
+    "reason": "True Skill with embodied indicator: 3d printer"
   }
 ]

@@ -1,130 +1,183 @@
-# Rosclaw Curated Skills & MCPs
-
-High-quality embodied AI and robotics resources.
-
-**Total Items**: 173
-
-- **Skills**: 7
-- **MCPs**: 166
+# Curated Skills and MCPs for Embodied AI
 
 ## Skills
 
-- [jjmartres/reachy-mini-sdk-skill](https://github.com/jjmartres/reachy-mini-sdk-skill) (7⭐)
-  - Comprehensive Claude Skill for programming Reachy Mini robots with Python SDK and REST API. Expert guidance for controlling Reachy Mini robots, integrating AI models, and building interactive applications with Claude AI.
-- [swh/openscad-skill](https://github.com/swh/openscad-skill) (4⭐)
-  - A Claude Skill for building OpenSCAD models for 3D printers
-- [chuongdlb/agent-skills](https://github.com/chuongdlb/agent-skills) (1⭐)
-  - 40 agent skills for RL/robotics organized in a 4-layer architecture (Theory → Core → Platforms → Frameworks)
-- [manykarim/robotframework-agentguard](https://github.com/manykarim/robotframework-agentguard) (1⭐)
-  - Robot Framework library for testing MCP servers, Agent Skills, Hooks, SubAgents, and coding-agent CLIs — provider-agnostic via LiteLLM, BFCL-grade tool-call matching, statistical N≥10 by default.
-- [viam-devrel/agent-skills](https://github.com/viam-devrel/agent-skills) (0⭐)
-  - A set of skills to help when building robotics applications using Viam
-- [bomber2020/ag-drone-skill](https://github.com/bomber2020/ag-drone-skill) (0⭐)
-  - Agricultural drone application calculator skill for Claude Cowork
-- [toprak1919/flashforge-3d-print-skill](https://github.com/toprak1919/flashforge-3d-print-skill) (0⭐)
-  - Claude Code skill for FlashForge 3D printer network printing - discovery, slicing, G-code conversion (M82→M83), upload & streaming
+- [jjmartres/reachy-mini-sdk-skill](https://github.com/jjmartres/reachy-mini-sdk-skill) (7 stars) - Comprehensive Claude Skill for programming Reachy Mini robots with Python SDK and REST API. Expert guidance for controlling Reachy Mini robots, integrating AI models, and building interactive applications with Claude AI.
+- [swh/openscad-skill](https://github.com/swh/openscad-skill) (4 stars) - A Claude Skill for building OpenSCAD models for 3D printers
+- [chuongdlb/agent-skills](https://github.com/chuongdlb/agent-skills) (1 stars) - 40 agent skills for RL/robotics organized in a 4-layer architecture (Theory → Core → Platforms → Frameworks)
+- [manykarim/robotframework-agentguard](https://github.com/manykarim/robotframework-agentguard) (1 stars) - Robot Framework library for testing MCP servers, Agent Skills, Hooks, SubAgents, and coding-agent CLIs — provider-agnostic via LiteLLM, BFCL-grade tool-call matching, statistical N≥10 by default.
+- [viam-devrel/agent-skills](https://github.com/viam-devrel/agent-skills) (0 stars) - A set of skills to help when building robotics applications using Viam
+- [bomber2020/ag-drone-skill](https://github.com/bomber2020/ag-drone-skill) (0 stars) - Agricultural drone application calculator skill for Claude Cowork
+- [toprak1919/flashforge-3d-print-skill](https://github.com/toprak1919/flashforge-3d-print-skill) (0 stars) - Claude Code skill for FlashForge 3D printer network printing - discovery, slicing, G-code conversion (M82→M83), upload & streaming
 
 ## MCPs
 
-- [robotmcp/ros-mcp-server](https://github.com/robotmcp/ros-mcp-server) (1226⭐)
-  - Connect AI models like Claude & GPT with robots using MCP and ROS.
-- [jherrodthomas/robotics-skills-suite](https://github.com/jherrodthomas/robotics-skills-suite) (519⭐)
-  - 76 audit-ready Claude skills automating the industrial robot, cobot, AMR, ROS2, V&V, AI/ML, and IEC 62443 lifecycle. 38 builder + reviewer pairs anchored to ISO 10218, 13849, 62061, 12100, 9283, 15066, 3691-4, and IEC 62443.
-- [arpitg1304/robotics-agent-skills](https://github.com/arpitg1304/robotics-agent-skills) (202⭐)
-  - Agent skills that make AI coding assistants write production-grade robotics software. ROS1, ROS2, design patterns, SOLID principles, and testing — for Claude Code, Cursor, Copilot, and any SKILL.md-compatible agent.
-- [DMontgomery40/mcp-3D-printer-server](https://github.com/DMontgomery40/mcp-3D-printer-server) (190⭐)
-  - Connects MCP to major 3D printer APIs (Orca, FULU's Orca/Bambu, OctoPrint, Klipper, Duet, Repetier, Prusa, Creality). Control prints, monitor status, and perform advanced STL operations like scaling, rotation, sectional editing, and base extension. Includes slicing and visualization.
-- [kakimochi/ros2-mcp-server](https://github.com/kakimochi/ros2-mcp-server) (81⭐)
-  - None
-- [lpigeon/unitree-go2-mcp-server](https://github.com/lpigeon/unitree-go2-mcp-server) (78⭐)
-  - The Unitree Go2 MCP Server is a server built on the MCP that enables users to control the Unitree Go2 robot using natural language commands interpreted by a LLM.
-- [IliaLarchenko/robot_MCP](https://github.com/IliaLarchenko/robot_MCP) (78⭐)
-  - A simple MCP server for the SO-ARM100 control
-- [wise-vision/ros2_mcp](https://github.com/wise-vision/ros2_mcp) (77⭐)
-  - Advanced MCP Server ROS 2 bridging AI agents straight into robotics
-- [dynamics365ninja/d365fo-mcp-server](https://github.com/dynamics365ninja/d365fo-mcp-server) (77⭐)
-  - 🚀 MCP server for Dynamics 365 Finance & Operations with standard and custom indexed X++ objects. Provides IntelliSense-like code navigation, intelligent EDT suggestions, AI-driven table/form generation, and pattern-based code completion for GitHub Copilot integration.
-- [ajtudela/nav2_mcp_server](https://github.com/ajtudela/nav2_mcp_server) (73⭐)
-  - MCP server that provides tools and resources to control and monitor robots using Nav2.
-- [dbwls99706/ros2-engineering-skills](https://github.com/dbwls99706/ros2-engineering-skills) (70⭐)
-  - Agent skill for production-grade ROS 2 development. Progressive-disclosure SKILL.md covering workspace, nodes, executors, QoS, ros2_control, Nav2, MoveIt 2, real-time, and deployment. Works with Claude Code, Codex, Cursor, Gemini CLI.
-- [DMontgomery40/bambu-printer-mcp](https://github.com/DMontgomery40/bambu-printer-mcp) (42⭐)
-  - MCP server for Bambu Lab 3D printers — STL manipulation, BambuStudio slicing, and direct printer control
-- [opentiny/tiny-robot](https://github.com/opentiny/tiny-robot) (29⭐)
-  - TinyRobot 是一个 AI 对话组件库，提供了丰富的 AI 交互组件，助力开发者快速构建企业级 AI 应用；同时也是一个智能助手，支持普通 AI 问答、也支持集成 MCP Server，让 AI 真正帮人“干活”。
-- [kvgork/gazebo-mcp](https://github.com/kvgork/gazebo-mcp) (16⭐)
-  - MCP server for Gazebo. Made mostly with Claude
-- [schwarztim/bambu-mcp](https://github.com/schwarztim/bambu-mcp) (15⭐)
-  - MCP server for Bambu Lab 3D printers — MQTT control, FTP upload, X.509 certificate auth, camera, AMS, and more
-- [robotmcp/robotmcp_client](https://github.com/robotmcp/robotmcp_client) (12⭐)
-  - Connect AI models like Claude & GPT with robots using MCP and ROS.
-- [adityakamath/ros2-skill](https://github.com/adityakamath/ros2-skill) (12⭐)
-  - Local agent skill for ROS 2 robot control
-- [hfujikawa77/ardupilot-mcp-server](https://github.com/hfujikawa77/ardupilot-mcp-server) (7⭐)
-  - ArduPilotドローンをAIエージェントから操作するMCPサーバーです。
-- [proxi666/amazing-ros2-mcp](https://github.com/proxi666/amazing-ros2-mcp) (6⭐)
-  - Native ROS 2 MCP server for AI-assisted robotics
-- [ros-claw/unitree-mujoco-mcp](https://github.com/ros-claw/unitree-mujoco-mcp) (4⭐)
-  - MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)
-- [Rongxuan-Zhou/mujoco-mcp-server](https://github.com/Rongxuan-Zhou/mujoco-mcp-server) (3⭐)
-  - MuJoCo physics simulation as MCP tools for Claude Code — sim, render, analyze, control robots, and run RL environments.
-- [soyasis/claude-penpot-design-skill](https://github.com/soyasis/claude-penpot-design-skill) (3⭐)
-  - Claude Code skill for creating and manipulating Penpot designs. Build UI components, layouts, and generate production-ready code.
-- [ezhuk/modbus-mcp](https://github.com/ezhuk/modbus-mcp) (2⭐)
-  - A Model Context Protocol (MCP) server for Modbus.
-- [sandraschi/robofang](https://github.com/sandraschi/robofang) (2⭐)
-  - openclaw / openfang inspired experiment. adds mcp server fleet and robotics
-- [Disane87/spoolman-mcp](https://github.com/Disane87/spoolman-mcp) (2⭐)
-  - MCP Server for Spoolman — manage your 3D printer filament inventory through AI assistants
-- [Amrit-R-M/HardwareMCP](https://github.com/Amrit-R-M/HardwareMCP) (2⭐)
-  - Universal MCP server for AI agents to interact with physical hardware. Supports sensors, CAN bus, I2C, SPI, UART, MQTT, Modbus & GPIO. Protocol-agnostic, LLM-agnostic, hardware simulator included. Built for embedded & hardtech developers.
-- [Spectoda/easyeda-mcp](https://github.com/Spectoda/easyeda-mcp) (2⭐)
-  - MCP server and EasyEDA Pro bridge for AI-assisted PCB review, component sourcing, manufacturing export, and JLCPCB ordering workflows.
-- [ros-claw/g1-isaac-sim-mcp](https://github.com/ros-claw/g1-isaac-sim-mcp) (1⭐)
-  - ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim
-- [ros-claw/mjlab-mcp-server](https://github.com/ros-claw/mjlab-mcp-server) (1⭐)
-  - e-URDF Safety Firewall - MuJoCo Physics Simulation MCP Server for Robot Safety Validation
-- [manykarim/robotframework-agenteval](https://github.com/manykarim/robotframework-agenteval) (1⭐)
-  - Robot Framework library for evaluating AI coding agents (skills, subagents, hooks, MCP servers, tools). Apache-2.0.
-- [sandraschi/yahboom-mcp](https://github.com/sandraschi/yahboom-mcp) (1⭐)
-  - FastMCP 3.2 server plus Webapp for Yahboom Raspbot v2 robot car, ros2, raspberry pi 
-- [shaoxiang/unitree-mujoco-mcp](https://github.com/shaoxiang/unitree-mujoco-mcp) (1⭐)
-  - MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)
-- [chloepilonv/mcp-server-isaaclab](https://github.com/chloepilonv/mcp-server-isaaclab) (1⭐)
-  - MCP Server for Isaac Sim (Running on Nebius)
-- [sigachev/spring-ops-mcp](https://github.com/sigachev/spring-ops-mcp) (1⭐)
-  - MCP server for Spring Boot Actuator — let AI assistants monitor, debug, and interact with your running Spring Boot applications
-- [fixstuff/GOPLC-Showcase](https://github.com/fixstuff/GOPLC-Showcase) (1⭐)
-  - Industrial-grade PLC runtime in Go. IEC 61131-3 Structured Text, 14+ protocol drivers, Web IDE, AI-native MCP server. Runs on Windows or Linux.
-- [eponce00/tiaopen-mcp](https://github.com/eponce00/tiaopen-mcp) (1⭐)
-  - MCP server — TIA Portal Openness API Copilot tools (create, write, compile PLC blocks)
-- [juuc/claude-skill-google-workspace](https://github.com/juuc/claude-skill-google-workspace) (1⭐)
-  - Claude Code skill: Read, write, and manipulate Google Docs, Sheets, and Slides via gog CLI + Google APIs
-- [marcinmiklitz/jupyter-notebooks-skill](https://github.com/marcinmiklitz/jupyter-notebooks-skill) (1⭐)
-  - Agent Skill for building, manipulating, executing, and version-controlling Jupyter notebooks programmatically. Cell CRUD, parameterised execution (papermill), validation, output management, and git-friendly diffing (nbdime). Works with Claude Code, Codex, Cursor, Copilot, and any SKILL.md-compatible agent.
-- [TouKaienn/Paraview-Skills](https://github.com/TouKaienn/Paraview-Skills) (1⭐)
-  - A Claude Code skill for scientific visualization with ParaView. This skill trying to enable Claude CLI to help you create and manipulate 3D scientific visualizations including volume rendering, isosurfaces, streamlines, and more.
-- [SkullsEye/Robotics-MCP-Servers](https://github.com/SkullsEye/Robotics-MCP-Servers) (1⭐)
-  - Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision
-- [hemantkamalakar/nordic-thingy52-mcp](https://github.com/hemantkamalakar/nordic-thingy52-mcp) (0⭐)
-  - A Model Context Protocol (MCP) server that bridges physical sensor data with AI reasoning. Control and monitor your Nordic Thingy:52 IoT device through natural language conversations with Claude.
-- [malcolm-mill/beckhoff_mcp](https://github.com/malcolm-mill/beckhoff_mcp) (0⭐)
-  - An MCP server which uses pyads to communicate from Beckhoff PLCs. 
-- [Yutarop/ros-mcp](https://github.com/Yutarop/ros-mcp) (0⭐)
-  - MCP server for ROS to control robots via topics, services, and actions.
-- [juhapellotsalo/ruuvi-mcp-server](https://github.com/juhapellotsalo/ruuvi-mcp-server) (0⭐)
-  - Collects Ruuvi sensor reading an exposing them to an MCP client
-- [YI-TING-EE13/ROS2-MCP-Server](https://github.com/YI-TING-EE13/ROS2-MCP-Server) (0⭐)
-  - MCP server for ROS2-MCP-Server
-- [binabik-ai/mcp-rosbags](https://github.com/binabik-ai/mcp-rosbags) (0⭐)
-  - MCP Server to interface with and analyze rosbags offline
-- [navado/ESP32MCPServer](https://github.com/navado/ESP32MCPServer) (0⭐)
-  - Allow AI models connect to ESP32 and read connected sensors NMEA2k, ODB/ODBII, NMEA0183. AI generated MCP server.
-- [cjh1995-ros/rosbag-mcp](https://github.com/cjh1995-ros/rosbag-mcp) (0⭐)
-  - Rosbag mcp server
-- [0xenesbayram/ros2-mcp-server](https://github.com/0xenesbayram/ros2-mcp-server) (0⭐)
-  - an mcp-server to interact with ros2 node,topics , etc...
-- [rezasaadat1/stamplc-mcp-server-io](https://github.com/rezasaadat1/stamplc-mcp-server-io) (0⭐)
-  - M5 StamPLC MCP Server Integration w/ n8n Agentic AI workflow
-
-... and 116 more. See [mcps.json](mcps.json)
+- [robotmcp/ros-mcp-server](https://github.com/robotmcp/ros-mcp-server) (1226 stars) - Connect AI models like Claude & GPT with robots using MCP and ROS.
+- [jherrodthomas/robotics-skills-suite](https://github.com/jherrodthomas/robotics-skills-suite) (519 stars) - 76 audit-ready Claude skills automating the industrial robot, cobot, AMR, ROS2, V&V, AI/ML, and IEC 62443 lifecycle. 38 builder + reviewer pairs anchored to ISO 10218, 13849, 62061, 12100, 9283, 15066, 3691-4, and IEC 62443.
+- [arpitg1304/robotics-agent-skills](https://github.com/arpitg1304/robotics-agent-skills) (202 stars) - Agent skills that make AI coding assistants write production-grade robotics software. ROS1, ROS2, design patterns, SOLID principles, and testing — for Claude Code, Cursor, Copilot, and any SKILL.md-compatible agent.
+- [DMontgomery40/mcp-3D-printer-server](https://github.com/DMontgomery40/mcp-3D-printer-server) (190 stars) - Connects MCP to major 3D printer APIs (Orca, FULU's Orca/Bambu, OctoPrint, Klipper, Duet, Repetier, Prusa, Creality). Control prints, monitor status, and perform advanced STL operations like scaling, rotation, sectional editing, and base extension. Includes slicing and visualization.
+- [kakimochi/ros2-mcp-server](https://github.com/kakimochi/ros2-mcp-server) (81 stars) - None
+- [lpigeon/unitree-go2-mcp-server](https://github.com/lpigeon/unitree-go2-mcp-server) (78 stars) - The Unitree Go2 MCP Server is a server built on the MCP that enables users to control the Unitree Go2 robot using natural language commands interpreted by a LLM.
+- [IliaLarchenko/robot_MCP](https://github.com/IliaLarchenko/robot_MCP) (78 stars) - A simple MCP server for the SO-ARM100 control
+- [wise-vision/ros2_mcp](https://github.com/wise-vision/ros2_mcp) (77 stars) - Advanced MCP Server ROS 2 bridging AI agents straight into robotics
+- [dynamics365ninja/d365fo-mcp-server](https://github.com/dynamics365ninja/d365fo-mcp-server) (77 stars) - 🚀 MCP server for Dynamics 365 Finance & Operations with standard and custom indexed X++ objects. Provides IntelliSense-like code navigation, intelligent EDT suggestions, AI-driven table/form generation, and pattern-based code completion for GitHub Copilot integration.
+- [ajtudela/nav2_mcp_server](https://github.com/ajtudela/nav2_mcp_server) (73 stars) - MCP server that provides tools and resources to control and monitor robots using Nav2.
+- [dbwls99706/ros2-engineering-skills](https://github.com/dbwls99706/ros2-engineering-skills) (70 stars) - Agent skill for production-grade ROS 2 development. Progressive-disclosure SKILL.md covering workspace, nodes, executors, QoS, ros2_control, Nav2, MoveIt 2, real-time, and deployment. Works with Claude Code, Codex, Cursor, Gemini CLI.
+- [DMontgomery40/bambu-printer-mcp](https://github.com/DMontgomery40/bambu-printer-mcp) (42 stars) - MCP server for Bambu Lab 3D printers — STL manipulation, BambuStudio slicing, and direct printer control
+- [opentiny/tiny-robot](https://github.com/opentiny/tiny-robot) (29 stars) - TinyRobot 是一个 AI 对话组件库，提供了丰富的 AI 交互组件，助力开发者快速构建企业级 AI 应用；同时也是一个智能助手，支持普通 AI 问答、也支持集成 MCP Server，让 AI 真正帮人“干活”。
+- [kvgork/gazebo-mcp](https://github.com/kvgork/gazebo-mcp) (16 stars) - MCP server for Gazebo. Made mostly with Claude
+- [schwarztim/bambu-mcp](https://github.com/schwarztim/bambu-mcp) (15 stars) - MCP server for Bambu Lab 3D printers — MQTT control, FTP upload, X.509 certificate auth, camera, AMS, and more
+- [robotmcp/robotmcp_client](https://github.com/robotmcp/robotmcp_client) (12 stars) - Connect AI models like Claude & GPT with robots using MCP and ROS.
+- [adityakamath/ros2-skill](https://github.com/adityakamath/ros2-skill) (12 stars) - Local agent skill for ROS 2 robot control
+- [hfujikawa77/ardupilot-mcp-server](https://github.com/hfujikawa77/ardupilot-mcp-server) (7 stars) - ArduPilotドローンをAIエージェントから操作するMCPサーバーです。
+- [proxi666/amazing-ros2-mcp](https://github.com/proxi666/amazing-ros2-mcp) (6 stars) - Native ROS 2 MCP server for AI-assisted robotics
+- [nonead/Nonead-Universal-Robots-MCP](https://github.com/nonead/Nonead-Universal-Robots-MCP) (6 stars) - nUR_MCP_SERVER is an intelligent industrial collaborative robot control middleware system built based on the MCP (Model Control Protocol) interface protocol. It realizes the natural language interactive control of industrial robots by integrating a large language model (LLM).
+- [ros-claw/unitree-mujoco-mcp](https://github.com/ros-claw/unitree-mujoco-mcp) (4 stars) - MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)
+- [Rongxuan-Zhou/mujoco-mcp-server](https://github.com/Rongxuan-Zhou/mujoco-mcp-server) (3 stars) - MuJoCo physics simulation as MCP tools for Claude Code — sim, render, analyze, control robots, and run RL environments.
+- [soyasis/claude-penpot-design-skill](https://github.com/soyasis/claude-penpot-design-skill) (3 stars) - Claude Code skill for creating and manipulating Penpot designs. Build UI components, layouts, and generate production-ready code.
+- [ezhuk/modbus-mcp](https://github.com/ezhuk/modbus-mcp) (2 stars) - A Model Context Protocol (MCP) server for Modbus.
+- [sandraschi/robofang](https://github.com/sandraschi/robofang) (2 stars) - openclaw / openfang inspired experiment. adds mcp server fleet and robotics
+- [Disane87/spoolman-mcp](https://github.com/Disane87/spoolman-mcp) (2 stars) - MCP Server for Spoolman — manage your 3D printer filament inventory through AI assistants
+- [Amrit-R-M/HardwareMCP](https://github.com/Amrit-R-M/HardwareMCP) (2 stars) - Universal MCP server for AI agents to interact with physical hardware. Supports sensors, CAN bus, I2C, SPI, UART, MQTT, Modbus & GPIO. Protocol-agnostic, LLM-agnostic, hardware simulator included. Built for embedded & hardtech developers.
+- [Spectoda/easyeda-mcp](https://github.com/Spectoda/easyeda-mcp) (2 stars) - MCP server and EasyEDA Pro bridge for AI-assisted PCB review, component sourcing, manufacturing export, and JLCPCB ordering workflows.
+- [ros-claw/g1-isaac-sim-mcp](https://github.com/ros-claw/g1-isaac-sim-mcp) (1 stars) - ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim
+- [ros-claw/mjlab-mcp-server](https://github.com/ros-claw/mjlab-mcp-server) (1 stars) - e-URDF Safety Firewall - MuJoCo Physics Simulation MCP Server for Robot Safety Validation
+- [manykarim/robotframework-agenteval](https://github.com/manykarim/robotframework-agenteval) (1 stars) - Robot Framework library for evaluating AI coding agents (skills, subagents, hooks, MCP servers, tools). Apache-2.0.
+- [sandraschi/yahboom-mcp](https://github.com/sandraschi/yahboom-mcp) (1 stars) - FastMCP 3.2 server plus Webapp for Yahboom Raspbot v2 robot car, ros2, raspberry pi 
+- [shaoxiang/unitree-mujoco-mcp](https://github.com/shaoxiang/unitree-mujoco-mcp) (1 stars) - MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)
+- [chloepilonv/mcp-server-isaaclab](https://github.com/chloepilonv/mcp-server-isaaclab) (1 stars) - MCP Server for Isaac Sim (Running on Nebius)
+- [sigachev/spring-ops-mcp](https://github.com/sigachev/spring-ops-mcp) (1 stars) - MCP server for Spring Boot Actuator — let AI assistants monitor, debug, and interact with your running Spring Boot applications
+- [fixstuff/GOPLC-Showcase](https://github.com/fixstuff/GOPLC-Showcase) (1 stars) - Industrial-grade PLC runtime in Go. IEC 61131-3 Structured Text, 14+ protocol drivers, Web IDE, AI-native MCP server. Runs on Windows or Linux.
+- [eponce00/tiaopen-mcp](https://github.com/eponce00/tiaopen-mcp) (1 stars) - MCP server — TIA Portal Openness API Copilot tools (create, write, compile PLC blocks)
+- [juuc/claude-skill-google-workspace](https://github.com/juuc/claude-skill-google-workspace) (1 stars) - Claude Code skill: Read, write, and manipulate Google Docs, Sheets, and Slides via gog CLI + Google APIs
+- [marcinmiklitz/jupyter-notebooks-skill](https://github.com/marcinmiklitz/jupyter-notebooks-skill) (1 stars) - Agent Skill for building, manipulating, executing, and version-controlling Jupyter notebooks programmatically. Cell CRUD, parameterised execution (papermill), validation, output management, and git-friendly diffing (nbdime). Works with Claude Code, Codex, Cursor, Copilot, and any SKILL.md-compatible agent.
+- [TouKaienn/Paraview-Skills](https://github.com/TouKaienn/Paraview-Skills) (1 stars) - A Claude Code skill for scientific visualization with ParaView. This skill trying to enable Claude CLI to help you create and manipulate 3D scientific visualizations including volume rendering, isosurfaces, streamlines, and more.
+- [SkullsEye/Robotics-MCP-Servers](https://github.com/SkullsEye/Robotics-MCP-Servers) (1 stars) - Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision
+- [sandraschi/bumi-mcp](https://github.com/sandraschi/bumi-mcp) (1 stars) - Noetix Bumi humanoid robot — MCP 3.1 server + webapp. virtual bot now, real bot asap
+- [hemantkamalakar/nordic-thingy52-mcp](https://github.com/hemantkamalakar/nordic-thingy52-mcp) (0 stars) - A Model Context Protocol (MCP) server that bridges physical sensor data with AI reasoning. Control and monitor your Nordic Thingy:52 IoT device through natural language conversations with Claude.
+- [malcolm-mill/beckhoff_mcp](https://github.com/malcolm-mill/beckhoff_mcp) (0 stars) - An MCP server which uses pyads to communicate from Beckhoff PLCs. 
+- [Yutarop/ros-mcp](https://github.com/Yutarop/ros-mcp) (0 stars) - MCP server for ROS to control robots via topics, services, and actions.
+- [juhapellotsalo/ruuvi-mcp-server](https://github.com/juhapellotsalo/ruuvi-mcp-server) (0 stars) - Collects Ruuvi sensor reading an exposing them to an MCP client
+- [YI-TING-EE13/ROS2-MCP-Server](https://github.com/YI-TING-EE13/ROS2-MCP-Server) (0 stars) - MCP server for ROS2-MCP-Server
+- [binabik-ai/mcp-rosbags](https://github.com/binabik-ai/mcp-rosbags) (0 stars) - MCP Server to interface with and analyze rosbags offline
+- [navado/ESP32MCPServer](https://github.com/navado/ESP32MCPServer) (0 stars) - Allow AI models connect to ESP32 and read connected sensors NMEA2k, ODB/ODBII, NMEA0183. AI generated MCP server.
+- [cjh1995-ros/rosbag-mcp](https://github.com/cjh1995-ros/rosbag-mcp) (0 stars) - Rosbag mcp server
+- [0xenesbayram/ros2-mcp-server](https://github.com/0xenesbayram/ros2-mcp-server) (0 stars) - an mcp-server to interact with ros2 node,topics , etc...
+- [rezasaadat1/stamplc-mcp-server-io](https://github.com/rezasaadat1/stamplc-mcp-server-io) (0 stars) - M5 StamPLC MCP Server Integration w/ n8n Agentic AI workflow
+- [brs077/3dp-mcp-server](https://github.com/brs077/3dp-mcp-server) (0 stars) - MCP server for 3D-printable CAD modeling with build123d, targeting Bambu Lab X1C
+- [mikehatch/KlipperMCP](https://github.com/mikehatch/KlipperMCP) (0 stars) - MCP server for managing Klipper 3D printer configs via Moonraker API
+- [YudaiKitamura/mcpx-mcp-server](https://github.com/YudaiKitamura/mcpx-mcp-server) (0 stars) - mcpx-mcp-server is an MCP server that allows generative AI to access Mitsubishi PLC devices in real time.
+- [OlubunmiAde/plc-mcp-server](https://github.com/OlubunmiAde/plc-mcp-server) (0 stars) - Agent can communicate and manage PLCs
+- [cadugrillo/s7-mcp-bridge](https://github.com/cadugrillo/s7-mcp-bridge) (0 stars) - S7 MCP Bridge is a MCP Server that connects AI agents to Siemens industrial PLCs (specifically S7-1500 and S7-1200 models).
+- [kukapay/modbus-mcp](https://github.com/kukapay/modbus-mcp) (0 stars) - An MCP server that standardizes and contextualizes industrial Modbus data.
+- [0xKoda/drone-mcp](https://github.com/0xKoda/drone-mcp) (0 stars) - A MCP server for controlling a drone
+- [synman/bambu-mcp](https://github.com/synman/bambu-mcp) (0 stars) - Bambu Lab MCP server — LAN-mode control over Bambu Lab 3D printers via MQTT and FTPS
+- [VisualBoy/mcp-3D-printer-server](https://github.com/VisualBoy/mcp-3D-printer-server) (0 stars) - Connects MCP to major 3D printer APIs (Orca, Bambu, OctoPrint, Klipper, Duet, Repetier, Prusa, Creality). Control prints, monitor status, and perform advanced STL operations like scaling, rotation, se
+- [ion-g-ion/MAVLinkMCP](https://github.com/ion-g-ion/MAVLinkMCP) (0 stars) - MCP server for LLM to drone communication via MAVLink
+- [ashank4595/ros-mcp-server](https://github.com/ashank4595/ros-mcp-server) (0 stars) - MCP server for ros-mcp-server
+- [anshuman-dev/ros-mcp-plugin](https://github.com/anshuman-dev/ros-mcp-plugin) (0 stars) - MCP server + ROS 2 bridge for controlling the SO-101 robotic arm with LLM agents
+- [Yiro13/ros2-mcp-server](https://github.com/Yiro13/ros2-mcp-server) (0 stars) - ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2 topics via command-line tools. List topics, get topic info, and fetch data without initializing ROS2 nodes.
+- [chomi14/ros-mcp-server](https://github.com/chomi14/ros-mcp-server) (0 stars) - llm mcp server
+- [OMS524/ros-mcp-server-test](https://github.com/OMS524/ros-mcp-server-test) (0 stars) - MCP server for ros-mcp-server-test
+- [hardware-mcp/arduino-mcp-server](https://github.com/hardware-mcp/arduino-mcp-server) (0 stars) - An open source Arduino MCP server that enables AI assistants to interact with Arduino using structured tool access via the Model Context Protocol.
+- [Raizinmaru/ros-mcp-server](https://github.com/Raizinmaru/ros-mcp-server) (0 stars) - MCP server for ros-mcp-server
+- [LachlanB96/zigbee-mcp](https://github.com/LachlanB96/zigbee-mcp) (0 stars) - Model Context Protocol server for controlling Zigbee2MQTT-paired lights and sensors from LLM agents like Claude Code.
+- [swannman/openthread-mcp](https://github.com/swannman/openthread-mcp) (0 stars) - MCP server for OpenThread CLI on Arduino Nano Matter
+- [markpdxt/dronelytics-mcp](https://github.com/markpdxt/dronelytics-mcp) (0 stars) - MCP server for US drone airspace intelligence and mission planning — 24 tools for airspace queries, mission generation, Part 107 compliance, and flight plan export
+- [Project-GrADyS/uav_mcp](https://github.com/Project-GrADyS/uav_mcp) (0 stars) - MCP Server for Drone Control through Autonomous Agents
+- [linsun/tello-mcp](https://github.com/linsun/tello-mcp) (0 stars) - MCP server for tello drone
+- [Starvern/mcp-led-controller](https://github.com/Starvern/mcp-led-controller) (0 stars) - A system where an AI model can interface with an MCP server to control an LED on an Arduino microcontroller.
+- [adamdturner/mcp-esp32-firebase](https://github.com/adamdturner/mcp-esp32-firebase) (0 stars) - An MCP server for integrating ESP32/Arduino C++ code with Firebase/Firestore using the mobizt/FirebaseClient library
+- [shahidhustles/Arduino-Uno-with-MCP-server](https://github.com/shahidhustles/Arduino-Uno-with-MCP-server) (0 stars) - MCP server for Arduino-Uno-with-MCP-server
+- [amahpour/arduino-mcp-server-simple](https://github.com/amahpour/arduino-mcp-server-simple) (0 stars) - A simple Model Context Protocol (MCP) server that enables AI agents to interact with Arduino boards for development and testing
+- [CSOAI-ORG/qidi-printer-mcp](https://github.com/CSOAI-ORG/qidi-printer-mcp) (0 stars) - MCP server for QIDI 3D printers via Moonraker API — control, monitor, and automate prints from Claude/AI agents
+- [gioelemo/prusa-mcp](https://github.com/gioelemo/prusa-mcp) (0 stars) - MCP server for controlling Prusa 3D printers via Prusa Connect
+- [gn00191283-afk/cnc-mcp-server](https://github.com/gn00191283-afk/cnc-mcp-server) (0 stars) - 
+- [AimanMadan/Arduino_MCP_Server](https://github.com/AimanMadan/Arduino_MCP_Server) (0 stars) - MCP server for Arduino_MCP_Server
+- [Shockedrope/bambu-mcp-server](https://github.com/Shockedrope/bambu-mcp-server) (0 stars) - a MCP server to allow you to monitor your Bambu Labs 3D printer from Claude Desktop
+- [Manusevl/mcp-mqtt-plc](https://github.com/Manusevl/mcp-mqtt-plc) (0 stars) - CP server for MQTT-PLC communication with real-time data collection
+- [devidasjadhav/modbus-mcp](https://github.com/devidasjadhav/modbus-mcp) (0 stars) - remote MCP server for Modbus with multiple connection to multiple sessions
+- [theoriginalaiexplorer/modbus-mcp-remote-multiple-connection](https://github.com/theoriginalaiexplorer/modbus-mcp-remote-multiple-connection) (0 stars) - MCP server with multiple connections to handle
+- [M1ndSmith/pybullet-mcp-server](https://github.com/M1ndSmith/pybullet-mcp-server) (0 stars) - PyBullet MCP Server  Model Context Protocol server for AI-controlled physics simulations
+- [jotamunz/SoftwareArchitecture-SensorReadingMCPServer](https://github.com/jotamunz/SoftwareArchitecture-SensorReadingMCPServer) (0 stars) - A publish-subscribe system consisting of a *ERN stack web application that reads temperature and humidity measurements from a Pico sensor through MQTT and makes them available via a public MCP Server
+- [apicov/ambient_sensors_mcp_server](https://github.com/apicov/ambient_sensors_mcp_server) (0 stars) - MCP server for ambient_sensors_mcp_server
+- [abl030/lidarr-mcp](https://github.com/abl030/lidarr-mcp) (0 stars) - AI-generated MCP server for the Lidarr API v1
+- [jmdaly/ouster-lidar-mcp-server](https://github.com/jmdaly/ouster-lidar-mcp-server) (0 stars) - MCP server for ouster-lidar-mcp-server
+- [LGDiMaggio/mcp-motor-current-signature-analysis](https://github.com/LGDiMaggio/mcp-motor-current-signature-analysis) (0 stars) - MCP server for Motor Current Signature Analysis (MCSA) — spectral analysis and fault detection in electric motors in natural language through LLMs
+- [d11r/servo-mcp](https://github.com/d11r/servo-mcp) (0 stars) - Desktop MCP server that gives AI agents the ability to see and control your macOS and Windows desktop.
+- [ros-claw/realsense-ros-mcp](https://github.com/ros-claw/realsense-ros-mcp) (0 stars) - Intel RealSense ROS2 MCP Server - 封装 realsense2_camera 的 ROS2 接口，提供 25 个 MCP tools
+- [gtoff/moveit-mcp-server](https://github.com/gtoff/moveit-mcp-server) (0 stars) - Model Context Protocol (MCP) server for MoveIt2 motion planning, providing AI assistants with the ability to control and plan robot motions.
+- [ros-claw/rosclaw-vision-mcp](https://github.com/ros-claw/rosclaw-vision-mcp) (0 stars) - ROSClaw MCP Server for Intel RealSense RGB-D Camera via ROS2 — Semantic-HAL vision layer
+- [saintrain0/ros-mcp-server-minipi](https://github.com/saintrain0/ros-mcp-server-minipi) (0 stars) - fork ros-mcp-server-minipi
+- [amahpour/arduino-mcp-server](https://github.com/amahpour/arduino-mcp-server) (0 stars) - MCP Server for Arduino
+- [KerberosClaw/kc_modbus_mcp](https://github.com/KerberosClaw/kc_modbus_mcp) (0 stars) - Modbus TCP MCP Server — let AI agents read/write PLC registers by name, not by raw address
+- [griches/bambu-mcp](https://github.com/griches/bambu-mcp) (0 stars) - MCP server for controlling Bambu Lab 3D printers — multi-printer fleet management, print control, file ops, AMS, camera, and more
+- [husain-zaidi/ROS-MCP](https://github.com/husain-zaidi/ROS-MCP) (0 stars) - ROS MCP server to debug, monitor and run ROS nodes
+- [lopisan/ros-mcp](https://github.com/lopisan/ros-mcp) (0 stars) - ROS1 MCP Server
+- [GetSensr-io/sensorbio-mcp-server](https://github.com/GetSensr-io/sensorbio-mcp-server) (0 stars) - MCP server for sensorbio-mcp-server
+- [image-scale/robotmcp--ros-mcp-server](https://github.com/image-scale/robotmcp--ros-mcp-server) (0 stars) - MCP server for robotmcp--ros-mcp-server
+- [jonasneves/ros-mcp](https://github.com/jonasneves/ros-mcp) (0 stars) - ROS MCP Server — connect AI agents to ROS 2 robots
+- [gavindev14/mcp_server_ros_2](https://github.com/gavindev14/mcp_server_ros_2) (0 stars) - MCP server for mcp_server_ros_2
+- [moneypiaorui/ros-mcp-server-minipi](https://github.com/moneypiaorui/ros-mcp-server-minipi) (0 stars) - MCP server for ros-mcp-server-minipi
+- [dido18/arduino-mcp-server](https://github.com/dido18/arduino-mcp-server) (0 stars) - An arduino mcp server written in go
+- [frankjoshua/docker-ros2-mcp-server](https://github.com/frankjoshua/docker-ros2-mcp-server) (0 stars) - MCP server for docker-ros2-mcp-server
+- [lpigeon/ros-mcp-server](https://github.com/robotmcp/ros-mcp-server) (0 stars) - Connect AI models like Claude & GPT with robots using MCP and ROS.
+- [wise-vision/mcp_server_ros_2](https://github.com/wise-vision/ros2_mcp) (0 stars) - Advanced MCP Server ROS 2 bridging AI agents straight into robotics
+- [yusiwen/drone-mcp-server](https://github.com/yusiwen/drone-mcp-server) (0 stars) - MCP Server for Drone.io
+- [pparth230/MCP-Server-for-Arduino](https://github.com/pparth230/MCP-Server-for-Arduino) (0 stars) - Full stack end to end, MCP server for Arduino using Claude Code
+- [bmdragos/serial-mcp](https://github.com/bmdragos/serial-mcp) (0 stars) - Minimal MCP server for non-blocking serial communication with Arduino, ESP32, and other devices
+- [gusjarendt-maker/bambu-mcp-server](https://github.com/gusjarendt-maker/bambu-mcp-server) (0 stars) - MCP server for Bambu Lab 3D printing — mesh repair, slicing, and printer control. Built with codrsync.dev
+- [yutarop/ros-mcp](https://github.com/Yutarop/ros-mcp) (0 stars) - MCP server for ROS to control robots via topics, services, and actions.
+- [sukeesh/mcp-iot-go](https://github.com/sukeesh/mcp-iot-go) (0 stars) - MCP Server for Sensors
+- [ros-claw/rosclaw-nav2-mcp](https://github.com/ros-claw/rosclaw-nav2-mcp) (0 stars) - ROSClaw-Native Nav2 MCP Server - Production-grade autonomous navigation for mobile robots
+- [ros-claw/rosclaw-moveit2-mcp](https://github.com/ros-claw/rosclaw-moveit2-mcp) (0 stars) - ROSClaw-Native MoveIt2 MCP Server - Production-grade motion planning for robotic arms
+- [ros-claw/gcu-gimbal-mcp](https://github.com/ros-claw/gcu-gimbal-mcp) (0 stars) - ROSClaw MCP Server for Xianfei GCU Gimbal (Z-2Mini/A5) - 先飞技术双光吊舱云台
+- [nonead/nonead-universal-robots-mcp](https://github.com/nonead/Nonead-Universal-Robots-MCP) (0 stars) - nUR_MCP_SERVER is an intelligent industrial collaborative robot control middleware system built based on the MCP (Model Control Protocol) interface protocol. It realizes the natural language interactive control of industrial robots by integrating a large language model (LLM).
+- [ranch-hand-robotics/rde-mcp-ros-2](https://github.com/Ranch-Hand-Robotics/rde-mcp-ros-2) (0 stars) - A Model Context Protocol interface to the ROS 2 command line interface allowing language models to introspect ROS
+- [yiro13/ros2-mcp-server](https://github.com/Yiro13/ros2-mcp-server) (0 stars) - ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2 topics via command-line tools. List topics, get topic info, and fetch data without initializing ROS2 nodes.
+- [kouichiume/llm_mcp_ros2_adapter](https://github.com/kouichiume/llm_mcp_ros2_adapter) (0 stars) - LLM sample application for model context protocol and ros2 openrmf adapter
+- [redciprianpater/mcp-server-robotics](https://github.com/redciprianpater/mcp-server-robotics) (0 stars) - NWO Robotics MCP Server Package
+- [darshan-kt/turtlebot_mcp_ros2](https://github.com/darshan-kt/turtlebot_mcp_ros2) (0 stars) - A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3
+- [darshankt/turtle_mcp_ros2](https://github.com/darshankt/turtle_mcp_ros2) (0 stars) - A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3
+- [kiminbean/ros2_mcp_rosa](https://github.com/kiminbean/ros2_mcp_rosa) (0 stars) - ROS2 MCP Server
+- [hirasawagen/mcp_ros2](https://github.com/hirasawagen/mcp_ros2) (0 stars) - This project is used to let LLM control the ros2 robot by using MCP
+- [yi-ting-ee13/ros2-mcp-server](https://github.com/yi-ting-ee13/ros2-mcp-server) (0 stars) - ROS2 MCP Server: A lightweight Model Context Protocol server for interacting with ROS2
+- [robotmcp/robotmcp_server](https://github.com/robotmcp/robotmcp_server) (0 stars) - A modular Model Context Protocol (MCP) server with automatic submodule integration
+- [ros-claw/vicon-datastream-mcp](https://github.com/ros-claw/vicon-datastream-mcp) (0 stars) - Full-featured Vicon DataStream MCP Server - Motion capture data streaming via Model Context Protocol
+- [darshan-kt/turtle_mcp_ros2](https://github.com/darshan-kt/turtle_mcp_ros2) (0 stars) - A meta-package carries all necessary packages and tools to perform traditional autonomous navigation with TurtleBot3
+- [ros-claw/unitree-sdk2-mcp](https://github.com/ros-claw/unitree-sdk2-mcp) (0 stars) - ROSClaw MCP Server for Unitree Robots via DDS (G1, Go2, H1, B2, A2, R1)
+- [ros-claw/librealsense-mcp](https://github.com/ros-claw/librealsense-mcp) (0 stars) - Intel RealSense MCP Server - 直接封装 pyrealsense2 SDK，提供 26 个 MCP tools
+- [ros-claw/inspire-rh56-mcp](https://github.com/ros-claw/inspire-rh56-mcp) (0 stars) - ROSClaw MCP Server for Inspire Robots RH56 Dexterous Hand (CAN 2.0B)
+- [ros-claw/ur-rtde-mcp](https://github.com/ros-claw/ur-rtde-mcp) (0 stars) - ROSClaw MCP Server for Universal Robots via ur_rtde (RTDE protocol, no ROS2 required)
+- [ros-claw/ur-ros2-mcp](https://github.com/ros-claw/ur-ros2-mcp) (0 stars) - ROSClaw MCP Server for Universal Robots UR5/UR5e via ROS2
+- [jackccrawford/reachy-mini-mcp](https://github.com/jackccrawford/reachy-mini-mcp) (0 stars) -  Reachy Mini MCP | Give your AI a body.  This MCP server lets AI systems control the Pollen Robotics Reachy Mini robot. | Speak, listen, see you, and express emotions through physical movement and voice. | Works with Claude, Windsurf, Cursor, or any MCP-compatible AI.  | Zero robotics expertise required.
+- [poly-mcp/IoT-Edge-MCP-Server](https://github.com/poly-mcp/IoT-Edge-MCP-Server) (0 stars) - MCP server for Industrial IoT, SCADA and PLC systems. Unifies MQTT sensors, Modbus devices and industrial equipment into a single AI-orchestrable API. Features real-time monitoring, alarms, time-series storage and actuator control.
+- [monteslu/robot-mcp](https://github.com/monteslu/robot-mcp) (0 stars) - MCP server for Johnny-Five robotics. Let LLMs control Arduino, Raspberry Pi, and other hardware.
+- [showkeyjar/robot-mcp-server](https://github.com/showkeyjar/robot-mcp-server) (0 stars) - mcp server for robot and automations
+- [sandraschi/dreame-mcp](https://github.com/sandraschi/dreame-mcp) (0 stars) - FastMCP 3.1 MCP server and webapp for the Dreame D20 Pro Plus robot vacuum.
+- [resq-software/pypi](https://github.com/resq-software/pypi) (0 stars) - FastMCP server exposing ResQ platform capabilities—including digital twin simulations, drone coordination, and incident response—to AI clients like Claude Desktop and Cursor.
+- [spillala/dronefleet-mcp](https://github.com/spillala/dronefleet-mcp) (0 stars) - DroneFleet MCP Server
+- [CSOAI-ORG/flight-logger-mcp](https://github.com/CSOAI-ORG/flight-logger-mcp) (0 stars) - Drone and aircraft flight logging. Log flights, track compliance, view history, and manage maintenance. By MEOK AI Labs.
+- [CSOAI-ORG/drone-airspace-governance-mcp](https://github.com/CSOAI-ORG/drone-airspace-governance-mcp) (0 stars) - Drone airspace governance MCP — FAA Part 107 + EASA Open/Specific + CASA Part 101 compliance checks for UAV operations and BVLOS flights.
+- [kvgork/isaac-mcp](https://github.com/kvgork/isaac-mcp) (0 stars) - MCP server for Isaac Sim and Lab
+- [MarijanMiletic/RoboPilot](https://github.com/MarijanMiletic/RoboPilot) (0 stars) - MCP server bridging LLMs with a UR10 robotic arm in NVIDIA Isaac Sim — control robots through natural language
+- [valljo888ai/mcp](https://github.com/valljo888ai/mcp) (0 stars) - MCP server for SLAM Gadget Shopify SQLite databases
+- [Mezo1122/RiMCP_hybrid](https://github.com/Mezo1122/RiMCP_hybrid) (0 stars) - 🛠️ Build a flexible search and navigation tool for RimWorld’s source code and XML definitions, enabling AI-assisted retrieval and exploration.
+- [WyattAu/aileron](https://github.com/WyattAu/aileron) (0 stars) - A blazingly fast, keyboard-driven web environment for developers. Native tiling. Lua-configurable. Zero-extension ad-blocking. And an integrated AI MCP server so your LLMs can finally see the web. Built in Rust, powered by Servo.
+- [CSOAI-ORG/robotics-control-mcp](https://github.com/CSOAI-ORG/robotics-control-mcp) (0 stars) - IoT and robotics interface: list devices, send serial/HTTP commands, read sensors, control servos, send G-code, and emergency stop. Part of MEOK AI Labs' HARVI project.
+- [debrunbaix/S.P.E.A.K](https://github.com/debrunbaix/S.P.E.A.K) (0 stars) - An end-to-end voice-to-hardware pipeline: speech → Whisper STT → Claude LLM → MCP server → Arduino REST API → servo motor. Built incrementally from a single servo to a full robotic arm.
+- [Dmitriusan/mcp-spring-boot-actuator](https://github.com/Dmitriusan/mcp-spring-boot-actuator) (0 stars) - MCP server for Spring Boot Actuator analysis — health, metrics, beans, and environment diagnostics
+- [swissembedded/emdo70x-mcpserver](https://github.com/swissembedded/emdo70x-mcpserver) (0 stars) - MCP server for AI powered control of the EMDO701 Relay 16 blind actuator via Claude Desktop. Modbus RTU over RS485 or TCP gateway
+- [internet-dot/spring-inspector](https://github.com/internet-dot/spring-inspector) (0 stars) - Spring Boot MCP server — exposes build/test (Maven) and Actuator tools to GitHub Copilot Agent Mode
+- [farcomiot/farcom-mcp-catalog](https://github.com/farcomiot/farcom-mcp-catalog) (0 stars) - FARCOM Industrial MCP Server — 3,499 industrial products catalog with live pricing (VFDs, Softstarters, PFC, Sensors, PLCs)
+- [lubosstrejcek/victron-tcp](https://github.com/lubosstrejcek/victron-tcp) (0 stars) - MCP server for Victron GX devices — real-time solar, battery, grid, and inverter data over Modbus TCP + MQTT. Local LAN, no cloud.
+- [evgenijovchintsev/arduino-otto-mcp](https://github.com/evgenijovchintsev/arduino-otto-mcp) (0 stars) - Simple MCP server to communicate with OTTO robot over Bluetooth
+- [tkjskanesga/beep-music-arduino-mcp](https://github.com/tkjskanesga/beep-music-arduino-mcp) (0 stars) - Simple Arduino Beep Music Control using MCP
+- [Papilio-Labs/papilio-loader-mcp](https://github.com/Papilio-Labs/papilio-loader-mcp) (0 stars) - MCP server for loading FPGA bit files and ESP32 firmware over the network to Papilio boards
+- [Ansvar-Systems/portuguese-cybersecurity-mcp](https://github.com/Ansvar-Systems/portuguese-cybersecurity-mcp) (0 stars) - MCP server for CNCS (Centro Nacional de Cibersegurança) cybersecurity guidelines and advisories
+- [MicheleCampi/MicheleCampi](https://github.com/MicheleCampi/MicheleCampi) (0 stars) - Operations Intelligence Engineer | OR-Tools, MCP Servers, Manufacturing Optimization
+- [aleixurbano/claude-skillpack-robotics](https://github.com/aleixurbano/claude-skillpack-robotics) (0 stars) - 
+- [srotzin/hive-mcp-exchange](https://github.com/srotzin/hive-mcp-exchange) (0 stars) - HiveExchange MCP Server — autonomous agent prediction markets, perps, derivatives. 429 markets, 58 genesis agents.
+- [pj0620/habitat-sim-mcp](https://github.com/pj0620/habitat-sim-mcp) (0 stars) - An MCP Server to control an agent in Habitat Simulator
+- [Surya7702-VSS/ROS-MC-Server-Kinova-Mico2-ROS-LLM-Integration.](https://github.com/Surya7702-VSS/ROS-MC-Server-Kinova-Mico2-ROS-LLM-Integration.) (0 stars) - This project demonstrates a ROS-based pick-and-stack robotic system using the Kinova Mico 2 robotic arm, where high-level task planning is handled using a Claude Large Language Model (LLM).  The robot autonomously performs pick and stacking operations using natural-language, ros-mcp-server and executing them through a ROS control pipeline.
+- [underautomation/UniversalRobots-MCP](https://github.com/underautomation/UniversalRobots-MCP) (0 stars) - POC for a Model Context Protocol (MCP) server for Universal Robots, enabling AI agents and applications to control and monitor UR robots through a standardized interface.
