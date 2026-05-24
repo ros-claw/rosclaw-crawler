@@ -1,0 +1,353 @@
+[
+  {
+    "name": "carquiza/RoslynMCP",
+    "stars": 52,
+    "description": "A Model Context Protocol (MCP) server that provides C# code analysis capabilities using Microsoft Roslyn",
+    "url": "https://github.com/carquiza/RoslynMCP",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "egorpavlikhin/roslyn-mcp",
+    "stars": 29,
+    "description": "",
+    "url": "https://github.com/egorpavlikhin/roslyn-mcp",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "Arielbs/rosetta-mcp-server",
+    "stars": 16,
+    "description": "MCP server for Rosetta/PyRosetta and Biotite: give your AI coding agent expert-level knowledge of protein modeling and design - ask naive questions, get working code, translate and validate code across Rosetta, PyRosetta, and Biotite.",
+    "url": "https://github.com/Arielbs/rosetta-mcp-server",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "tikoci/rosetta",
+    "stars": 13,
+    "description": "MCP Server with RouterOS docs + commands + products + changelogs, using SQLite-as-RAG, sourced from MikroTik",
+    "url": "https://github.com/tikoci/rosetta",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "snick-m/auto_mcp",
+    "stars": 13,
+    "description": "This package provides necessary tooling to launch an MCP server for the ROS network. It provides support for introspection and manual config.",
+    "url": "https://github.com/snick-m/auto_mcp",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "JoshuaRamirez/RoslynMcpServer",
+    "stars": 10,
+    "description": "Model Context Protocol server for Roslyn-powered C# refactoring operations",
+    "url": "https://github.com/JoshuaRamirez/RoslynMcpServer",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "ngres/ros2mcp",
+    "stars": 9,
+    "description": "Expose arbitrary ROS 2 services and topics as MCP tools and list topics as resources.",
+    "url": "https://github.com/ngres/ros2mcp",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 85,
+      "reason": "Strong robotics indicators (2 keywords)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "SyntaxSmith/rosetta",
+    "stars": 8,
+    "description": "Programmatic access to ChatGPT (incl. Pro) by translating between an auth-holder Chrome page and a Node API. CDP Fetch interception + WebSocket second-leg streaming. Ships an MCP server for Claude Code / Codex / Cline.",
+    "url": "https://github.com/SyntaxSmith/rosetta",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 70,
+      "reason": "Robotics related",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "selfpatch/ros2_medkit_mcp",
+    "stars": 5,
+    "description": "MCP server for ros2_medkit. Bridge LLM agents to the SOVD REST API for ROS 2 diagnostics and remote operations.",
+    "url": "https://github.com/selfpatch/ros2_medkit_mcp",
+    "query": "mcp-server ros",
+    "llm": {
+      "relevant": true,
+      "confidence": 85,
+      "reason": "Strong robotics indicators (2 keywords)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "robotmem/robotmem",
+    "stars": 24,
+    "description": "Robot Memory - Persistent memory system for AI robots. MCP Server + hybrid search + spatial retrieval.",
+    "url": "https://github.com/robotmem/robotmem",
+    "query": "mcp-server ros2",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "spanchal001/mcp-ros2-logs",
+    "stars": 4,
+    "description": "Give AI agents the ability to debug ROS2 logs across nodes — MCP server, no ROS2 install required",
+    "url": "https://github.com/spanchal001/mcp-ros2-logs",
+    "query": "mcp-server ros2",
+    "llm": {
+      "relevant": true,
+      "confidence": 85,
+      "reason": "Strong robotics indicators (2 keywords)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "araitaiga/rosout_mcp",
+    "stars": 4,
+    "description": "A Model Context Protocol (MCP) server that loads ROS2 rosbag files containing log information (/rosout), builds an in-memory database, and provides SQL-like querying capabilities.",
+    "url": "https://github.com/araitaiga/rosout_mcp",
+    "query": "mcp-server ros2",
+    "llm": {
+      "relevant": true,
+      "confidence": 85,
+      "reason": "Strong robotics indicators (2 keywords)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "ros-claw/sdk_to_mcp",
+    "stars": 3,
+    "description": "ROSClaw SDK-to-MCP Skill | Convert hardware SDKs, ROS/ROS2 interfaces & protocol docs into standardized MCP Servers, enabling AI to control physical robots via natural language.",
+    "url": "https://github.com/ros-claw/sdk_to_mcp",
+    "query": "mcp-server ros2",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "reidlo5135/ros-mcp-server",
+    "stars": 1,
+    "description": "ROS2(humble) AI MCP Server Package",
+    "url": "https://github.com/reidlo5135/ros-mcp-server",
+    "query": "mcp-server ros2",
+    "llm": {
+      "relevant": true,
+      "confidence": 85,
+      "reason": "Strong robotics indicators (2 keywords)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "gotoolkits/mcp-wecombot-server",
+    "stars": 37,
+    "description": "An MCP server application that sends various types of messages to the WeCom group robot.",
+    "url": "https://github.com/gotoolkits/mcp-wecombot-server",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "jeremyruppel/claude-collider",
+    "stars": 35,
+    "description": "MCP server and live coding suite for SuperCollider :robot: :musical_note: ",
+    "url": "https://github.com/jeremyruppel/claude-collider",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "AI-FanGe/RobotArm-MCP-P340",
+    "stars": 34,
+    "description": "a mcp server for p340 robot arm",
+    "url": "https://github.com/AI-FanGe/RobotArm-MCP-P340",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "kornia/bubbaloop",
+    "stars": 19,
+    "description": "Open-source Hardware AI agent. Single Rust binary for cameras, sensors, robots, and IoT fleets — orchestrated by AI agents with memory and real-time telemetry. Runs on Jetson, Raspberry Pi, any Linux.",
+    "url": "https://github.com/kornia/bubbaloop",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "danmartinez78/VectorClaw",
+    "stars": 15,
+    "description": "Anki Vector + OpenClaw integration via MCP. Give your AI assistant a body.  MCP server connecting Anki Vector robots to OpenClaw. Your assistant, now with wheels.  VectorClaw: Anki Vector as an embodied AI platform for OpenClaw.",
+    "url": "https://github.com/danmartinez78/VectorClaw",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "Shawyeok/mcp-dingding-bot",
+    "stars": 12,
+    "description": "MCP Server for send text/markdown message via dingding (aka dingtalk) group custom robot",
+    "url": "https://github.com/Shawyeok/mcp-dingding-bot",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "hp0912/wechat-robot-mcp-server",
+    "stars": 11,
+    "description": "微信机器人MCP服务端",
+    "url": "https://github.com/hp0912/wechat-robot-mcp-server",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "aaltat/robocop-mcp",
+    "stars": 11,
+    "description": "MCP server for Robot Framework Robocop to speed up fixing analysis error in our test data.",
+    "url": "https://github.com/aaltat/robocop-mcp",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "daseinpbc/SPL-FRAMEWORK",
+    "stars": 10,
+    "description": "SUBSUMPTION PATTERN LEARNING (SPL) MULTI-AGENT FRAMEWORK: Hierarchical foundation model agent architecture that reduces costs by 10-50x through intelligent suppression of expensive foundation model calls.  Grounded in R. Arkin's behavior-based robotics and R. Brooks' subsumption architecture, SPL brings 40+ years of proven autonomous systems design",
+    "url": "https://github.com/daseinpbc/SPL-FRAMEWORK",
+    "query": "mcp-server robot",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "ros-claw/rosclaw-crawler",
+    "stars": 0,
+    "description": "Intelligent crawler for discovering and curating high-quality MCP servers and Agent Skills for embodied AI and robotics",
+    "url": "https://github.com/ros-claw/rosclaw-crawler",
+    "query": "mcp-server embodied",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "jurgen178/esp32-mcp",
+    "stars": 1,
+    "description": "Building an MCP Server on ESP32: Bridging AI Assistants with Physical Hardware",
+    "url": "https://github.com/jurgen178/esp32-mcp",
+    "query": "mcp-server physical ai",
+    "llm": {
+      "relevant": false,
+      "confidence": 40,
+      "reason": "Weak robotics relevance",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "ricardothe3rd/physical-mcp",
+    "stars": 0,
+    "description": "Safety-first MCP server for ROS2 robots - bridge AI agents to physical systems",
+    "url": "https://github.com/ricardothe3rd/physical-mcp",
+    "query": "mcp-server physical ai",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  },
+  {
+    "name": "guinevere-kingsley/robotfail-mcp",
+    "stars": 0,
+    "description": "MCP server for RobotFail — let AI agents hire humans for physical tasks",
+    "url": "https://github.com/guinevere-kingsley/robotfail-mcp",
+    "query": "mcp-server physical ai",
+    "llm": {
+      "relevant": false,
+      "confidence": 30,
+      "reason": "Likely non-robotics (chat/notification tool)",
+      "category": "robotics"
+    }
+  }
+]

@@ -1,0 +1,380 @@
+[
+  {
+    "name": "robotmcp/ros-mcp-server",
+    "stars": 1241,
+    "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
+    "url": "https://github.com/robotmcp/ros-mcp-server",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "kakimochi/ros2-mcp-server",
+    "stars": 81,
+    "description": "",
+    "url": "https://github.com/kakimochi/ros2-mcp-server",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "wise-vision/ros2_mcp",
+    "stars": 78,
+    "description": "Advanced MCP Server ROS 2 bridging AI agents straight into robotics",
+    "url": "https://github.com/wise-vision/ros2_mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "ajtudela/nav2_mcp_server",
+    "stars": 73,
+    "description": "MCP server that provides tools and resources to control and monitor robots using Nav2.",
+    "url": "https://github.com/ajtudela/nav2_mcp_server",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "carquiza/RoslynMCP",
+    "stars": 52,
+    "description": "A Model Context Protocol (MCP) server that provides C# code analysis capabilities using Microsoft Roslyn",
+    "url": "https://github.com/carquiza/RoslynMCP",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "Yutarop/ros-mcp",
+    "stars": 32,
+    "description": "MCP server for ROS to control robots via topics, services, and actions.",
+    "url": "https://github.com/Yutarop/ros-mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "egorpavlikhin/roslyn-mcp",
+    "stars": 29,
+    "description": "",
+    "url": "https://github.com/egorpavlikhin/roslyn-mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "binabik-ai/mcp-rosbags",
+    "stars": 22,
+    "description": "MCP Server to interface with and analyze rosbags offline",
+    "url": "https://github.com/binabik-ai/mcp-rosbags",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "AliKarami/MikroMCP",
+    "stars": 22,
+    "description": "Production-grade MCP server for MikroTik RouterOS with secure AI-native network automation.",
+    "url": "https://github.com/AliKarami/MikroMCP",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "Arielbs/rosetta-mcp-server",
+    "stars": 16,
+    "description": "MCP server for Rosetta/PyRosetta and Biotite: give your AI coding agent expert-level knowledge of protein modeling and design - ask naive questions, get working code, translate and validate code across Rosetta, PyRosetta, and Biotite.",
+    "url": "https://github.com/Arielbs/rosetta-mcp-server",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "tikoci/rosetta",
+    "stars": 13,
+    "description": "MCP Server with RouterOS docs + commands + products + changelogs, using SQLite-as-RAG, sourced from MikroTik",
+    "url": "https://github.com/tikoci/rosetta",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "snick-m/auto_mcp",
+    "stars": 13,
+    "description": "This package provides necessary tooling to launch an MCP server for the ROS network. It provides support for introspection and manual config.",
+    "url": "https://github.com/snick-m/auto_mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "robotmcp/robotmcp_client",
+    "stars": 12,
+    "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
+    "url": "https://github.com/robotmcp/robotmcp_client",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "MarcelRoozekrans/roslyn-codelens-mcp",
+    "stars": 11,
+    "description": "Roslyn-based MCP server providing semantic code intelligence for .NET codebases — type hierarchies, call sites, DI registrations, and reflection usage for Claude Code",
+    "url": "https://github.com/MarcelRoozekrans/roslyn-codelens-mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "JoshuaRamirez/RoslynMcpServer",
+    "stars": 10,
+    "description": "Model Context Protocol server for Roslyn-powered C# refactoring operations",
+    "url": "https://github.com/JoshuaRamirez/RoslynMcpServer",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "ngres/ros2mcp",
+    "stars": 9,
+    "description": "Expose arbitrary ROS 2 services and topics as MCP tools and list topics as resources.",
+    "url": "https://github.com/ngres/ros2mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "SyntaxSmith/rosetta",
+    "stars": 8,
+    "description": "Programmatic access to ChatGPT (incl. Pro) by translating between an auth-holder Chrome page and a Node API. CDP Fetch interception + WebSocket second-leg streaming. Ships an MCP server for Claude Code / Codex / Cline.",
+    "url": "https://github.com/SyntaxSmith/rosetta",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "proxi666/amazing-ros2-mcp",
+    "stars": 6,
+    "description": "Native ROS 2 MCP server for AI-assisted robotics",
+    "url": "https://github.com/proxi666/amazing-ros2-mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "kubja/ros2_turtlebot_mcp_server_tutorial",
+    "stars": 5,
+    "description": "A ROS 2 MCP server for controlling a TurtleBot with an AI agent. This server acts   as a bridge between a large language model and a ROS 2 robot, allowing you to   control the robot using natural language commands. It implements the MCP protocol   and provides move and stop commands.",
+    "url": "https://github.com/kubja/ros2_turtlebot_mcp_server_tutorial",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "selfpatch/ros2_medkit_mcp",
+    "stars": 5,
+    "description": "MCP server for ros2_medkit. Bridge LLM agents to the SOVD REST API for ROS 2 diagnostics and remote operations.",
+    "url": "https://github.com/selfpatch/ros2_medkit_mcp",
+    "query": "mcp-server ros"
+  },
+  {
+    "name": "lpigeon/unitree-go2-mcp-server",
+    "stars": 78,
+    "description": "The Unitree Go2 MCP Server is a server built on the MCP that enables users to control the Unitree Go2 robot using natural language commands interpreted by a LLM.",
+    "url": "https://github.com/lpigeon/unitree-go2-mcp-server",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "robotmem/robotmem",
+    "stars": 24,
+    "description": "Robot Memory - Persistent memory system for AI robots. MCP Server + hybrid search + spatial retrieval.",
+    "url": "https://github.com/robotmem/robotmem",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "spanchal001/mcp-ros2-logs",
+    "stars": 4,
+    "description": "Give AI agents the ability to debug ROS2 logs across nodes — MCP server, no ROS2 install required",
+    "url": "https://github.com/spanchal001/mcp-ros2-logs",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "araitaiga/rosout_mcp",
+    "stars": 4,
+    "description": "A Model Context Protocol (MCP) server that loads ROS2 rosbag files containing log information (/rosout), builds an in-memory database, and provides SQL-like querying capabilities.",
+    "url": "https://github.com/araitaiga/rosout_mcp",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "ros-claw/sdk_to_mcp",
+    "stars": 3,
+    "description": "ROSClaw SDK-to-MCP Skill | Convert hardware SDKs, ROS/ROS2 interfaces & protocol docs into standardized MCP Servers, enabling AI to control physical robots via natural language.",
+    "url": "https://github.com/ros-claw/sdk_to_mcp",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "ros-claw/rosclaw-vision-mcp",
+    "stars": 2,
+    "description": "ROSClaw MCP Server for Intel RealSense RGB-D Camera via ROS2 — Semantic-HAL vision layer",
+    "url": "https://github.com/ros-claw/rosclaw-vision-mcp",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "sandraschi/robofang",
+    "stars": 2,
+    "description": "openclaw / openfang inspired experiment. adds mcp server fleet and robotics",
+    "url": "https://github.com/sandraschi/robofang",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "reidlo5135/ros-mcp-server",
+    "stars": 1,
+    "description": "ROS2(humble) AI MCP Server Package",
+    "url": "https://github.com/reidlo5135/ros-mcp-server",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "0xenesbayram/ros2-mcp-server",
+    "stars": 1,
+    "description": "an mcp-server to interact with ros2 node,topics , etc...",
+    "url": "https://github.com/0xenesbayram/ros2-mcp-server",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "YI-TING-EE13/ROS2-MCP-Server",
+    "stars": 1,
+    "description": "",
+    "url": "https://github.com/YI-TING-EE13/ROS2-MCP-Server",
+    "query": "mcp-server ros2"
+  },
+  {
+    "name": "manykarim/rf-mcp",
+    "stars": 95,
+    "description": "A Robot Framework MCP Server ",
+    "url": "https://github.com/manykarim/rf-mcp",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "IliaLarchenko/robot_MCP",
+    "stars": 79,
+    "description": "A simple MCP server for the SO-ARM100 control",
+    "url": "https://github.com/IliaLarchenko/robot_MCP",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "gotoolkits/mcp-wecombot-server",
+    "stars": 37,
+    "description": "An MCP server application that sends various types of messages to the WeCom group robot.",
+    "url": "https://github.com/gotoolkits/mcp-wecombot-server",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "jeremyruppel/claude-collider",
+    "stars": 35,
+    "description": "MCP server and live coding suite for SuperCollider :robot: :musical_note: ",
+    "url": "https://github.com/jeremyruppel/claude-collider",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "AI-FanGe/RobotArm-MCP-P340",
+    "stars": 34,
+    "description": "a mcp server for p340 robot arm",
+    "url": "https://github.com/AI-FanGe/RobotArm-MCP-P340",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "jackccrawford/reachy-mini-mcp",
+    "stars": 27,
+    "description": " Reachy Mini MCP | Give your AI a body.  This MCP server lets AI systems control the Pollen Robotics Reachy Mini robot. | Speak, listen, see you, and express emotions through physical movement and voice. | Works with Claude, Windsurf, Cursor, or any MCP-compatible AI.  | Zero robotics expertise required.",
+    "url": "https://github.com/jackccrawford/reachy-mini-mcp",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "kornia/bubbaloop",
+    "stars": 19,
+    "description": "Open-source Hardware AI agent. Single Rust binary for cameras, sensors, robots, and IoT fleets — orchestrated by AI agents with memory and real-time telemetry. Runs on Jetson, Raspberry Pi, any Linux.",
+    "url": "https://github.com/kornia/bubbaloop",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "danmartinez78/VectorClaw",
+    "stars": 15,
+    "description": "Anki Vector + OpenClaw integration via MCP. Give your AI assistant a body.  MCP server connecting Anki Vector robots to OpenClaw. Your assistant, now with wheels.  VectorClaw: Anki Vector as an embodied AI platform for OpenClaw.",
+    "url": "https://github.com/danmartinez78/VectorClaw",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "Shawyeok/mcp-dingding-bot",
+    "stars": 12,
+    "description": "MCP Server for send text/markdown message via dingding (aka dingtalk) group custom robot",
+    "url": "https://github.com/Shawyeok/mcp-dingding-bot",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "showkeyjar/robot-mcp-server",
+    "stars": 12,
+    "description": "mcp server for robot and automations",
+    "url": "https://github.com/showkeyjar/robot-mcp-server",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "hp0912/wechat-robot-mcp-server",
+    "stars": 11,
+    "description": "微信机器人MCP服务端",
+    "url": "https://github.com/hp0912/wechat-robot-mcp-server",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "aaltat/robocop-mcp",
+    "stars": 11,
+    "description": "MCP server for Robot Framework Robocop to speed up fixing analysis error in our test data.",
+    "url": "https://github.com/aaltat/robocop-mcp",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "daseinpbc/SPL-FRAMEWORK",
+    "stars": 10,
+    "description": "SUBSUMPTION PATTERN LEARNING (SPL) MULTI-AGENT FRAMEWORK: Hierarchical foundation model agent architecture that reduces costs by 10-50x through intelligent suppression of expensive foundation model calls.  Grounded in R. Arkin's behavior-based robotics and R. Brooks' subsumption architecture, SPL brings 40+ years of proven autonomous systems design",
+    "url": "https://github.com/daseinpbc/SPL-FRAMEWORK",
+    "query": "mcp-server robot"
+  },
+  {
+    "name": "ros-claw/rosclaw-crawler",
+    "stars": 0,
+    "description": "Intelligent crawler for discovering and curating high-quality MCP servers and Agent Skills for embodied AI and robotics",
+    "url": "https://github.com/ros-claw/rosclaw-crawler",
+    "query": "mcp-server embodied"
+  },
+  {
+    "name": "jurgen178/esp32-mcp",
+    "stars": 1,
+    "description": "Building an MCP Server on ESP32: Bridging AI Assistants with Physical Hardware",
+    "url": "https://github.com/jurgen178/esp32-mcp",
+    "query": "mcp-server physical ai"
+  },
+  {
+    "name": "Amrit-R-M/HardwareMCP",
+    "stars": 1,
+    "description": "Universal MCP server for AI agents to interact with physical hardware. Supports sensors, CAN bus, I2C, SPI, UART, MQTT, Modbus & GPIO. Protocol-agnostic, LLM-agnostic, hardware simulator included. Built for embedded & hardtech developers.",
+    "url": "https://github.com/Amrit-R-M/HardwareMCP",
+    "query": "mcp-server physical ai"
+  },
+  {
+    "name": "ricardothe3rd/physical-mcp",
+    "stars": 0,
+    "description": "Safety-first MCP server for ROS2 robots - bridge AI agents to physical systems",
+    "url": "https://github.com/ricardothe3rd/physical-mcp",
+    "query": "mcp-server physical ai"
+  },
+  {
+    "name": "guinevere-kingsley/robotfail-mcp",
+    "stars": 0,
+    "description": "MCP server for RobotFail — let AI agents hire humans for physical tasks",
+    "url": "https://github.com/guinevere-kingsley/robotfail-mcp",
+    "query": "mcp-server physical ai"
+  },
+  {
+    "name": "ros-claw/unitree-mujoco-mcp",
+    "stars": 4,
+    "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
+    "url": "https://github.com/ros-claw/unitree-mujoco-mcp",
+    "query": "mcp-server unitree"
+  },
+  {
+    "name": "shaoxiang/unitree-mujoco-mcp",
+    "stars": 1,
+    "description": "MuJoCo simulation MCP server for Unitree robots (G1, Go2, H1, B2, A2, R1)",
+    "url": "https://github.com/shaoxiang/unitree-mujoco-mcp",
+    "query": "mcp-server unitree"
+  },
+  {
+    "name": "ros-claw/unitree-sdk2-mcp",
+    "stars": 1,
+    "description": "ROSClaw MCP Server for Unitree Robots via DDS (G1, Go2, H1, B2, A2, R1)",
+    "url": "https://github.com/ros-claw/unitree-sdk2-mcp",
+    "query": "mcp-server unitree"
+  },
+  {
+    "name": "ros-claw/g1-isaac-sim-mcp",
+    "stars": 1,
+    "description": "ROSClaw MCP Server for Unitree G1 Humanoid Robot via MCP to NVIDIA Isaac Sim",
+    "url": "https://github.com/ros-claw/g1-isaac-sim-mcp",
+    "query": "mcp-server unitree"
+  },
+  {
+    "name": "SkullsEye/Robotics-MCP-Servers",
+    "stars": 1,
+    "description": "Model Context Protocol servers for multi-robot control - G1 humanoid, UR5 arm, gimbal, vision",
+    "url": "https://github.com/SkullsEye/Robotics-MCP-Servers",
+    "query": "mcp-server g1 humanoid"
+  },
+  {
+    "name": "esmyrnaki/nao-lowcode-zerocode",
+    "stars": 0,
+    "description": "Methodology for implementing low-code and zero-code interfaces for programming the NAO robotics platform.",
+    "url": "https://github.com/esmyrnaki/nao-lowcode-zerocode",
+    "query": "mcp-server nao robot"
+  }
+]
