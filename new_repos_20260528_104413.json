@@ -1,0 +1,330 @@
+[
+  {
+    "name": "robotmem/robotmem",
+    "stars": 24,
+    "description": "Robot Memory - Persistent memory system for AI robots. MCP Server + hybrid search + spatial retrieval.",
+    "url": "https://github.com/robotmem/robotmem",
+    "created_at": "2026-03-09T07:59:57Z",
+    "query": "mcp-server ros2 created:>2025-01-01"
+  },
+  {
+    "name": "ros-claw/sdk_to_mcp",
+    "stars": 3,
+    "description": "ROSClaw SDK-to-MCP Skill | Convert hardware SDKs, ROS/ROS2 interfaces & protocol docs into standardized MCP Servers, enabling AI to control physical robots via natural language.",
+    "url": "https://github.com/ros-claw/sdk_to_mcp",
+    "created_at": "2026-03-20T09:45:16Z",
+    "query": "mcp-server ros2 created:>2025-01-01"
+  },
+  {
+    "name": "gotoolkits/mcp-wecombot-server",
+    "stars": 37,
+    "description": "An MCP server application that sends various types of messages to the WeCom group robot.",
+    "url": "https://github.com/gotoolkits/mcp-wecombot-server",
+    "created_at": "2025-01-08T15:23:13Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "jeremyruppel/claude-collider",
+    "stars": 35,
+    "description": "MCP server and live coding suite for SuperCollider :robot: :musical_note: ",
+    "url": "https://github.com/jeremyruppel/claude-collider",
+    "created_at": "2025-12-03T00:52:08Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "AI-FanGe/RobotArm-MCP-P340",
+    "stars": 34,
+    "description": "a mcp server for p340 robot arm",
+    "url": "https://github.com/AI-FanGe/RobotArm-MCP-P340",
+    "created_at": "2025-07-09T12:11:52Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "kornia/bubbaloop",
+    "stars": 19,
+    "description": "Open-source Hardware AI agent. Single Rust binary for cameras, sensors, robots, and IoT fleets — orchestrated by AI agents with memory and real-time telemetry. Runs on Jetson, Raspberry Pi, any Linux.",
+    "url": "https://github.com/kornia/bubbaloop",
+    "created_at": "2025-12-20T17:22:59Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "danmartinez78/VectorClaw",
+    "stars": 16,
+    "description": "Anki Vector + OpenClaw integration via MCP. Give your AI assistant a body.  MCP server connecting Anki Vector robots to OpenClaw. Your assistant, now with wheels.  VectorClaw: Anki Vector as an embodied AI platform for OpenClaw.",
+    "url": "https://github.com/danmartinez78/VectorClaw",
+    "created_at": "2026-02-26T11:28:14Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "Shawyeok/mcp-dingding-bot",
+    "stars": 12,
+    "description": "MCP Server for send text/markdown message via dingding (aka dingtalk) group custom robot",
+    "url": "https://github.com/Shawyeok/mcp-dingding-bot",
+    "created_at": "2025-03-12T22:55:31Z",
+    "query": "mcp-server robot created:>2025-01-01"
+  },
+  {
+    "name": "madappa-sharath/drone-ci-mcp",
+    "stars": 5,
+    "description": "MCP server to expose drone cicd server as tools",
+    "url": "https://github.com/madappa-sharath/drone-ci-mcp",
+    "created_at": "2025-04-22T11:44:49Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "glassBead-tc/widescreen-research",
+    "stars": 5,
+    "description": "bidirectional MCP server orchestrating an army of research drones on Cloud Run in GCP",
+    "url": "https://github.com/glassBead-tc/widescreen-research",
+    "created_at": "2025-05-25T11:58:06Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "StanleyGoldman/drone-ci-mcp-server",
+    "stars": 0,
+    "description": null,
+    "url": "https://github.com/StanleyGoldman/drone-ci-mcp-server",
+    "created_at": "2026-04-01T14:51:42Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "Ryan-Clinton/drone-uas-regulatory-intelligence-mcp",
+    "stars": 0,
+    "description": "Drone UAS Regulatory Intelligence MCP Server",
+    "url": "https://github.com/Ryan-Clinton/drone-uas-regulatory-intelligence-mcp",
+    "created_at": "2026-03-07T01:36:47Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "tranhien1612/mcp-drone-example",
+    "stars": 0,
+    "description": "MCP Client and MCP Server to connect and control drone",
+    "url": "https://github.com/tranhien1612/mcp-drone-example",
+    "created_at": "2025-11-03T03:46:19Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "gifro10/geospatial-tools-mcp",
+    "stars": 0,
+    "description": "MCP server with 15 geospatial tools: coordinate transforms, spatial validation, elevation, viewshed, drone flight planning ",
+    "url": "https://github.com/gifro10/geospatial-tools-mcp",
+    "created_at": "2026-02-10T05:09:03Z",
+    "query": "mcp-server drone created:>2025-01-01"
+  },
+  {
+    "name": "Berger-Stefan/MultimodalNavigationIsaacSim",
+    "stars": 0,
+    "description": " The repository acts as a playground to experiment with navigation using multimodal LLMs. The idea is that a robot has an MCP server that exposes tools like \"getState\" and \"sendMovementCommand\" such that LLM can get information about the environment and control the robot based on that. ",
+    "url": "https://github.com/Berger-Stefan/MultimodalNavigationIsaacSim",
+    "created_at": "2025-12-29T17:25:43Z",
+    "query": "mcp-server isaac sim"
+  },
+  {
+    "name": "haris-musa/excel-mcp-server",
+    "stars": 3877,
+    "description": "A Model Context Protocol server for Excel file manipulation",
+    "url": "https://github.com/haris-musa/excel-mcp-server",
+    "created_at": "2025-02-12T06:39:48Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "GongRzhe/Office-PowerPoint-MCP-Server",
+    "stars": 1733,
+    "description": "A MCP (Model Context Protocol) server for PowerPoint manipulation using python-pptx. This server provides tools for creating, editing, and manipulating PowerPoint presentations through the MCP protocol.",
+    "url": "https://github.com/GongRzhe/Office-PowerPoint-MCP-Server",
+    "created_at": "2025-03-25T09:10:52Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "ivnvxd/mcp-server-odoo",
+    "stars": 299,
+    "description": "Model Context Protocol (MCP) server that enables AI assistants to securely interact with Odoo ERP systems through standardized resources and tools for data retrieval and manipulation.",
+    "url": "https://github.com/ivnvxd/mcp-server-odoo",
+    "created_at": "2025-03-22T20:45:03Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "GongRzhe/opencv-mcp-server",
+    "stars": 105,
+    "description": "OpenCV MCP Server  provides OpenCV's image and video processing capabilities through the Model Context Protocol (MCP). Access powerful computer vision tools for tasks ranging from basic image manipulation to advanced object detection and tracking.",
+    "url": "https://github.com/GongRzhe/opencv-mcp-server",
+    "created_at": "2025-04-11T17:38:28Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "ttiimmaacc/cinema4d-mcp",
+    "stars": 86,
+    "description": "Cinema 4D plugin integrating Claude AI for prompt-driven 3D modeling, scene creation, and manipulation.",
+    "url": "https://github.com/ttiimmaacc/cinema4d-mcp",
+    "created_at": "2025-03-13T23:37:43Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "tadasant/mcp-server-stability-ai",
+    "stars": 83,
+    "description": "MCP Server integrating MCP Clients with Stability AI-powered image manipulation functionalities: generate, edit, upscale, and more.",
+    "url": "https://github.com/tadasant/mcp-server-stability-ai",
+    "created_at": "2024-12-30T19:02:27Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "sdiehl/sympy-mcp",
+    "stars": 72,
+    "description": "A MCP server for symbolic manipulation of mathematical expressions",
+    "url": "https://github.com/sdiehl/sympy-mcp",
+    "created_at": "2025-05-17T09:54:41Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "remiphilippe/mcp-unreal",
+    "stars": 35,
+    "description": "MCP server that gives AI coding agents (Claude Code, Cursor, etc.) full control over Unreal Engine 5.7 projects — headless builds & tests, Blueprint editing, actor manipulation, procedural mesh generation, and UE API documentation lookup.",
+    "url": "https://github.com/remiphilippe/mcp-unreal",
+    "created_at": "2026-02-20T04:07:13Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "lilklon/UEBlueprintMCP",
+    "stars": 32,
+    "description": "MCP server for AI-assisted Unreal Engine 5.7+ Blueprint manipulation",
+    "url": "https://github.com/lilklon/UEBlueprintMCP",
+    "created_at": "2026-01-27T03:19:54Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "i2y/d2mcp",
+    "stars": 28,
+    "description": "A Model Context Protocol (MCP) server that provides D2 diagram generation and manipulation capabilities.",
+    "url": "https://github.com/i2y/d2mcp",
+    "created_at": "2025-06-22T05:37:10Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "AbhiRawat4841/mathematica-mcp",
+    "stars": 28,
+    "description": "Model Context Protocol (MCP) server that connects AI agents (Claude, Cursor, etc.) to Wolfram Mathematica for symbolic computation, visualization, and notebook manipulation.",
+    "url": "https://github.com/AbhiRawat4841/mathematica-mcp",
+    "created_at": "2026-01-18T09:00:03Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "bmorphism/anti-bullshit-mcp-server",
+    "stars": 23,
+    "description": "MCP server for analyzing claims, validating sources, and detecting manipulation using multiple epistemological frameworks",
+    "url": "https://github.com/bmorphism/anti-bullshit-mcp-server",
+    "created_at": "2025-01-15T22:06:48Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "Dayoooun/hwpx-mcp",
+    "stars": 22,
+    "description": "MCP Server for HWP/HWPX document manipulation",
+    "url": "https://github.com/Dayoooun/hwpx-mcp",
+    "created_at": "2026-01-20T06:43:25Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "kitfactory/PyMCPAutoGUI",
+    "stars": 19,
+    "description": "GUI manipulation MCP server",
+    "url": "https://github.com/kitfactory/PyMCPAutoGUI",
+    "created_at": "2025-03-30T10:02:16Z",
+    "query": "mcp-server manipulation"
+  },
+  {
+    "name": "Mibayy/token-savior",
+    "stars": 910,
+    "description": "The MCP server that turns Claude into the only coding agent hitting 100% on a real benchmark. -77% active tokens, -76% wall time, 0 losses across 96 tasks on Claude Opus 4.7. Structural code navigation + persistent memory. Works with every MCP client.",
+    "url": "https://github.com/Mibayy/token-savior",
+    "created_at": "2026-03-30T19:35:33Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "skridlevsky/graphthulhu",
+    "stars": 159,
+    "description": "MCP server that gives AI full access to your Logseq or Obsidian knowledge graph. 39 tools for navigation, search, analysis, writing, decisions, journals, flashcards, and whiteboards.",
+    "url": "https://github.com/skridlevsky/graphthulhu",
+    "created_at": "2026-01-29T00:12:00Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "st3v3nmw/sourcerer-mcp",
+    "stars": 114,
+    "description": "MCP for semantic code search & navigation that reduces token waste",
+    "url": "https://github.com/st3v3nmw/sourcerer-mcp",
+    "created_at": "2025-08-07T17:17:00Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "GongRzhe/terminal-controller-mcp",
+    "stars": 99,
+    "description": "A Model Context Protocol (MCP) server that enables secure terminal command execution, directory navigation, and file system operations through a standardized interface.",
+    "url": "https://github.com/GongRzhe/terminal-controller-mcp",
+    "created_at": "2025-02-25T16:18:55Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "nyxCore-Systems/ckb",
+    "stars": 98,
+    "description": "Code intelligence for AI assistants - MCP server, CLI, and HTTP API with symbol navigation, impact analysis, and architecture mapping",
+    "url": "https://github.com/nyxCore-Systems/ckb",
+    "created_at": "2025-12-16T16:32:09Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "tjx666/vscode-mcp",
+    "stars": 80,
+    "description": "MCP server for Claude Code/VSCode/Cursor/Windsurf to use editor self functionality. ⚡ Get real-time LSP diagnostics, type information, and code navigation for AI coding agents without waiting for slow tsc/eslint checks.",
+    "url": "https://github.com/tjx666/vscode-mcp",
+    "created_at": "2025-07-04T04:38:41Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "justrach/devswarm",
+    "stars": 58,
+    "description": "High-performance MCP server, code graph engine & evolutionary algorithm platform in Zig. 33 tools: GitHub project management, agent swarm orchestration, iterative review-fix loops, blast radius analysis, and code navigation via Model Context Protocol.",
+    "url": "https://github.com/justrach/devswarm",
+    "created_at": "2026-02-28T03:42:40Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "MikeRecognex/mcp-codebase-index",
+    "stars": 53,
+    "description": "17 MCP query tools for codebase navigation — functions, classes, imports, dependency graphs, change impact. Zero dependencies. 87% token reduction.",
+    "url": "https://github.com/MikeRecognex/mcp-codebase-index",
+    "created_at": "2026-02-15T15:13:54Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "blackwell-systems/agent-lsp",
+    "stars": 43,
+    "description": "Your coding agent is editing blind. agent-lsp gives it type-aware navigation, blast-radius analysis, and pre-verified edits. 50 tools, 21 skills, 30 languages.",
+    "url": "https://github.com/blackwell-systems/agent-lsp",
+    "created_at": "2026-04-06T16:38:40Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "doITmagic/rag-code-mcp",
+    "stars": 42,
+    "description": "Privacy-first semantic code navigation MCP server using RAG. Features deep AST multi-language support (Go, PHP/Laravel/WP, JS/TS/React, Python), 100% local LLMs (Ollama), and vector search (Qdrant) for AI IDEs like Cursor, Windsurf, Copilot, and Claude.",
+    "url": "https://github.com/doITmagic/rag-code-mcp",
+    "created_at": "2025-11-23T05:38:57Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "agentic-research/mache",
+    "stars": 41,
+    "description": "IDE-style navigation for structured data — code, JSON, YAML. Jump to definitions, find callers, follow references. Available as an MCP server or a mounted folder.",
+    "url": "https://github.com/agentic-research/mache",
+    "created_at": "2026-02-10T00:20:46Z",
+    "query": "mcp-server navigation"
+  },
+  {
+    "name": "rafsilva85/credit-optimizer-v5",
+    "stars": 38,
+    "description": "Save 47% on Manus AI credits automatically. Zero downsides. Pays for itself in ~27 prompts. Free MCP Server (PyPI) + $12 Manus Skill bundle with Fast Navigation (115x speed boost).",
+    "url": "https://github.com/rafsilva85/credit-optimizer-v5",
+    "created_at": "2026-03-10T21:51:53Z",
+    "query": "mcp-server navigation"
+  }
+]
