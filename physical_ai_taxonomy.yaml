@@ -1,0 +1,231 @@
+# ROSClaw coverage map for agent-callable physical intelligence.
+# A repository matching these terms is only a discovery candidate; it must still
+# implement MCP or contain an installable SKILL.md before publication.
+
+categories:
+  robot-middleware:
+    label: Robot Middleware and Agent Bridges
+    signals: [ros, ros2, rosbridge, micro-ros, dds, zenoh, mqtt, robot operating system]
+    search_terms: [ROS2, rosbridge, micro-ROS, DDS, Zenoh]
+
+  hardware-control:
+    label: Robot and Actuator Control
+    signals: [robot control, actuator, servo, motor control, joint control, trajectory control, robot arm]
+    search_terms: [robot control, actuator, servo, motor controller, robot arm]
+
+  manipulation:
+    label: Manipulation, Grasping and Motion Planning
+    signals: [manipulation, manipulator, grasp, gripper, pick and place, moveit, motion planning, inverse kinematics]
+    search_terms: [robot manipulation, grasping, gripper, MoveIt, motion planning]
+
+  navigation:
+    label: Navigation, Localization and Mapping
+    signals: [navigation, nav2, slam, localization, mapping, path planning, autonomous mobile robot, amr, agv]
+    search_terms: [Nav2, robot navigation, SLAM, mobile robot, path planning]
+
+  perception:
+    label: Robot Perception and Sensor Fusion
+    signals: [robot perception, sensor fusion, lidar, point cloud, depth camera, realsense, tactile, force torque, pose estimation]
+    search_terms: [robot perception, LiDAR, point cloud, RealSense, tactile sensor]
+
+  spatial-intelligence:
+    label: Spatial Intelligence and World Understanding
+    signals: [spatial intelligence, 3d reconstruction, scene graph, occupancy map, world model, gaussian splatting, nerf]
+    search_terms: [spatial intelligence, 3D reconstruction, scene graph, occupancy map, world model]
+
+  simulation-digital-twin:
+    label: Simulation, Digital Twins and Synthetic Worlds
+    signals: [isaac sim, isaac lab, gazebo, mujoco, webots, pybullet, sapien, maniskill, digital twin, synthetic data, omniverse]
+    search_terms: [Isaac Sim, Isaac Lab, Gazebo, MuJoCo, Webots, digital twin]
+
+  embodied-learning:
+    label: VLA, Robot Learning and Sim-to-Real
+    signals: [vision language action, vla, lerobot, openvla, imitation learning, reinforcement learning, robot policy, sim2real, domain randomization]
+    search_terms: [vision language action, VLA robot, LeRobot, imitation learning robot, sim2real]
+
+  data-flywheel:
+    label: Robot Data Collection and Evaluation
+    signals: [rosbag, robot data, teleoperation, demonstration data, trajectory dataset, policy evaluation, replay, annotation]
+    search_terms: [rosbag, robot teleoperation, robot data collection, policy evaluation]
+
+  safety-validation:
+    label: Physical Safety, Validation and Guardrails
+    signals: [robot safety, collision checking, safety controller, torque limit, workspace limit, digital twin validation, emergency stop, estop]
+    search_terms: [robot safety, collision checking, safety controller, emergency stop]
+
+  diagnostics-calibration:
+    label: Diagnostics, Calibration and Observability
+    signals: [robot diagnostics, calibration, hand eye calibration, camera calibration, fault diagnosis, robot logs, health monitoring]
+    search_terms: [robot diagnostics, robot calibration, hand eye calibration, fault diagnosis]
+
+  edge-deployment:
+    label: Edge Robotics Deployment
+    signals: [jetson, edge ai, robot deployment, on-device inference, tensorrt, robot container]
+    search_terms: [Jetson robot, edge AI robot, robot deployment, on-device inference]
+
+  aerial-autonomy:
+    label: Drones and Aerial Autonomy
+    signals: [drone, uav, px4, ardupilot, mavlink, crazyflie, aerial robot]
+    search_terms: [drone, UAV, PX4, ArduPilot, MAVLink]
+
+  autonomous-vehicles:
+    label: Autonomous Vehicles and Mobile Machines
+    signals: [autonomous vehicle, carla, autoware, apollo, vehicle control, can bus, mobile machine]
+    search_terms: [autonomous vehicle, CARLA, Autoware, vehicle control]
+
+  industrial-automation:
+    label: Industrial Robotics and Automation
+    signals: [industrial robot, cobot, plc, opc ua, modbus, ethercat, profinet, factory automation, machine tending]
+    search_terms: [industrial robot, cobot, PLC, OPC UA, Modbus, EtherCAT]
+
+  robot-platforms:
+    label: Robot Platform Integrations
+    signals: [unitree, boston dynamics, spot robot, reachy, turtlebot, franka, kinova, universal robots, xarm, kuka, fanuc, abb robot, yaskawa]
+    search_terms: [Unitree, Boston Dynamics Spot, Reachy, TurtleBot, Franka, Universal Robots]
+
+  fabrication:
+    label: Agentic Fabrication and Physical Making
+    signals: [3d printer, additive manufacturing, bambu, prusa, klipper, octoprint, cnc, laser cutter]
+    search_terms: [3D printer, Bambu Lab, Klipper, CNC, laser cutter]
+
+  human-robot-interaction:
+    label: Human-Robot Interaction and Multimodal Operation
+    signals: [human robot interaction, hri, voice control robot, gesture control, shared autonomy, assistive robot]
+    search_terms: [human robot interaction, shared autonomy, assistive robot]
+
+global_exclusions:
+  - spreadsheet
+  - google sheets
+  - cryptocurrency
+  - trading
+  - marketing
+  - social media
+  - xcode
+  - illustrator
+  - photoshop
+  - ecommerce
+  - database administration
+  - generic web automation
+  - documentation search
+  - video generation
+  - cinematic video
+  - camera movement prompt
+  - storyboard
+  - seedance
+  - google veo
+  - ltx video
+  - drone ci
+  - skill registry data
+  - skill library
+  - skills collection
+
+physical_anchors:
+  - robot
+  - robotics
+  - ros2
+  - rosbridge
+  - robot operating system
+  - actuator
+  - servo
+  - gripper
+  - lidar
+  - realsense
+  - tactile sensor
+  - isaac sim
+  - isaac lab
+  - gazebo
+  - mujoco
+  - webots
+  - digital twin
+  - vision language action
+  - lerobot
+  - jetson
+  - drone
+  - uav
+  - px4
+  - ardupilot
+  - mavlink
+  - autonomous vehicle
+  - plc
+  - opc ua
+  - modbus
+  - ethercat
+  - industrial automation
+  - unitree
+  - boston dynamics
+  - reachy
+  - turtlebot
+  - franka
+  - kinova
+  - universal robots
+  - 3d printer
+  - bambu
+  - klipper
+  - cnc
+
+non_operational_skill_signals:
+  - embodied ai news
+  - robotics news
+  - literature review
+  - research survey
+  - news reporter
+  - daily news
+  - paper review
+  - scientific slides
+  - paper scout
+  - daily papers
+  - subject expert
+  - idea discovery
+  - embodied ai researcher
+  - research assistant
+  - market research
+  - business plan
+  - skill distillation
+  - paper writing
+
+security_sensitive_signals:
+  - protocol fuzzing
+  - rf hijacking
+  - gps spoofing
+  - gps jamming
+  - autopilot attacks
+  - hardware reversing
+
+trusted_skill_publishers:
+  - isaac-sim
+  - nvidia
+  - nvidia-omniverse
+  - nvlabs
+  - orchestra-research
+  - seeed-projects
+  - rerun-io
+  - dartsim
+  - kornia
+  - lpigeon
+
+operational_skill_signals:
+  - control a robot
+  - robot control
+  - operate a robot
+  - deploy
+  - simulate
+  - simulation workflow
+  - train a policy
+  - fine-tune
+  - calibrate
+  - calibration workflow
+  - debug ros
+  - troubleshoot
+  - convert urdf
+  - convert mjcf
+  - collect robot data
+  - validate robot
+  - configure ros
+  - ros2 bridge
+  - send navigation goal
+  - operate nav2
+  - motion planning
+  - flash firmware
+  - monitor robot
+  - profile isaac sim
+  - build a gazebo world

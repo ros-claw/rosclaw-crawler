@@ -4,7 +4,9 @@ ROSClaw LLM Annotator - Multi-Threaded High Performance Version
 使用线程池并发调用阿里云API，大幅提升标注速度
 """
 
-API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
+import os
+
+API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 DB_PATH = "rosclaw_hub.db"

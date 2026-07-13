@@ -11,7 +11,7 @@ from datetime import datetime
 import time
 import os
 
-API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
+API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.5-plus"
 

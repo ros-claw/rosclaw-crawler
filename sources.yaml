@@ -1,0 +1,91 @@
+# Machine-readable discovery and catalog sources.
+# Every catalog and broad discovery source is evaluated per individual item.
+
+skill_catalogs:
+  nvidia-skills:
+    type: agent_skills_directory
+    repository: https://github.com/NVIDIA/skills
+    branch: main
+    local_path: nvidia_skills/skills
+    skills_path: skills
+    manifest: skills.sh.json
+    sparse_paths: [skills]
+    include_groups:
+      - Physical AI
+      - Robotics
+    author: NVIDIA
+    trust: official-verified
+    decision: review
+    confidence: 98
+    refresh_hours: 24
+
+  isaac-sim-skills:
+    type: agent_skills_directory
+    repository: https://github.com/isaac-sim/IsaacSim
+    branch: main
+    local_path: data/source_cache/isaac-sim-skills
+    skills_path: skills
+    sparse_paths: [skills]
+    author: isaac-sim
+    trust: official-verified
+    decision: review
+    confidence: 98
+    refresh_hours: 24
+
+mcp_registries:
+  official-mcp-registry:
+    type: mcp_registry
+    endpoint: https://registry.modelcontextprotocol.io/v0.1/servers
+    source_url: https://registry.modelcontextprotocol.io
+    refresh_hours: 24
+    max_pages: 10
+    keywords:
+      - robot
+      - robotics
+      - ros
+      - ros2
+      - embodied ai
+      - physical ai
+      - autonomous vehicle
+      - drone
+      - uav
+      - manipulator
+      - industrial automation
+      - plc
+      - mqtt
+      - sensor
+      - actuator
+      - 3d print
+      - cnc
+      - isaac sim
+      - gazebo
+      - mujoco
+      - simulation
+
+github_discovery:
+  max_results_per_query: 15
+  taxonomy: physical_ai_taxonomy.yaml
+  taxonomy_mcp_terms_per_run: 12
+  taxonomy_skill_terms_per_run: 6
+  rotation_state_file: data/github_taxonomy_rotation.json
+  # These queries are evaluated by the existing LLM classifier. Sorting by recently
+  # updated, not just stars, is important for finding new physical-AI projects.
+  mcp:
+    - '"model context protocol" robotics'
+    - '"model context protocol" ROS2'
+    - '"mcp server" "Isaac Sim"'
+    - '"mcp server" robot control'
+  skill:
+    - 'filename:SKILL.md robotics'
+    - 'filename:SKILL.md "physical AI"'
+  seed_repositories:
+    mcp:
+      - robotmcp/ros-mcp-server
+      - wise-vision/mcp_server_ros_2
+      - OriNachum/reachy-mini-mcp
+      - ion-g-ion/MAVLinkMCP
+      - kvgork/gazebo-mcp
+      - DMontgomery40/bambu-printer-mcp
+    skill:
+      - repository: lpigeon/ros-skill
+        path: SKILL.md

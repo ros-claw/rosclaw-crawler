@@ -17,7 +17,7 @@ BASE_URL = 'https://www.rosclaw.io'
 MCP_ENDPOINT = f'{BASE_URL}/api/mcp-packages'
 SKILL_ENDPOINT = f'{BASE_URL}/api/skills'
 
-DEEPSEEK_API_KEY = 'os.getenv("DEEPSEEK_API_KEY", "")'
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 DEEPSEEK_BASE_URL = 'https://api.deepseek.com'
 DEEPSEEK_MODEL = 'deepseek-v4-pro'
 

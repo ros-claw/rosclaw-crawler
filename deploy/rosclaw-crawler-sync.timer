@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily ROSClaw physical AI source synchronization
+
+[Timer]
+OnBootSec=10min
+OnCalendar=*-*-* 03:17:00 Asia/Shanghai
+Persistent=true
+RandomizedDelaySec=20min
+Unit=rosclaw-crawler-sync.service
+
+[Install]
+WantedBy=timers.target

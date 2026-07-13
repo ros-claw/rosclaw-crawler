@@ -1,0 +1,17 @@
+[Unit]
+Description=ROSClaw physical AI MCP and Skill source synchronization
+Documentation=https://github.com/ros-claw/rosclaw-crawler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/ubuntu/rosclaw/rosclaw_crawler
+EnvironmentFile=/home/ubuntu/.config/rosclaw-crawler/crawler.env
+ExecStart=/home/ubuntu/rosclaw/rosclaw_crawler/run_periodic_sync.sh
+Nice=10
+Restart=on-failure
+RestartSec=5min
+
+[Install]
+WantedBy=default.target

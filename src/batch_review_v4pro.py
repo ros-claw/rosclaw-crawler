@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # DeepSeek API配置
 API_BASE = "https://api.deepseek.com"
-API_KEY = "os.getenv("DEEPSEEK_API_KEY", "")"
+API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 MODEL = "deepseek-v4-pro"
 CONCURRENCY = 3  # v4-pro较慢，降低并发
 

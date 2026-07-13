@@ -7,6 +7,10 @@ secrets/
 
 # Database
 data/*.db
+data/reports/
+data/source_cache/
+data/*.json
+data/*.lock
 *.db-journal
 *.db-wal
 *.db-shm
@@ -57,3 +61,8 @@ temp/
 archive/
 old/
 backup/
+
+# Local source checkouts and runtime state
+/nvidia_skills/
+/rosclaw-crawler/
+/crawler_state.json

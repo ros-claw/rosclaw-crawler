@@ -17,7 +17,7 @@ github:
 
 # Rosclaw Site API
 rosclaw:
-  api_key: "${ROSCALW_API_KEY}"
+  api_key: "${ROSCLAW_API_KEY}"
   base_url: "https://www.rosclaw.io"
   
 # Crawler Settings

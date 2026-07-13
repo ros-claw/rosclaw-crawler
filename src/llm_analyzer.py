@@ -13,7 +13,7 @@ import json
 
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rosclaw_hub.db")
 LLM_API_BASE = "https://api.kimi.com/coding/"
-LLM_API_KEY = "sk-kimi-vrz2fy5ydvh8ffJ9gdppuELATikXXvWT5tslriqiYFRo0YxCWzwrQLutPfugt3Um"
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
 LLM_MODEL = "kimi"
 
 def analyze_repo_with_llm(repo: RosclawHubResource) -> dict:
@@ -162,8 +162,7 @@ def process_batch(batch_size: int = 5) -> dict:
 
 def run_llm_analysis_chunk(session, batch_size: int = 3) -> tuple:
     """Analyze a batch of repos using the provided session. Returns (processed, success)."""
-    # TEMP: Skip LLM analysis until new API key is provided
-    if not LLM_API_KEY or LLM_API_KEY == "sk-kimi-vrz2fy5ydvh8ffJ9gdppuELATikXXvWT5tslriqiYFRo0YxCWzwrQLutPfugt3Um":
+    if not LLM_API_KEY:
         return 0, 0
 
     from sqlalchemy import and_
