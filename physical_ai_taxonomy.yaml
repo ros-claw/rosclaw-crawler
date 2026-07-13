@@ -94,7 +94,6 @@ categories:
     search_terms: [human robot interaction, shared autonomy, assistive robot]
 
 global_exclusions:
-  - spreadsheet
   - google sheets
   - cryptocurrency
   - trading
@@ -120,6 +119,8 @@ global_exclusions:
   - skills collection
 
 physical_anchors:
+  - physical ai
+  - embodied ai
   - robot
   - robotics
   - ros2
@@ -140,6 +141,8 @@ physical_anchors:
   - vision language action
   - lerobot
   - jetson
+  - holoscan sensor bridge
+  - omniverse
   - drone
   - uav
   - px4

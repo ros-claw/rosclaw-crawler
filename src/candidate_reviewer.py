@@ -25,7 +25,7 @@ from github_discovery import GitHubClient
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TAXONOMY = PROJECT_ROOT / "physical_ai_taxonomy.yaml"
 REVIEWER = "physical-ai-ai-v2"
-PROMPT_VERSION = "physical-ai-review-2026-07-13-v2"
+PROMPT_VERSION = "physical-ai-review-2026-07-13-v3"
 DEFAULT_MODEL = "deepseek-v4-pro"
 DEFAULT_LLM_BASE_URL = "https://api.deepseek.com"
 MCP_MARKERS = (
@@ -73,6 +73,7 @@ class LLMReviewer:
             "repository": _github_repo_url(item, raw),
             "source": item.get("source"),
             "source_trust": raw.get("trust", "community"),
+            "catalog_groups": raw.get("groups", []),
             "topics": _json_array(item.get("topics")),
             "deterministic_review": baseline,
             "content": primary_content[:16_000],
@@ -156,6 +157,7 @@ class CodexReviewer:
             "repository": _github_repo_url(item, raw),
             "source": item.get("source"),
             "source_trust": raw.get("trust", "community"),
+            "catalog_groups": raw.get("groups", []),
             "topics": _json_array(item.get("topics")),
             "deterministic_review": baseline,
             "content": (
@@ -336,6 +338,8 @@ def _github_repo_url(item: dict, raw: dict) -> str:
         item.get("url", ""),
     ]
     for candidate in candidates:
+        if not isinstance(candidate, str) or not candidate:
+            continue
         parsed = urlparse(candidate)
         parts = parsed.path.strip("/").split("/")
         if parsed.netloc.lower() == "github.com" and len(parts) >= 2:
@@ -584,10 +588,10 @@ def _review_hash(item: dict, baseline: dict, model: str) -> str:
 def _finalize_llm_review(baseline: dict, verdict: dict) -> dict:
     official = baseline["evidence"].get("source_trust") == "official-verified"
     thresholds = {
-        "relevance": 80 if official else 75,
+        "relevance": 75,
         "authenticity": 45 if official else 70,
         "usefulness": 65,
-        "risk": 50 if official else 35,
+        "risk": 60 if official else 35,
         "confidence": 0.75 if official else 0.80,
     }
     keep = (
@@ -769,9 +773,17 @@ def review_candidates(
                 continue
 
             hard_reject_reason = None
+            evidence = baseline["evidence"]
+            official = evidence.get("source_trust") == "official-verified"
             if duplicate:
                 hard_reject_reason = "duplicate"
-            elif baseline["recommendation"] == "remove":
+            elif not evidence.get("valid_skill_name", True):
+                hard_reject_reason = "invalid Agent Skill name or metadata"
+            elif evidence.get("exclusions"):
+                hard_reject_reason = "matches a global exclusion"
+            elif evidence.get("security_sensitive_signals"):
+                hard_reject_reason = "contains security-sensitive operational capabilities"
+            elif baseline["recommendation"] == "remove" and not official:
                 hard_reject_reason = "failed deterministic format, relevance, or risk gate"
             if hard_reject_reason:
                 review = _deterministic_result(baseline, hard_reject_reason)

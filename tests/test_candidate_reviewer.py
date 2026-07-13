@@ -182,7 +182,7 @@ Use scripts/navigate.py to send navigation goals and monitor the robot.
             "authenticity_score": 55,
             "operational_usefulness_score": 85,
             "maintenance_score": 60,
-            "risk_score": 30,
+            "risk_score": 58,
             "confidence": 0.9,
             "categories": ["simulation-digital-twin"],
             "summary": "Official simulation workflow.",
@@ -192,6 +192,37 @@ Use scripts/navigate.py to send navigation goals and monitor the robot.
         review = _finalize_llm_review(baseline, verdict)
         self.assertEqual(review["recommendation"], "keep")
         self.assertTrue(review["evidence"]["official_verified_policy"])
+
+    def test_official_catalog_without_keyword_anchor_reaches_ai(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            content = """---
+name: hsb-test
+description: Run HSB validation workflows.
+---
+# HSB test
+## Workflow
+Run scripts/test.py and inspect all validation results.
+""" + ("Follow the documented validation sequence. " * 30)
+            insert_item("skill", {
+                "source": "catalog:official",
+                "source_key": "catalog:official:hsb-test",
+                "content_hash": "official-v1",
+                "name": "hsb-test",
+                "full_name": "Official/hsb-test",
+                "description": "Run HSB validation workflows.",
+                "decision": "review",
+                "raw_data": {
+                    "trust": "official-verified",
+                    "groups": ["Robotics"],
+                    "metadata": {"name": "hsb-test", "description": "Validate HSB"},
+                    "skill_content": content,
+                },
+            }, db)
+            reviewer = FakeLLMReviewer()
+            report = review_candidates(db, self.taxonomy, llm_reviewer=reviewer)
+            self.assertEqual(reviewer.calls, 1)
+            self.assertEqual(report["summary"]["keep"], 1)
 
 
 if __name__ == "__main__":
