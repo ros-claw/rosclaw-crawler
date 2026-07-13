@@ -143,8 +143,13 @@ class CodexReviewer:
     model = "codex-default"
     disable_on_error = False
 
-    def __init__(self, executable: str = "codex", timeout: int = 240):
-        self.executable = executable
+    def __init__(self, executable: str = None, timeout: int = 240):
+        configured = os.getenv("ROSCLAW_CODEX_EXECUTABLE")
+        user_install = Path.home() / ".local" / "bin" / "codex"
+        self.executable = (
+            executable or configured
+            or (str(user_install) if user_install.exists() else "codex")
+        )
         self.timeout = timeout
 
     def review(self, item_type: str, item: dict, baseline: dict, taxonomy: dict) -> dict:
@@ -954,6 +959,10 @@ def main(argv=None) -> int:
         help="Review only DB source values beginning with this prefix",
     )
     parser.add_argument("--limit", type=int, help="Maximum candidates to review")
+    parser.add_argument(
+        "--fail-on-retry", action="store_true",
+        help="Exit non-zero when any semantic review must be retried",
+    )
     parser.add_argument("--report", type=Path, default=PROJECT_ROOT / "data" / "reports" / "candidate_review.json")
     args = parser.parse_args(argv)
     if args.enrich_github:
@@ -983,7 +992,7 @@ def main(argv=None) -> int:
     if args.apply:
         output["applied"] = apply_review_decisions(args.db)
     print(json.dumps(output, indent=2))
-    return 0
+    return 1 if args.fail_on_retry and report["summary"]["retry"] else 0
 
 
 if __name__ == "__main__":
