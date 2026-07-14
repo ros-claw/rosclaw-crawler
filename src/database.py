@@ -26,6 +26,12 @@ CATALOG_COLUMNS = {
     "lifecycle_status": "TEXT DEFAULT 'active'",
     "missing_since": "TEXT",
     "last_synced": "TEXT",
+    "content_status": "TEXT DEFAULT 'unknown'",
+    "content_issue": "TEXT",
+    "content_last_checked": "TEXT",
+    "content_next_check": "TEXT",
+    "content_check_count": "INTEGER DEFAULT 0",
+    "content_recheck_eligible": "INTEGER DEFAULT 0",
 }
 
 REVIEW_COLUMNS = {
@@ -177,6 +183,10 @@ def init_db(db_path: Optional[PathLike] = None, quiet: bool = False) -> None:
             f"CREATE INDEX IF NOT EXISTS idx_{table}_lifecycle "
             f"ON {table}(lifecycle_status, last_synced)"
         )
+        conn.execute(
+            f"CREATE INDEX IF NOT EXISTS idx_{table}_content_recheck "
+            f"ON {table}(content_recheck_eligible, content_status, content_next_check)"
+        )
     conn.commit()
     conn.close()
     if not quiet:
@@ -232,6 +242,12 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             current_site_status = "pending_review_update"
         elif changed:
             current_site_status = "pending"
+        content_status = "unknown" if changed else existing["content_status"]
+        content_issue = None if changed else existing["content_issue"]
+        content_next_check = None if changed else existing["content_next_check"]
+        content_recheck_eligible = (
+            0 if changed else existing["content_recheck_eligible"]
+        )
 
         conn.execute(f"""
             UPDATE {table} SET
@@ -241,7 +257,9 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
                 raw_data = ?, last_checked = ?, source_key = ?, source_repo = ?,
                 source_path = ?, source_revision = ?, content_hash = ?, version = ?,
                 license = ?, upstream_updated_at = ?, lifecycle_status = 'active',
-                missing_since = NULL, last_synced = ?
+                missing_since = NULL, last_synced = ?, content_status = ?,
+                content_issue = ?, content_next_check = ?,
+                content_recheck_eligible = ?
             WHERE id = ?
         """, (
             data.get("source", existing["source"]),
@@ -267,7 +285,8 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             data.get("version", existing["version"]),
             data.get("license", existing["license"]),
             data.get("upstream_updated_at", existing["upstream_updated_at"]),
-            now,
+            now, content_status, content_issue, content_next_check,
+            content_recheck_eligible,
             existing["id"],
         ))
         result = "updated" if changed else "unchanged"

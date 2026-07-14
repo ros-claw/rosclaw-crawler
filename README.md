@@ -137,6 +137,21 @@ directory content hashes, site state and the review model/prompt/input hash.
 Unchanged candidates reuse the stored verdict and do not consume another model
 call; changed candidates return to `decision=review` before a Hub update.
 
+GitHub candidates with missing README or unavailable source content are recorded
+separately in SQLite (`content_status`, `content_issue`, check timestamps and
+attempt count). Domain-relevant incomplete entries are checked again every seven
+days. A check that is still incomplete only advances `content_next_check`; a new
+README or changed `SKILL.md`/repository revision returns the entry to AI review:
+
+```bash
+python src/recheck_incomplete.py
+# One-time migration of historical review evidence:
+python src/recheck_incomplete.py --bootstrap
+```
+
+Transient GitHub failures retry the next day. Incomplete and rejected entries
+are never uploaded while waiting for a future upstream update.
+
 For a large prefiltered backlog, independent workers can review disjoint shards.
 Do not pass `--apply` to shard workers; apply once after every shard finishes:
 

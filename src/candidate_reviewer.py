@@ -11,7 +11,7 @@ import re
 import subprocess
 import tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -363,6 +363,10 @@ def enrich_readmes(db_path: Path, token: str, workers: int = 8) -> dict:
         ).fetchall():
             item = dict(row)
             raw = _raw(item)
+            # Official multi-skill catalogs are already verified from their exact
+            # skill directories; a repository-root README is not required evidence.
+            if table == "skills" and str(item.get("source", "")).startswith("catalog:"):
+                continue
             if raw.get("review_readme") and raw.get("review_repo"):
                 continue
             repo_url = _github_repo_url(item, raw)
@@ -375,6 +379,18 @@ def enrich_readmes(db_path: Path, token: str, workers: int = 8) -> dict:
         table, item_id, owner, repo, raw = candidate
         try:
             repo_data = client.get(f"/repos/{owner}/{repo}")
+        except Exception as exc:
+            return table, item_id, raw, None, f"repository_unavailable: {exc}"
+        raw["review_repo"] = {
+            "full_name": repo_data.get("full_name"),
+            "stargazers_count": repo_data.get("stargazers_count", 0),
+            "forks_count": repo_data.get("forks_count", 0),
+            "archived": repo_data.get("archived", False),
+            "pushed_at": repo_data.get("pushed_at"),
+            "license": repo_data.get("license"),
+            "topics": repo_data.get("topics", []),
+        }
+        try:
             if not raw.get("review_readme"):
                 data = client.get(f"/repos/{owner}/{repo}/readme")
                 content = base64.b64decode(data.get("content", "")).decode(
@@ -382,31 +398,43 @@ def enrich_readmes(db_path: Path, token: str, workers: int = 8) -> dict:
                 )
                 raw["review_readme"] = content[:100_000]
                 raw["review_readme_sha"] = data.get("sha", "")
-            raw["review_repo"] = {
-                "full_name": repo_data.get("full_name"),
-                "stargazers_count": repo_data.get("stargazers_count", 0),
-                "forks_count": repo_data.get("forks_count", 0),
-                "archived": repo_data.get("archived", False),
-                "pushed_at": repo_data.get("pushed_at"),
-                "license": repo_data.get("license"),
-                "topics": repo_data.get("topics", []),
-            }
             return table, item_id, raw, repo_data.get("stargazers_count", 0), None
         except Exception as exc:
-            return table, item_id, raw, None, str(exc)
+            code = getattr(exc, "code", None)
+            issue = "missing_repository_readme" if code == 404 else f"readme_fetch_failed: {exc}"
+            return table, item_id, raw, repo_data.get("stargazers_count", 0), issue
 
-    stats = {"planned": len(candidates), "enriched": 0, "failed": 0}
+    stats = {"planned": len(candidates), "enriched": 0, "failed": 0, "issues": {}}
     conn = connect(db_path)
     with ThreadPoolExecutor(max_workers=workers) as executor:
         futures = [executor.submit(fetch, candidate) for candidate in candidates]
         for future in as_completed(futures):
             table, item_id, raw, stars, error = future.result()
+            checked_at = datetime.now(timezone.utc)
             if error:
                 stats["failed"] += 1
+                issue_key = error.split(":", 1)[0]
+                stats["issues"][issue_key] = stats["issues"].get(issue_key, 0) + 1
+                conn.execute(
+                    f"UPDATE {table} SET raw_data=?, stars=COALESCE(?, stars), "
+                    "content_status='incomplete', content_issue=?, "
+                    "content_last_checked=?, content_next_check=?, "
+                    "content_check_count=COALESCE(content_check_count, 0) + 1 WHERE id=?",
+                    (
+                        json.dumps(raw, ensure_ascii=False, default=str), stars,
+                        error[:500], checked_at.isoformat(),
+                        (checked_at + timedelta(days=7)).isoformat(), item_id,
+                    ),
+                )
                 continue
             conn.execute(
-                f"UPDATE {table} SET raw_data=?, stars=? WHERE id=?",
-                (json.dumps(raw, ensure_ascii=False, default=str), stars or 0, item_id),
+                f"UPDATE {table} SET raw_data=?, stars=?, content_status='complete', "
+                "content_issue=NULL, content_last_checked=?, content_next_check=NULL "
+                "WHERE id=?",
+                (
+                    json.dumps(raw, ensure_ascii=False, default=str), stars or 0,
+                    checked_at.isoformat(), item_id,
+                ),
             )
             stats["enriched"] += 1
     conn.commit()
@@ -884,14 +912,15 @@ def review_candidates(
 def apply_review_decisions(db_path: Path) -> dict:
     """Apply completed AI verdicts; unresolved API failures remain queued."""
     conn = connect(db_path)
-    stats = {"keep": 0, "remove": 0, "retry": 0}
+    stats = {"keep": 0, "remove": 0, "retry": 0, "incomplete_recheck": 0}
     rows = conn.execute("""
         SELECT r.*, COALESCE(s.full_name, m.full_name) AS full_name,
                COALESCE(s.stars, m.stars, 0) AS stars,
                COALESCE(s.raw_data, m.raw_data) AS item_raw_data,
                COALESCE(s.site_status, m.site_status) AS current_site_status,
                COALESCE(s.site_id, m.site_id) AS site_id,
-               COALESCE(s.decision, m.decision) AS current_decision
+               COALESCE(s.decision, m.decision) AS current_decision,
+               COALESCE(s.content_status, m.content_status) AS content_status
         FROM candidate_reviews r
         LEFT JOIN skills s ON r.item_type='skill' AND r.item_id=s.id
         LEFT JOIN mcps m ON r.item_type='mcp' AND r.item_id=m.id
@@ -904,6 +933,15 @@ def apply_review_decisions(db_path: Path) -> dict:
         full_name = row["full_name"]
         item_raw = _raw({"raw_data": row["item_raw_data"]})
         review_categories = json.loads(row["categories"] or "[]")
+        evidence = json.loads(row["evidence"] or "{}")
+        deterministic = evidence.get("deterministic", evidence)
+        incomplete_recheck = bool(
+            row["content_status"] == "incomplete"
+            and deterministic.get("physical_anchors")
+            and not deterministic.get("exclusions")
+            and not deterministic.get("duplicate_of_published_item")
+            and row["domain_score"] >= 18
+        )
         categories_changed = item_raw.get("review_categories") != review_categories
         item_raw["review_categories"] = review_categories
         conn.execute(
@@ -912,10 +950,16 @@ def apply_review_decisions(db_path: Path) -> dict:
         )
         if row["recommendation"] == "remove":
             decision = "remove"
-            reason = (
-                f"Automated AI review remove ({row['score']:.1f}): failed the "
-                "physical-AI, authenticity, usefulness, quality, or risk policy."
-            )
+            if incomplete_recheck:
+                reason = (
+                    f"Not currently publishable ({row['score']:.1f}); repository "
+                    "content is incomplete and scheduled for a 7-day recheck."
+                )
+            else:
+                reason = (
+                    f"Automated AI review remove ({row['score']:.1f}): failed the "
+                    "physical-AI, authenticity, usefulness, quality, or risk policy."
+                )
         elif row["recommendation"] == "keep":
             decision = "keep"
             reason = f"Automated physical-AI AI review approved ({row['score']:.1f})."
@@ -931,9 +975,17 @@ def apply_review_decisions(db_path: Path) -> dict:
         else:
             site_status = "pending" if decision == "keep" else "removed"
         conn.execute(
-            f"UPDATE {table} SET decision=?, reason=?, confidence=?, site_status=? WHERE id=?",
-            (decision, reason, row["score"], site_status, row["item_id"]),
+            f"UPDATE {table} SET decision=?, reason=?, confidence=?, site_status=?, "
+            "content_recheck_eligible=?, content_next_check=CASE "
+            "WHEN content_status='incomplete' AND ?=0 THEN NULL "
+            "ELSE content_next_check END WHERE id=?",
+            (
+                decision, reason, row["score"], site_status,
+                int(incomplete_recheck), int(incomplete_recheck), row["item_id"],
+            ),
         )
+        if incomplete_recheck:
+            stats["incomplete_recheck"] += 1
         stats[decision] += 1
     conn.commit()
     conn.close()
