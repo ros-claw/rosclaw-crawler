@@ -89,3 +89,5 @@ github_discovery:
     skill:
       - repository: lpigeon/ros-skill
         path: SKILL.md
+      - repository: doer0312/ros2-workspace-skill
+        path: skills/ros2-workspace-analysis/SKILL.md

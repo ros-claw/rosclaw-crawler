@@ -592,9 +592,10 @@ def _review_hash(item: dict, baseline: dict, model: str) -> str:
 
 def _finalize_llm_review(baseline: dict, verdict: dict) -> dict:
     official = baseline["evidence"].get("source_trust") == "official-verified"
+    format_verified = baseline.get("authenticity_score", 0) >= 30
     thresholds = {
         "relevance": 75,
-        "authenticity": 45 if official else 70,
+        "authenticity": 45 if official else 60 if format_verified else 70,
         "usefulness": 65,
         "risk": 60 if official else 35,
         "confidence": 0.75 if official else 0.80,
@@ -631,6 +632,7 @@ def _finalize_llm_review(baseline: dict, verdict: dict) -> dict:
             "thresholds_passed": keep,
             "thresholds": thresholds,
             "official_verified_policy": official,
+            "deterministic_format_verified": format_verified,
         },
         "model_response": verdict,
     }
@@ -651,6 +653,8 @@ def review_candidates(
     llm_reviewer: LLMReviewer = None,
     source_prefix: str = None,
     limit: int = None,
+    shard_count: int = 1,
+    shard_index: int = 0,
 ) -> dict:
     init_db(db_path, quiet=True)
     conn = connect(db_path)
@@ -675,6 +679,7 @@ def review_candidates(
         )
     }
     seen_candidate_hashes = set()
+    seen_candidate_names = set()
     def skill_fingerprint(raw_data):
         content = _raw(raw_data).get("skill_content", "")
         if not content:
@@ -698,6 +703,9 @@ def review_candidates(
         if source_prefix:
             query += " AND source LIKE ?"
             params.append(f"{source_prefix}%")
+        if shard_count > 1:
+            query += " AND (id % ?) = ?"
+            params.extend((shard_count, shard_index))
         query += " ORDER BY stars DESC, id"
         if remaining is not None:
             query += " LIMIT ?"
@@ -708,8 +716,10 @@ def review_candidates(
         for row in rows:
             item = dict(row)
             baseline = review_item(item_type, item, taxonomy)
+            candidate_name = (item.get("full_name") or "").lower()
             duplicate = (
-                (item.get("full_name") or "").lower() in kept_names
+                candidate_name in kept_names
+                or bool(candidate_name and candidate_name in seen_candidate_names)
                 or (item.get("url") or "").lower().rstrip("/") in kept_urls
                 or bool(item.get("content_hash") and item["content_hash"] in kept_hashes)
                 or bool(
@@ -730,6 +740,8 @@ def review_candidates(
                 baseline["evidence"]["duplicate_of_published_item"] = True
             if item.get("content_hash"):
                 seen_candidate_hashes.add(item["content_hash"])
+            if candidate_name:
+                seen_candidate_names.add(candidate_name)
             if fingerprint:
                 seen_skill_fingerprints.add(fingerprint)
 
@@ -960,11 +972,23 @@ def main(argv=None) -> int:
     )
     parser.add_argument("--limit", type=int, help="Maximum candidates to review")
     parser.add_argument(
+        "--shard-count", type=int, default=1,
+        help="Split review rows into stable id-modulo shards",
+    )
+    parser.add_argument(
+        "--shard-index", type=int, default=0,
+        help="Zero-based shard to process",
+    )
+    parser.add_argument(
         "--fail-on-retry", action="store_true",
         help="Exit non-zero when any semantic review must be retried",
     )
     parser.add_argument("--report", type=Path, default=PROJECT_ROOT / "data" / "reports" / "candidate_review.json")
     args = parser.parse_args(argv)
+    if args.shard_count < 1:
+        parser.error("--shard-count must be at least 1")
+    if not 0 <= args.shard_index < args.shard_count:
+        parser.error("--shard-index must be between 0 and shard-count - 1")
     if args.enrich_github:
         token = os.getenv("GITHUB_TOKEN", "")
         if not token:
@@ -986,7 +1010,7 @@ def main(argv=None) -> int:
         llm_reviewer = reviewers[0] if len(reviewers) == 1 else FallbackReviewer(reviewers)
     report = review_candidates(
         args.db, load_taxonomy(args.taxonomy), args.report, llm_reviewer,
-        args.source_prefix, args.limit,
+        args.source_prefix, args.limit, args.shard_count, args.shard_index,
     )
     output = {"summary": report["summary"], "report": str(args.report)}
     if args.apply:

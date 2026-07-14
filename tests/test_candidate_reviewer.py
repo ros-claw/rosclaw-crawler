@@ -175,6 +175,7 @@ Use scripts/navigate.py to send navigation goals and monitor the robot.
     def test_official_catalog_uses_provenance_aware_thresholds(self):
         baseline = {
             "evidence": {"source_trust": "official-verified"},
+            "authenticity_score": 35,
         }
         verdict = {
             "decision": "keep",
@@ -192,6 +193,28 @@ Use scripts/navigate.py to send navigation goals and monitor the robot.
         review = _finalize_llm_review(baseline, verdict)
         self.assertEqual(review["recommendation"], "keep")
         self.assertTrue(review["evidence"]["official_verified_policy"])
+
+    def test_verified_community_format_uses_sixty_authenticity_threshold(self):
+        baseline = {
+            "evidence": {"source_trust": "community"},
+            "authenticity_score": 40,
+        }
+        verdict = {
+            "decision": "keep",
+            "relevance_score": 92,
+            "authenticity_score": 63,
+            "operational_usefulness_score": 84,
+            "maintenance_score": 52,
+            "risk_score": 10,
+            "confidence": 0.93,
+            "categories": ["robot-middleware"],
+            "summary": "Verified ROS2 analysis skill.",
+            "reasons": ["Valid skill format and operational workflow."],
+            "risks": [],
+        }
+        review = _finalize_llm_review(baseline, verdict)
+        self.assertEqual(review["recommendation"], "keep")
+        self.assertEqual(review["evidence"]["thresholds"]["authenticity"], 60)
 
     def test_official_catalog_without_keyword_anchor_reaches_ai(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -223,6 +246,49 @@ Run scripts/test.py and inspect all validation results.
             report = review_candidates(db, self.taxonomy, llm_reviewer=reviewer)
             self.assertEqual(reviewer.calls, 1)
             self.assertEqual(report["summary"]["keep"], 1)
+
+    def test_review_shards_are_disjoint_and_complete(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            for index in range(4):
+                content = """---
+name: robot-navigation-%d
+description: Operate ROS2 Nav2 robot navigation.
+---
+# Navigation
+## Workflow
+Use scripts/navigate.py to send navigation goals.
+""" % index + ("Validate robot state safely. " * 30)
+                insert_item("skill", {
+                    "source": "github-discovery",
+                    "source_key": f"github:skill:example/navigation-{index}",
+                    "content_hash": f"content-{index}",
+                    "name": f"robot-navigation-{index}",
+                    "full_name": f"example/robot-navigation-{index}",
+                    "description": "Operate ROS2 Nav2 robot navigation.",
+                    "decision": "review",
+                    "raw_data": {
+                        "metadata": {
+                            "name": f"robot-navigation-{index}",
+                            "description": "Operate Nav2",
+                        },
+                        "skill_content": content,
+                    },
+                }, db)
+            first, second = FakeLLMReviewer(), FakeLLMReviewer()
+            report0 = review_candidates(
+                db, self.taxonomy, llm_reviewer=first,
+                shard_count=2, shard_index=0,
+            )
+            report1 = review_candidates(
+                db, self.taxonomy, llm_reviewer=second,
+                shard_count=2, shard_index=1,
+            )
+            ids0 = {row["item_id"] for row in report0["results"]}
+            ids1 = {row["item_id"] for row in report1["results"]}
+            self.assertFalse(ids0 & ids1)
+            self.assertEqual(len(ids0 | ids1), 4)
+            self.assertEqual(first.calls + second.calls, 4)
 
 
 if __name__ == "__main__":

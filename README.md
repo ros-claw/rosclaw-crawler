@@ -137,6 +137,14 @@ directory content hashes, site state and the review model/prompt/input hash.
 Unchanged candidates reuse the stored verdict and do not consume another model
 call; changed candidates return to `decision=review` before a Hub update.
 
+For a large prefiltered backlog, independent workers can review disjoint shards.
+Do not pass `--apply` to shard workers; apply once after every shard finishes:
+
+```bash
+python src/candidate_reviewer.py --llm --review-provider codex --shard-count 4 --shard-index 0
+python src/candidate_reviewer.py --apply --limit 0
+```
+
 ## Project Structure
 
 ```
