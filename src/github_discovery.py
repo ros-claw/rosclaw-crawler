@@ -86,7 +86,7 @@ def is_physical(text: str) -> bool:
 def taxonomy_queries(config: dict) -> tuple:
     taxonomy_path = PROJECT_ROOT / config.get("taxonomy", "physical_ai_taxonomy.yaml")
     if not taxonomy_path.is_file():
-        return [], [], None
+        return [], [], [], None
     taxonomy = yaml.safe_load(taxonomy_path.read_text(encoding="utf-8")) or {}
     terms = []
     for category in taxonomy.get("categories", {}).values():
@@ -119,6 +119,7 @@ def taxonomy_queries(config: dict) -> tuple:
     return (
         [f'"mcp server" "{term}"' for term in mcp_terms],
         [f'filename:SKILL.md "{term}"' for term in skill_terms],
+        [f'skills "{term}" in:name,description,readme' for term in skill_terms],
         next_state,
     )
 
@@ -185,12 +186,43 @@ def skill_record(client: GitHubClient, result: dict, query: str):
     }
 
 
+def skill_results_from_repository(
+    client: GitHubClient,
+    repo: dict,
+    max_skills: int = 25,
+) -> list:
+    """Enumerate SKILL.md blobs without waiting for GitHub Code Search indexing."""
+    full_name = repo["full_name"]
+    branch = repo.get("default_branch") or "main"
+    tree = client.get(f"/repos/{full_name}/git/trees/{branch}", {"recursive": 1})
+    results = []
+    for item in sorted(tree.get("tree", []), key=lambda value: value.get("path", "")):
+        path = item.get("path", "")
+        if item.get("type") != "blob" or Path(path).name.lower() != "skill.md":
+            continue
+        results.append({
+            "url": item["url"],
+            "path": path,
+            "sha": item.get("sha", ""),
+            "html_url": f"{repo['html_url']}/blob/{branch}/{path}",
+            "repository": repo,
+        })
+        if len(results) >= max_skills:
+            break
+    return results
+
+
 def discover(config: dict, client: GitHubClient) -> tuple:
     limit = config.get("max_results_per_query", 20)
     records = {}
-    taxonomy_mcp, taxonomy_skill, next_state = taxonomy_queries(config)
+    taxonomy_mcp, taxonomy_skill, taxonomy_skill_repos, next_state = (
+        taxonomy_queries(config)
+    )
     mcp_queries = list(dict.fromkeys([*config.get("mcp", []), *taxonomy_mcp]))
     skill_queries = list(dict.fromkeys([*config.get("skill", []), *taxonomy_skill]))
+    skill_repository_queries = list(dict.fromkeys([
+        *config.get("skill_repositories", []), *taxonomy_skill_repos,
+    ]))
     for query in mcp_queries:
         for repo in client.search("repositories", query, limit):
             searchable = " ".join([
@@ -205,6 +237,19 @@ def discover(config: dict, client: GitHubClient) -> tuple:
     skill_results = {}
     for query in skill_queries:
         for result in client.search("code", query, limit):
+            skill_results[result["url"]] = (result, query)
+    skill_repositories = {}
+    for query in skill_repository_queries:
+        for repo in client.search("repositories", query, limit):
+            searchable = " ".join([
+                repo.get("full_name", ""), repo.get("description") or "", query,
+            ])
+            if is_physical(searchable):
+                skill_repositories[repo["full_name"].lower()] = (repo, query)
+    repository_limit = config.get("max_skill_repositories_per_run", 12)
+    max_skills = config.get("max_skills_per_repository", 25)
+    for repo, query in list(skill_repositories.values())[:repository_limit]:
+        for result in skill_results_from_repository(client, repo, max_skills):
             skill_results[result["url"]] = (result, query)
     with ThreadPoolExecutor(max_workers=8) as executor:
         futures = {
@@ -221,13 +266,17 @@ def discover(config: dict, client: GitHubClient) -> tuple:
         record = mcp_record(repo, "targeted physical-AI seed")
         records[record["source_key"]] = ("mcp", record)
     for seed in config.get("seed_repositories", {}).get("skill", []):
-        full_name, path = seed["repository"], seed.get("path", "SKILL.md")
+        full_name, path = seed["repository"], seed.get("path")
         repo = client.get(f"/repos/{full_name}")
-        result = client.get(f"/repos/{full_name}/contents/{path}")
-        result["repository"] = repo
-        record = skill_record(client, result, "targeted physical-AI seed")
-        if record:
-            records[record["source_key"]] = ("skill", record)
+        if path:
+            seeded_results = [client.get(f"/repos/{full_name}/contents/{path}")]
+            seeded_results[0]["repository"] = repo
+        else:
+            seeded_results = skill_results_from_repository(client, repo, max_skills)
+        for result in seeded_results:
+            record = skill_record(client, result, "targeted physical-AI seed")
+            if record:
+                records[record["source_key"]] = ("skill", record)
     return list(records.values()), next_state
 
 

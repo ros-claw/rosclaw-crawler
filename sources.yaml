@@ -64,6 +64,8 @@ mcp_registries:
 
 github_discovery:
   max_results_per_query: 15
+  max_skill_repositories_per_run: 12
+  max_skills_per_repository: 25
   taxonomy: physical_ai_taxonomy.yaml
   taxonomy_mcp_terms_per_run: 12
   taxonomy_skill_terms_per_run: 6
@@ -78,6 +80,12 @@ github_discovery:
   skill:
     - 'filename:SKILL.md robotics'
     - 'filename:SKILL.md "physical AI"'
+  # Repository search is indexed sooner than Code Search. Matching repositories
+  # are enumerated through the Git Tree API, then every SKILL.md is reviewed.
+  skill_repositories:
+    - '"agent skills" robotics in:name,description,readme'
+    - '"agentic skills" robotics in:name,description,readme'
+    - 'skills "physical AI" in:name,description,readme'
   seed_repositories:
     mcp:
       - robotmcp/ros-mcp-server
@@ -91,3 +99,4 @@ github_discovery:
         path: SKILL.md
       - repository: doer0312/ros2-workspace-skill
         path: skills/ros2-workspace-analysis/SKILL.md
+      - repository: chrismatthieu/realsense-skills

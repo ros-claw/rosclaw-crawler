@@ -62,6 +62,9 @@ catalogs from broad discovery:
   presence proves publication, not ROSClaw relevance or operational safety.
 - GitHub repository and `SKILL.md` code searches are staged for review and need
   `GITHUB_TOKEN` because GitHub code search does not support anonymous clients.
+- New Skill repositories are also found through repository metadata search and
+  enumerated with the Git Tree API. This covers recently created Skill Packs
+  before GitHub Code Search has indexed their `SKILL.md` files.
 
 Run all sources against the local NVIDIA checkout:
 
