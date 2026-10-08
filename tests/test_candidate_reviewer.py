@@ -92,6 +92,8 @@ class CandidateReviewerTest(unittest.TestCase):
                          "primary purpose is offensive or unsafe control")
         defensive = self.robot_skill(description="Detect GPS jamming to validate drone localization safety.")
         self.assertIsNone(deterministic_reject_reason(review_item("skill", defensive, self.taxonomy)))
+        simulation = self.robot_skill(description="Simulator-only ROS2 DDS network attack validation in Gazebo.")
+        self.assertIsNone(deterministic_reject_reason(review_item("skill", simulation, self.taxonomy)))
 
     def test_rejected_candidate_does_not_reserve_duplicate_identity(self):
         class RejectFirst(FakeLLMReviewer):
@@ -138,6 +140,26 @@ class CandidateReviewerTest(unittest.TestCase):
             report = review_candidates(db, self.taxonomy, llm_reviewer=FailFirst())
             self.assertEqual(report["summary"]["retry"], 1)
             self.assertEqual(report["summary"]["keep"], 1)
+
+    def test_changed_content_cannot_apply_old_approval_when_model_fails(self):
+        class Unavailable(FakeLLMReviewer):
+            def review(self, *args):
+                raise LLMReviewError("model unavailable")
+
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            item = self.robot_skill(content_hash="first")
+            insert_item("skill", item, db)
+            review_candidates(db, self.taxonomy, llm_reviewer=FakeLLMReviewer())
+            self.assertEqual(apply_review_decisions(db)["keep"], 1)
+            raw = json.loads(item["raw_data"])
+            raw["skill_content"] += "\nUpdated robot-control workflow."
+            insert_item("skill", {**item, "content_hash": "second", "raw_data": raw}, db)
+            report = review_candidates(db, self.taxonomy, llm_reviewer=Unavailable())
+            self.assertEqual(report["summary"]["retry"], 1)
+            self.assertEqual(apply_review_decisions(db)["retry"], 1)
+            with sqlite3.connect(db) as conn:
+                self.assertEqual(conn.execute("SELECT decision FROM skills").fetchone()[0], "review")
 
     def test_real_ros_mcp_is_recommended(self):
         item = {

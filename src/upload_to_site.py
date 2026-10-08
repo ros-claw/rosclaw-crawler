@@ -91,6 +91,22 @@ def _readme_summary(raw: dict) -> str:
     return ""
 
 
+def github_item_url(item_type: str, item: dict) -> str:
+    url = item.get("url") or item.get("source_repo") or ""
+    parsed = urlparse(url)
+    parts = parsed.path.strip("/").split("/")
+    if item_type != "skill" or parsed.hostname != "github.com" or len(parts) < 4 or parts[2] != "blob":
+        return url
+    directory = item.get("source_path")
+    if directory == "." and len(parts) == 4:
+        return parsed._replace(path="/" + "/".join(parts[:2]), query="", fragment="").geturl()
+    if directory and directory != "." and parsed.path.endswith("/" + quote(directory.strip("/"), safe="/")):
+        # Preserve the URL ref: source_revision may be a file-blob SHA, not a commit.
+        parts[2] = "tree"
+        return parsed._replace(path="/" + "/".join(parts)).geturl()
+    return url
+
+
 def build_payload(item_type: str, item: dict) -> dict:
     raw = _json_value(item.get("raw_data"), {})
     metadata = raw.get("metadata", {}) if isinstance(raw, dict) else {}
@@ -112,7 +128,7 @@ def build_payload(item_type: str, item: dict) -> dict:
         "description": description,
         "long_description": raw.get("skill_card") or description,
         "readme_content": raw.get("skill_content") or "",
-        "github_repo_url": item.get("url") or item.get("source_repo") or "",
+        "github_repo_url": github_item_url(item_type, item),
         "author_name": author,
         "category": category,
         "tags": topics,

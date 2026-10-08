@@ -103,7 +103,7 @@ class LLMReviewer:
             "repository_metadata": raw.get("review_repo", {}),
             "registry_server": raw.get("server", {}),
             "topics": _json_array(item.get("topics")),
-            "deterministic_review": baseline,
+            "deterministic_review": baseline["evidence"],
             "content": primary_content[:16_000],
         }
         system = (
@@ -194,7 +194,7 @@ class CodexReviewer:
             "repository_metadata": raw.get("review_repo", {}),
             "registry_server": raw.get("server", {}),
             "topics": _json_array(item.get("topics")),
-            "deterministic_review": baseline,
+            "deterministic_review": baseline["evidence"],
             "content": (
                 raw.get("skill_content", "") if item_type == "skill"
                 else raw.get("review_readme", "")
@@ -257,6 +257,13 @@ class CodexReviewer:
                     "--output-last-message", str(output_path),
                     "--color", "never", "-C", directory.as_posix(),
                 ]
+                for feature in (
+                    "shell_tool", "unified_exec", "apps", "plugins", "hooks",
+                    "code_mode_host", "browser_use", "computer_use",
+                    "image_generation", "view_image", "multi_agent_v2",
+                ):
+                    command.extend(["--disable", feature])
+                command.extend(["-c", 'web_search="disabled"'])
                 configured_model = os.getenv("ROSCLAW_CODEX_REVIEW_MODEL")
                 if configured_model:
                     command.extend(["--model", configured_model])
@@ -493,9 +500,12 @@ def unsafe_primary_purpose(item: dict) -> list:
         str(raw.get("metadata", {}).get("description", "")),
     ]).lower()
     defensive = bool(re.search(r"detect|mitigat|defen|monitor", primary_purpose))
+    simulation_only = bool(re.search(
+        r"simulator[- ]only|simulation[- ]only|isolated simulator", primary_purpose
+    ))
     return [
         signal for signal in UNSAFE_PRIMARY_PURPOSE_SIGNALS
-        if _contains(primary_purpose, signal) and not (
+        if _contains(primary_purpose, signal) and not simulation_only and not (
             defensive and signal in {"rf hijacking", "gps jamming", "autopilot attacks"}
         )
     ]
@@ -680,6 +690,18 @@ def _review_hash(item: dict, baseline: dict, model: str) -> str:
     return hashlib.sha256(
         json.dumps(payload, ensure_ascii=False, sort_keys=True, default=str).encode()
     ).hexdigest()
+
+
+def reviewed_input_hash(item: dict) -> str:
+    raw = _raw(item)
+    return _review_hash(item, {
+        "identity": item.get("full_name"),
+        "repository": _github_repo_url(item, raw),
+        "source_path": item.get("source_path"),
+        "trust": raw.get("trust", "community"),
+        "metadata": raw.get("metadata", {}),
+        "server": raw.get("server", {}),
+    }, "source-evidence")
 
 
 def _finalize_llm_review(baseline: dict, verdict: dict) -> dict:
@@ -875,6 +897,7 @@ def review_candidates(
                 cached_response = json.loads(cached["model_response"] or "{}")
                 if cached_response.get("decision") in ("keep", "remove"):
                     review = _finalize_llm_review(baseline, cached_response)
+                    review["evidence"]["reviewed_input_hash"] = reviewed_input_hash(item)
                     conn.execute("""
                         UPDATE candidate_reviews SET reviewed_at=?, recommendation=?,
                             score=?, authenticity_score=?, domain_score=?, quality_score=?,
@@ -897,6 +920,10 @@ def review_candidates(
                         "categories": json.loads(cached["categories"] or "[]"),
                         "evidence": json.loads(cached["evidence"] or "{}"),
                     }
+                    review["evidence"]["reviewed_input_hash"] = reviewed_input_hash(item)
+                    conn.execute("UPDATE candidate_reviews SET evidence=? WHERE id=?", (
+                        json.dumps(review["evidence"], ensure_ascii=False), cached["id"],
+                    ))
                 review["cached"] = True
                 if review["recommendation"] == "keep":
                     remember_approved(item_type, item, fingerprint)
@@ -931,6 +958,7 @@ def review_candidates(
                         "recommendation": "retry", "error": str(exc)[:500],
                     })
                     continue
+            review["evidence"]["reviewed_input_hash"] = reviewed_input_hash(item)
             conn.execute("""
                 INSERT INTO candidate_reviews (
                     item_type, item_id, source_key, reviewed_at, reviewer,
@@ -1014,6 +1042,13 @@ def apply_review_decisions(db_path: Path) -> dict:
         item_raw = _raw({"raw_data": row["item_raw_data"]})
         review_categories = json.loads(row["categories"] or "[]")
         evidence = json.loads(row["evidence"] or "{}")
+        input_hash = evidence.get("reviewed_input_hash")
+        current = dict(conn.execute(f"SELECT * FROM {table} WHERE id=?", (row["item_id"],)).fetchone())
+        if (row.get("review_hash") and not input_hash) or (
+            input_hash and input_hash != reviewed_input_hash(current)
+        ):
+            stats["retry"] += 1
+            continue
         deterministic = evidence.get("deterministic", evidence)
         incomplete_recheck = bool(
             row["content_status"] == "incomplete"

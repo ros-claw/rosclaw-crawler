@@ -8,7 +8,7 @@ from pathlib import Path
 import requests
 
 from database import insert_item
-from upload_to_site import _readme_summary, build_payload, sync_type
+from upload_to_site import _readme_summary, build_payload, github_item_url, sync_type
 
 
 class FakeResponse:
@@ -47,6 +47,27 @@ class FakeHubClient:
 
 
 class UploadToSiteTest(unittest.TestCase):
+    def test_historical_skill_directory_url_preserves_commit_ref(self):
+        item = {
+            "url": "https://github.com/example/skills/blob/commit-sha/skills/robot",
+            "source_path": "skills/robot", "source_revision": "file-blob-sha",
+        }
+        self.assertEqual(github_item_url("skill", item),
+                         "https://github.com/example/skills/tree/commit-sha/skills/robot")
+        self.assertEqual(github_item_url("mcp", item), item["url"])
+
+    def test_file_url_remains_valid_and_branch_slashes_are_preserved(self):
+        item = {"url": "https://github.com/example/skills/blob/feature/robot/skills/nav",
+                "source_path": "skills/nav"}
+        self.assertEqual(github_item_url("skill", item),
+                         "https://github.com/example/skills/tree/feature/robot/skills/nav")
+        item["url"] += "/SKILL.md"
+        self.assertEqual(github_item_url("skill", item), item["url"])
+
+    def test_historical_root_blob_without_file_becomes_repository_url(self):
+        item = {"url": "https://github.com/example/skills/blob/commit-sha", "source_path": "."}
+        self.assertEqual(github_item_url("skill", item), "https://github.com/example/skills")
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.db = Path(self.temp.name) / "hub.db"

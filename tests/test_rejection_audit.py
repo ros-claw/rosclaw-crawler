@@ -1,11 +1,12 @@
 import argparse
 import json
+from types import SimpleNamespace
 from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 
-from candidate_reviewer import LLMReviewError, load_taxonomy, review_item
+from candidate_reviewer import CodexReviewer, LLMReviewError, load_taxonomy, review_item
 from database import connect, insert_item
 from rejection_audit import BatchCodexReviewer, audit, excerpt
 
@@ -50,6 +51,21 @@ def test_excerpt_preserves_head_tail_and_marks_truncation():
     shortened = excerpt(content, 1000)
     assert shortened.startswith("FIRST") and shortened.endswith("LAST")
     assert "CONTENT TRUNCATED" in shortened
+
+
+def test_codex_process_disables_tools_and_does_not_receive_crawler_secrets(monkeypatch):
+    for key in ("GITHUB_TOKEN", "ADMIN_API_KEY", "ROSCLAW_API_KEY", "DEEPSEEK_API_KEY"):
+        monkeypatch.setenv(key, "test-secret")
+    def execute(command, **kwargs):
+        assert "test-secret" not in kwargs["env"].values()
+        disabled = {command[i + 1] for i, value in enumerate(command) if value == "--disable"}
+        assert {"shell_tool", "unified_exec", "apps", "plugins", "browser_use"} <= disabled
+        assert 'web_search="disabled"' in command
+        output = Path(command[command.index("--output-last-message") + 1])
+        output.write_text('{"decision":"remove"}')
+        return SimpleNamespace(returncode=0, stdout="", stderr="")
+    with patch("candidate_reviewer.subprocess.run", side_effect=execute):
+        assert CodexReviewer().execute("classify", {})["decision"] == "remove"
 
 
 def test_audit_preserves_history_and_reuses_semantic_checkpoint(tmp_path):
