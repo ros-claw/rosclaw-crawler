@@ -1,6 +1,8 @@
 import unittest
+from http.client import RemoteDisconnected
+from unittest.mock import MagicMock, patch
 
-from github_discovery import discover, skill_record, skill_results_from_repository
+from github_discovery import GitHubClient, discover, skill_record, skill_results_from_repository
 
 
 SKILL_TEMPLATE = """---
@@ -140,6 +142,16 @@ class GitHubSkillRepositoryDiscoveryTest(unittest.TestCase):
         self.client.content = unavailable_content
         record = skill_record(self.client, result, "robot skills")
         self.assertEqual(record["raw_data"]["skill_content"], content)
+
+    def test_transient_disconnect_is_retried_without_losing_query(self):
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = b'{"items": []}'
+        with patch("github_discovery.urllib.request.urlopen",
+                   side_effect=[RemoteDisconnected("connection closed"), response]) as get:
+            with patch("github_discovery.time.sleep"):
+                result = GitHubClient("test-only-token").get("/search/code")
+        self.assertEqual(result, {"items": []})
+        self.assertEqual(get.call_count, 2)
 
 
 if __name__ == "__main__":

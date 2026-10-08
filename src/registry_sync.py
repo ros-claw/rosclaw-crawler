@@ -10,6 +10,7 @@ import urllib.parse
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from http.client import IncompleteRead
 from pathlib import Path
 from typing import Dict, Iterable, Optional
 
@@ -40,7 +41,7 @@ def fetch_json(url: str, timeout: int = 30, attempts: int = 2) -> dict:
             last_error = exc
             if attempt + 1 < attempts:
                 time.sleep(2 ** attempt)
-        except (TimeoutError, urllib.error.URLError) as exc:
+        except (TimeoutError, urllib.error.URLError, ConnectionError, IncompleteRead) as exc:
             last_error = exc
             if attempt + 1 < attempts:
                 time.sleep(2 ** attempt)

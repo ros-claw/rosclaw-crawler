@@ -13,6 +13,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from http.client import IncompleteRead
 from pathlib import Path
 
 import yaml
@@ -62,7 +63,7 @@ class GitHubClient:
             except urllib.error.HTTPError as exc:
                 if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
                     raise
-            except (urllib.error.URLError, TimeoutError):
+            except (urllib.error.URLError, TimeoutError, ConnectionError, IncompleteRead):
                 if attempt == 2:
                     raise
             time.sleep(2 ** attempt)
