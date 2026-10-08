@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 
@@ -158,6 +159,109 @@ class UploadToSiteTest(unittest.TestCase):
         stats = sync_type("skill", self.db, UnavailableHub())
         self.assertEqual(stats["planned"], 0)
         self.assertEqual(stats["failed"], 0)
+
+    def test_completed_upload_survives_later_interruption(self):
+        insert_item("skill", self.record, self.db)
+        insert_item("skill", {
+            **self.record, "source_key": "second", "full_name": "example/second",
+            "url": "https://github.com/example/second",
+        }, self.db)
+
+        class InterruptedHub(FakeHubClient):
+            def create(self, item_type, payload):
+                raise RuntimeError("process interrupted")
+
+        with self.assertRaises(RuntimeError):
+            sync_type("skill", self.db, InterruptedHub())
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute(
+                "SELECT site_status FROM skills WHERE source_key=?",
+                (self.record["source_key"],),
+            ).fetchone()[0], "uploaded")
+
+    def test_delete_already_missing_remote_is_success(self):
+        insert_item("skill", self.record, self.db)
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE skills SET decision='remove', "
+                         "site_status='pending_delete', site_id='site-123'")
+
+        class MissingHub(FakeHubClient):
+            def delete(self, item_type, site_id):
+                response = FakeResponse()
+                response.status_code = 404
+                return response
+
+        stats = sync_type("skill", self.db, MissingHub())
+        self.assertEqual(stats["failed"], 0)
+        self.assertEqual(stats["deleted"], 1)
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute(
+                "SELECT site_status FROM skills"
+            ).fetchone()[0], "removed")
+
+    def test_parallel_writes_are_independent_and_checkpointed(self):
+        for index in range(2):
+            insert_item("skill", {
+                **self.record, "source_key": f"parallel-{index}",
+                "full_name": f"example/parallel-{index}",
+                "url": f"https://github.com/example/parallel-{index}",
+            }, self.db)
+        barrier = threading.Barrier(2)
+
+        class ParallelHub(FakeHubClient):
+            def create(self, item_type, payload):
+                barrier.wait(timeout=5)
+                return super().create(item_type, payload)
+
+        stats = sync_type("skill", self.db, ParallelHub(), workers=2)
+        self.assertEqual(stats["created"], 2)
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute(
+                "SELECT COUNT(*) FROM skills WHERE site_status='uploaded'"
+            ).fetchone()[0], 2)
+
+    def test_same_url_is_serialized_and_reuses_created_identity(self):
+        for index in range(2):
+            insert_item("skill", {
+                **self.record, "source_key": f"shared-{index}",
+                "full_name": f"example/shared-{index}",
+            }, self.db)
+
+        class CreatedResponse(FakeResponse):
+            def json(self):
+                return {"id": "new-site-id"}
+
+        class SharedHub(FakeHubClient):
+            def list_items(self, item_type):
+                return []
+
+            def create(self, item_type, payload):
+                self.created.append(payload)
+                return CreatedResponse()
+
+        client = SharedHub()
+        stats = sync_type("skill", self.db, client, workers=4)
+        self.assertEqual(stats["created"], 1)
+        self.assertEqual(stats["updated"], 1)
+        self.assertEqual(client.updated[0][1], "new-site-id")
+
+    def test_inflight_source_change_is_not_marked_uploaded(self):
+        insert_item("skill", self.record, self.db)
+        database = self.db
+
+        class ChangedSourceHub(FakeHubClient):
+            def update(self, item_type, site_id, payload):
+                with sqlite3.connect(database) as conn:
+                    conn.execute("UPDATE skills SET decision='review', "
+                                 "content_hash='new-content', site_status='pending_review_update'")
+                return FakeResponse()
+
+        stats = sync_type("skill", self.db, ChangedSourceHub())
+        self.assertEqual(stats["updated"], 1)
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute(
+                "SELECT decision, site_status, site_id FROM skills"
+            ).fetchone(), ("review", "pending_review_update", "site-123"))
 
 
 if __name__ == "__main__":

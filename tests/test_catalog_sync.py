@@ -10,6 +10,7 @@ from catalog_sync import (
     selected_skill_names,
     sync_catalog,
 )
+from database import insert_item
 
 
 class CatalogSyncTest(unittest.TestCase):
@@ -114,6 +115,37 @@ class CatalogSyncTest(unittest.TestCase):
             "official directory",
             self._row("robot-control")["reason"],
         )
+
+    def test_unchanged_source_preserves_review_evidence(self):
+        sync_catalog("example", self.source, self.db, self.root)
+        raw = json.loads(self._row("robot-control")["raw_data"])
+        raw.update(review_categories=["robot-middleware"], review_readme="Robot docs")
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE skills SET raw_data=? WHERE name='robot-control'",
+                         (json.dumps(raw),))
+        sync_catalog("example", self.source, self.db, self.root)
+        unchanged = json.loads(self._row("robot-control")["raw_data"])
+        self.assertEqual(unchanged["review_categories"], ["robot-middleware"])
+        self.assertEqual(unchanged["review_readme"], "Robot docs")
+        self._write_skill("robot-control", "New ROS2 robot workflow", "2.0.0")
+        sync_catalog("example", self.source, self.db, self.root)
+        changed = json.loads(self._row("robot-control")["raw_data"])
+        self.assertNotIn("review_categories", changed)
+        self.assertEqual(self._row("robot-control")["decision"], "review")
+
+    def test_metadata_refresh_updates_hub_without_repeating_review(self):
+        sync_catalog("example", self.source, self.db, self.root)
+        record = self._row("robot-control")
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE skills SET decision='keep', site_status='uploaded' "
+                         "WHERE name='robot-control'")
+        record.update(url="https://github.com/example/skills/tree/new/skills/robot-control",
+                      stars=100, decision="review", site_status="pending")
+        self.assertEqual(insert_item("skill", record, self.db), "updated")
+        refreshed = self._row("robot-control")
+        self.assertEqual(refreshed["decision"], "keep")
+        self.assertEqual(refreshed["site_status"], "pending_update")
+        self.assertIsInstance(json.loads(refreshed["topics"]), list)
 
 
 if __name__ == "__main__":

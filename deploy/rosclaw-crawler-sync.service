@@ -10,6 +10,7 @@ WorkingDirectory=/home/ubuntu/rosclaw/rosclaw_crawler
 EnvironmentFile=/home/ubuntu/.config/rosclaw-crawler/crawler.env
 ExecStart=/home/ubuntu/rosclaw/rosclaw_crawler/run_periodic_sync.sh
 Nice=10
+TimeoutStartSec=2h
 # Keep failed work queued for the daily timer instead of recrawling every
 # five minutes throughout a prolonged upstream or Hub outage.
 Restart=no

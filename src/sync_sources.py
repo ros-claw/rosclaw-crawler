@@ -14,6 +14,7 @@ import yaml
 from catalog_sync import fetch_catalog, sync_catalog
 from github_discovery import GitHubClient, sync_github
 from registry_sync import sync_registry
+from reporting import write_json_report
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -98,13 +99,13 @@ def main(argv=None) -> int:
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         report_path = PROJECT_ROOT / "data" / "reports" / f"source_sync_{stamp}.json"
     if report_path:
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(
-            json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-        )
+        write_json_report(report_path, report)
         report["report_path"] = str(report_path)
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    return 1 if report["errors"] else 0
+    return 1 if report["errors"] or any(
+        source.get("status") in ("partial", "skipped")
+        for source in report["sources"].values()
+    ) else 0
 
 
 if __name__ == "__main__":

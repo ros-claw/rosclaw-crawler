@@ -1,6 +1,6 @@
 import unittest
 
-from github_discovery import discover, skill_results_from_repository
+from github_discovery import discover, skill_record, skill_results_from_repository
 
 
 SKILL_TEMPLATE = """---
@@ -96,6 +96,50 @@ class GitHubSkillRepositoryDiscoveryTest(unittest.TestCase):
         }
         records, _ = discover(config, self.client)
         self.assertEqual(sum(kind == "skill" for kind, _ in records), 2)
+
+    def test_failed_query_does_not_discard_other_discoveries(self):
+        class PartiallyUnavailableClient(FakeGitHubClient):
+            def search(self, kind, query, per_page):
+                if query == "broken":
+                    raise TimeoutError("upstream timeout")
+                return super().search(kind, query, per_page)
+
+        errors = []
+        records, _ = discover({
+            "taxonomy": "missing.yaml", "skill_repositories": ["broken", "robot skills"],
+            "seed_repositories": {"mcp": ["missing/repo"]},
+        }, PartiallyUnavailableClient(self.repo, self.paths), errors)
+        self.assertEqual(sum(kind == "skill" for kind, _ in records), 2)
+        self.assertEqual(len(errors), 2)
+        self.assertTrue(all("/tree/main/" in record["url"] for _, record in records))
+
+    def test_skill_cap_rotates_past_first_directory(self):
+        first = skill_results_from_repository(self.client, self.repo, max_skills=1)
+        second = skill_results_from_repository(self.client, self.repo, max_skills=1, offset=1)
+        self.assertNotEqual(first[0]["path"], second[0]["path"])
+
+    def test_truncated_tree_is_reported_instead_of_silently_accepted(self):
+        class TruncatedClient(FakeGitHubClient):
+            def get(self, path, params=None):
+                result = super().get(path, params)
+                if "tree" in result:
+                    result["truncated"] = True
+                return result
+
+        with self.assertRaisesRegex(ValueError, "truncated"):
+            skill_results_from_repository(TruncatedClient(self.repo, self.paths), self.repo)
+
+    def test_unchanged_blob_reuses_local_skill_evidence(self):
+        result = skill_results_from_repository(self.client, self.repo)[0]
+        content = self.client.content(result["url"])
+        self.client.skill_content_cache = {result["sha"]: content}
+
+        def unavailable_content(url):
+            raise AssertionError("Unchanged blob must not be downloaded again")
+
+        self.client.content = unavailable_content
+        record = skill_record(self.client, result, "robot skills")
+        self.assertEqual(record["raw_data"]["skill_content"], content)
 
 
 if __name__ == "__main__":

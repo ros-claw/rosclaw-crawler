@@ -2,11 +2,15 @@
 """Create and update approved ROSClaw Hub entries from the local database."""
 
 import argparse
+import fcntl
 import json
 import os
 import re
 import sqlite3
 import sys
+import threading
+from collections import deque
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Optional, Tuple
 from urllib.parse import urlparse
@@ -14,6 +18,7 @@ from urllib.parse import urlparse
 import requests
 
 from database import connect, init_db
+from reporting import write_json_report
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -150,12 +155,19 @@ class HubClient:
         if not api_key:
             raise ValueError("ROSCLAW_API_KEY is required")
         self.base_url = base_url.rstrip("/")
-        self.session = requests.Session()
-        self.session.headers.update({
+        self._sessions = threading.local()
+        self.headers = {
             "Content-Type": "application/json",
             "X-API-Key": api_key,
             "User-Agent": "rosclaw-crawler/3.0",
-        })
+        }
+
+    @property
+    def session(self):
+        if not hasattr(self._sessions, "session"):
+            self._sessions.session = requests.Session()
+            self._sessions.session.headers.update(self.headers)
+        return self._sessions.session
 
     @staticmethod
     def endpoint(item_type: str) -> str:
@@ -198,12 +210,50 @@ def _site_identity(item: dict) -> Tuple[str, str]:
     )
 
 
+def _upload_batches(rows, item_type, client, by_name, by_url, workers):
+    """Parallelize independent writes; serialize rows sharing a Hub identity."""
+    pending = deque(rows)
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        while pending:
+            batch = []
+            identities = set()
+            while pending and len(batch) < workers:
+                row = pending[0]
+                payload = None if row["site_status"] == "pending_delete" else build_payload(item_type, row)
+                if payload is None:
+                    remote = {"id": row["site_id"]} if row.get("site_id") else None
+                    keys = {("id", row.get("site_id") or f"local:{row['id']}")}
+                    operation = "deleted"
+                else:
+                    name, url = _site_identity(payload)
+                    remote = by_name.get(name) or (by_url.get(url) if url else None)
+                    keys = {("name", name)}
+                    if url:
+                        keys.add(("url", url))
+                    if remote:
+                        keys.add(("id", remote["id"]))
+                    operation = "updated" if remote else "created"
+                if identities & keys:
+                    break
+                identities.update(keys)
+                pending.popleft()
+                if operation == "deleted":
+                    future = executor.submit(client.delete, item_type, remote["id"]) if remote else None
+                elif operation == "updated":
+                    future = executor.submit(client.update, item_type, remote["id"], payload)
+                else:
+                    future = executor.submit(client.create, item_type, payload)
+                batch.append((row, payload, remote, operation, future))
+            yield from batch
+
+
 def sync_type(
     item_type: str,
     db_path: Path,
     client: Optional[HubClient],
     dry_run: bool = False,
     limit: Optional[int] = None,
+    workers: int = 1,
 ) -> dict:
     table = "skills" if item_type == "skill" else "mcps"
     conn = connect(db_path)
@@ -257,31 +307,23 @@ def sync_type(
             by_url[url] = remote
 
     conn = connect(db_path)
-    for row in rows:
-        payload = None if row["site_status"] == "pending_delete" else build_payload(item_type, row)
-        if row["site_status"] == "pending_delete":
-            remote = {"id": row["site_id"]} if row.get("site_id") else None
-        else:
-            remote = by_name.get(payload["name"].lower()) or by_url.get(
-                payload["github_repo_url"].lower()
-            )
+    for processed, (row, payload, remote, operation, future) in enumerate(
+        _upload_batches(rows, item_type, client, by_name, by_url, workers), start=1
+    ):
+        if processed == 1 or processed % 50 == 0:
+            print(f"{item_type} upload progress: {processed}/{len(rows)}", file=sys.stderr)
         try:
-            if row["site_status"] == "pending_delete":
-                if not remote:
-                    conn.execute(
-                        f"UPDATE {table} SET site_status='removed', site_id='' WHERE id=?",
-                        (row["id"],),
-                    )
-                    continue
-                response = client.delete(item_type, remote["id"])
-                operation = "deleted"
-            elif remote:
-                response = client.update(item_type, remote["id"], payload)
-                operation = "updated"
-            else:
-                response = client.create(item_type, payload)
-                operation = "created"
-            if response.status_code not in (200, 201, 204):
+            if future is None:
+                conn.execute(
+                    f"UPDATE {table} SET site_status='removed', site_id='' WHERE id=?",
+                    (row["id"],),
+                )
+                conn.commit()
+                continue
+            response = future.result()
+            if response.status_code not in (200, 201, 204) and not (
+                operation == "deleted" and response.status_code == 404
+            ):
                 stats["failed"] += 1
                 print(
                     f"{item_type} {row['full_name']}: HTTP {response.status_code} "
@@ -290,16 +332,29 @@ def sync_type(
                 continue
             if operation == "deleted":
                 conn.execute(
-                    f"UPDATE {table} SET site_status='removed', site_id='' WHERE id=?",
+                    f"UPDATE {table} SET site_status=CASE WHEN decision='remove' "
+                    "THEN 'removed' ELSE 'pending' END, site_id='' WHERE id=?",
                     (row["id"],),
                 )
             else:
                 result = response.json() if response.content else {}
                 site_id = result.get("id") or (remote or {}).get("id") or ""
                 conn.execute(
-                    f"UPDATE {table} SET site_status='uploaded', site_id=? WHERE id=?",
-                    (site_id, row["id"]),
+                    f"UPDATE {table} SET site_id=?, site_status=CASE "
+                    "WHEN decision='keep' AND content_hash IS ? THEN 'uploaded' "
+                    "WHEN decision='remove' THEN 'pending_delete' "
+                    "ELSE site_status END WHERE id=?",
+                    (site_id, row["content_hash"], row["id"]),
                 )
+                if site_id:
+                    indexed = {"id": site_id, "name": payload["name"],
+                               "github_repo_url": payload["github_repo_url"]}
+                    name, url = _site_identity(indexed)
+                    by_name[name] = indexed
+                    if url:
+                        by_url[url] = indexed
+            # An acknowledged remote write must survive later interruptions.
+            conn.commit()
             stats[operation] += 1
         except requests.RequestException as exc:
             stats["failed"] += 1
@@ -317,7 +372,19 @@ def main(argv=None) -> int:
     parser.add_argument("--limit", type=int)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--show-payloads", action="store_true")
+    parser.add_argument("--report", type=Path)
+    parser.add_argument("--workers", type=int, default=4)
     args = parser.parse_args(argv)
+    if not 1 <= args.workers <= 8:
+        parser.error("--workers must be between 1 and 8")
+    lock = args.db.with_suffix(".upload.lock")
+    lock.parent.mkdir(parents=True, exist_ok=True)
+    lock_file = lock.open("a")
+    try:
+        fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        print("another Hub upload is already running", file=sys.stderr)
+        return 2
     init_db(args.db, quiet=True)
     try:
         client = None if args.dry_run else HubClient(
@@ -331,11 +398,13 @@ def main(argv=None) -> int:
     types = ("skill", "mcp") if args.type == "all" else (args.type,)
     for item_type in types:
         output[item_type] = sync_type(
-            item_type, args.db, client, args.dry_run, args.limit
+            item_type, args.db, client, args.dry_run, args.limit, args.workers
         )
         if not args.show_payloads:
             output[item_type].pop("items", None)
     print(json.dumps(output, ensure_ascii=False, indent=2))
+    if args.report:
+        write_json_report(args.report, output)
     return 1 if any(value["failed"] for value in output.values()) else 0
 
 

@@ -23,7 +23,7 @@ DEFAULT_CONFIG = PROJECT_ROOT / "sources.yaml"
 USER_AGENT = "rosclaw-crawler/3.0 (+https://github.com/ros-claw/rosclaw-crawler)"
 
 
-def fetch_json(url: str, timeout: int = 20, attempts: int = 2) -> dict:
+def fetch_json(url: str, timeout: int = 30, attempts: int = 2) -> dict:
     request = urllib.request.Request(
         url,
         headers={"Accept": "application/json", "User-Agent": USER_AGENT},
@@ -33,6 +33,12 @@ def fetch_json(url: str, timeout: int = 20, attempts: int = 2) -> dict:
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            if exc.code not in (429, 500, 502, 503, 504):
+                raise
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(2 ** attempt)
         except (TimeoutError, urllib.error.URLError) as exc:
             last_error = exc
             if attempt + 1 < attempts:
@@ -46,6 +52,7 @@ def search_registry(
     max_pages: int = 100,
     page_size: int = 100,
     errors: Optional[list] = None,
+    workers: int = 3,
 ) -> Dict[str, dict]:
     """Search each domain keyword and retain only the latest server version."""
     latest = {}
@@ -54,11 +61,17 @@ def search_registry(
     def search_keyword(keyword):
         matches = {}
         cursor: Optional[str] = None
+        seen_cursors = set()
         for _ in range(max_pages):
             params = {"limit": page_size, "search": keyword}
             if cursor:
                 params["cursor"] = cursor
-            payload = fetch_json(f"{endpoint}?{urllib.parse.urlencode(params)}")
+            try:
+                payload = fetch_json(f"{endpoint}?{urllib.parse.urlencode(params)}")
+            except Exception as exc:
+                # Keep completed pages even if a later page fails.
+                errors.append({"keyword": keyword, "error": str(exc), "cursor": cursor})
+                return matches
             for entry in payload.get("servers", []):
                 server = entry.get("server", {})
                 metadata = entry.get("_meta", {}).get(
@@ -75,10 +88,17 @@ def search_registry(
             cursor = payload.get("metadata", {}).get("nextCursor")
             if not cursor:
                 break
+            if cursor in seen_cursors:
+                errors.append({"keyword": keyword, "error": "repeated pagination cursor"})
+                return matches
+            seen_cursors.add(cursor)
+        else:
+            errors.append({"keyword": keyword, "error": "pagination limit reached",
+                           "cursor": cursor})
         return matches
 
     keyword_list = list(keywords)
-    with ThreadPoolExecutor(max_workers=min(6, len(keyword_list) or 1)) as executor:
+    with ThreadPoolExecutor(max_workers=max(1, min(workers, len(keyword_list) or 1))) as executor:
         futures = {
             executor.submit(search_keyword, keyword): keyword for keyword in keyword_list
         }
@@ -147,6 +167,7 @@ def sync_registry(source_key: str, source: dict, db_path: Path, dry_run=False) -
         source.get("keywords", []),
         source.get("max_pages", 100),
         errors=keyword_errors,
+        workers=source.get("workers", 3),
     )
     records = [build_record(source_key, source, entries[name]) for name in sorted(entries)]
     stats = {

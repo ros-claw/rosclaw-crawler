@@ -74,13 +74,17 @@ def _add_columns(conn: sqlite3.Connection, table: str, columns: dict) -> None:
 
 
 def _json_list(value) -> list:
-    if isinstance(value, list):
-        return value
-    try:
-        parsed = json.loads(value or "[]")
-        return parsed if isinstance(parsed, list) else []
-    except (TypeError, json.JSONDecodeError):
-        return []
+    # Accept both API arrays and stored JSON, including historical double encoding.
+    for _ in range(3):
+        if isinstance(value, list):
+            return value
+        if not isinstance(value, str):
+            return []
+        try:
+            value = json.loads(value or "[]")
+        except json.JSONDecodeError:
+            return []
+    return value if isinstance(value, list) else []
 
 
 def init_db(db_path: Optional[PathLike] = None, quiet: bool = False) -> None:
@@ -231,6 +235,20 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
         previous_hash = existing["content_hash"]
         current_hash = data.get("content_hash")
         changed = bool(current_hash and previous_hash != current_hash)
+        metadata_changed = any(
+            field in data and data[field] != existing[field]
+            for field in ("name", "full_name", "url", "stars", "version")
+        )
+        if not changed:
+            previous_raw = json.loads(existing["raw_data"] or "{}")
+            incoming_raw = json.loads(raw_data)
+            if isinstance(previous_raw, dict) and isinstance(incoming_raw, dict):
+                # Review evidence belongs to this content revision, not to a
+                # particular discovery response.
+                for key, value in previous_raw.items():
+                    if key.startswith("review_"):
+                        incoming_raw.setdefault(key, value)
+                raw_data = json.dumps(incoming_raw, ensure_ascii=False, default=str)
         current_site_status = existing["site_status"] or "pending"
         preserve_decision = existing["decision"] in ("keep", "remove") and not changed
         next_decision = (
@@ -242,6 +260,9 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             current_site_status = "pending_review_update"
         elif changed:
             current_site_status = "pending"
+        elif metadata_changed and existing["decision"] == "keep" \
+                and current_site_status == "uploaded":
+            current_site_status = "pending_update"
         content_status = "unknown" if changed else existing["content_status"]
         content_issue = None if changed else existing["content_issue"]
         content_next_check = None if changed else existing["content_next_check"]
@@ -270,7 +291,7 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             data.get("url", existing["url"]),
             data.get("stars", existing["stars"]),
             data.get("language", existing["language"]),
-            json.dumps(data.get("topics", _json_list(existing["topics"]))),
+            json.dumps(_json_list(data.get("topics", existing["topics"]))),
             next_decision,
             existing["reason"] if preserve_decision else data.get("reason", existing["reason"]),
             existing["confidence"] if preserve_decision else data.get("confidence", existing["confidence"]),
@@ -289,7 +310,7 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             content_recheck_eligible,
             existing["id"],
         ))
-        result = "updated" if changed else "unchanged"
+        result = "updated" if changed or metadata_changed else "unchanged"
     else:
         conn.execute(f"""
             INSERT INTO {table} (
@@ -306,7 +327,7 @@ def insert_item(item_type: str, data: dict, db_path: Optional[PathLike] = None) 
             data.get("name", ""), data.get("full_name", data.get("name", "")),
             data.get("description", ""), data.get("url", ""),
             data.get("stars", 0), data.get("language", ""),
-            json.dumps(data.get("topics", [])), data.get("decision", "pending"),
+            json.dumps(_json_list(data.get("topics", []))), data.get("decision", "pending"),
             data.get("reason", ""), data.get("confidence", 0),
             data.get("site_id", ""), data.get("site_status", "pending"),
             now, now, raw_data, data.get("source_key"), data.get("source_repo"),

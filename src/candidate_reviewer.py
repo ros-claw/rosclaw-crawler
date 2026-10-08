@@ -20,6 +20,7 @@ import requests
 
 from database import connect, init_db, utc_now
 from github_discovery import GitHubClient
+from reporting import write_json_report
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -904,8 +905,7 @@ def review_candidates(
         ),
     }
     if report_path:
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+        write_json_report(report_path, report)
     return report
 
 

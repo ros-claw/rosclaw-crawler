@@ -39,6 +39,7 @@ mcp_registries:
     source_url: https://registry.modelcontextprotocol.io
     refresh_hours: 24
     max_pages: 10
+    workers: 3
     keywords:
       - robot
       - robotics

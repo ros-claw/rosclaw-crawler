@@ -126,6 +126,23 @@ The service does not restart automatically: a prolonged Hub outage must not
 trigger continuous full crawls. Hub listing errors are reported separately for
 Skills and MCPs without discarding pending uploads. After updating the linked
 unit, run `systemctl --user daemon-reload` to apply the restart policy.
+The service has a two-hour deadline so a hung subprocess cannot occupy the
+pipeline indefinitely; completed review/upload checkpoints survive a restart.
+
+The complete pipeline holds a database-specific lock across discovery, content
+rechecks, review and upload. Failures in one stage do not prevent later stages
+from processing existing work; the final exit status still reports the failure.
+Each run stores separate stage reports and a pipeline report under
+`data/reports/runs/<UTC run ID>/`. `data/reports/periodic_latest.json` contains
+the latest stage outcomes, timestamps and queue counts. Reports use atomic
+replacement so interruption cannot leave a partially written JSON report.
+
+Hub writes use four workers by default (`--workers 1` through `--workers 8` on
+`src/upload_to_site.py`). Rows sharing a remote identity are serialized, each
+acknowledged write is committed immediately, and an already deleted entry's
+HTTP 404 counts as a completed deletion. Standalone upload processes also hold
+a database-specific lock. A source change during upload keeps the new revision
+queued for review rather than marking it uploaded.
 
 Candidate review uses `physical_ai_taxonomy.yaml` to score format authenticity,
 physical-domain anchors, operational usefulness, repository quality, duplicate
@@ -145,6 +162,19 @@ order. The SQLite database records stable source identity, upstream revision,
 directory content hashes, site state and the review model/prompt/input hash.
 Unchanged candidates reuse the stored verdict and do not consume another model
 call; changed candidates return to `decision=review` before a Hub update.
+Unchanged source refreshes preserve stored review categories and README evidence.
+Changes to Hub metadata (such as a directory URL, version or star count) queue
+an approved entry for update without repeating AI review of unchanged content.
+GitHub query, tree, blob and seed failures are recorded independently, with
+successful discoveries still saved. Repository and per-repository Skill limits
+rotate across runs instead of always selecting the first repositories/files.
+Bounded GitHub search results are never used as evidence of upstream deletion;
+truncated trees are explicitly reported as incomplete discovery.
+Unchanged GitHub Skill blobs reuse stored `SKILL.md` content by immutable blob
+SHA, reducing API requests without skipping detection of changed content.
+Registry searches use three concurrent workers and retain completed pages when
+a later page times out. Query errors, repeated cursors and pagination limits
+are reported as partial coverage instead of silently appearing successful.
 
 GitHub candidates with missing README or unavailable source content are recorded
 separately in SQLite (`content_status`, `content_issue`, check timestamps and

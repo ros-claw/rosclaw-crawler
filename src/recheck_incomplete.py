@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 from catalog_sync import parse_frontmatter
 from database import connect, init_db
 from github_discovery import GitHubClient
+from reporting import write_json_report
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -332,8 +333,7 @@ def main(argv=None) -> int:
         args.db, GitHubClient(token), args.interval_days, limit=args.limit,
         workers=args.workers,
     )
-    args.report.parent.mkdir(parents=True, exist_ok=True)
-    args.report.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
+    write_json_report(args.report, output)
     print(json.dumps(output, ensure_ascii=False, indent=2))
     return 0
 
