@@ -121,6 +121,12 @@ systemctl --user enable --now rosclaw-crawler-sync.timer
 systemctl --user start rosclaw-crawler-sync.service
 ```
 
+Failed runs preserve queued work and retry at the next daily timer activation.
+The service does not restart automatically: a prolonged Hub outage must not
+trigger continuous full crawls. Hub listing errors are reported separately for
+Skills and MCPs without discarding pending uploads. After updating the linked
+unit, run `systemctl --user daemon-reload` to apply the restart policy.
+
 Candidate review uses `physical_ai_taxonomy.yaml` to score format authenticity,
 physical-domain anchors, operational usefulness, repository quality, duplicate
 content and risk. Candidates that pass deterministic gates are then reviewed by

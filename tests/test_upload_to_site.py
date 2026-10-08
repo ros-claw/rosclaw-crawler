@@ -4,6 +4,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import requests
+
 from database import insert_item
 from upload_to_site import _readme_summary, build_payload, sync_type
 
@@ -128,6 +130,34 @@ class UploadToSiteTest(unittest.TestCase):
         ).fetchone()
         conn.close()
         self.assertEqual((status, site_id), ("removed", ""))
+
+    def test_hub_outage_preserves_queue_and_reports_failed_items(self):
+        insert_item("skill", self.record, self.db)
+
+        class UnavailableHub(FakeHubClient):
+            def list_items(self, item_type):
+                raise requests.HTTPError("503 Service Unavailable")
+
+        stats = sync_type("skill", self.db, UnavailableHub())
+        self.assertEqual(stats["planned"], 1)
+        self.assertEqual(stats["failed"], 1)
+        self.assertIn("503", stats["error"])
+        with sqlite3.connect(self.db) as conn:
+            self.assertEqual(conn.execute(
+                "SELECT site_status FROM skills"
+            ).fetchone()[0], "pending")
+
+    def test_empty_queue_does_not_call_unavailable_hub(self):
+        class UnavailableHub(FakeHubClient):
+            def list_items(self, item_type):
+                raise AssertionError("No remote listing needed for an empty queue")
+
+        insert_item("skill", self.record, self.db)
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE skills SET site_status='uploaded'")
+        stats = sync_type("skill", self.db, UnavailableHub())
+        self.assertEqual(stats["planned"], 0)
+        self.assertEqual(stats["failed"], 0)
 
 
 if __name__ == "__main__":

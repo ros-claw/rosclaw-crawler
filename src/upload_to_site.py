@@ -237,8 +237,16 @@ def sync_type(
         return stats
     if client is None:
         raise ValueError("Hub client is required unless --dry-run is used")
+    if not rows:
+        return stats
 
-    remote_items = client.list_items(item_type)
+    try:
+        remote_items = client.list_items(item_type)
+    except (requests.RequestException, ValueError) as exc:
+        stats["failed"] = len(rows)
+        stats["error"] = f"Hub listing unavailable: {exc}"
+        print(f"{item_type}: {stats['error']}", file=sys.stderr)
+        return stats
     by_name = {}
     by_url = {}
     for remote in remote_items:
