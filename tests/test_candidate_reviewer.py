@@ -5,11 +5,13 @@ import unittest
 from pathlib import Path
 
 from candidate_reviewer import (
+    LLMReviewError,
     _finalize_llm_review,
     apply_review_decisions,
     load_taxonomy,
     review_candidates,
     review_item,
+    deterministic_reject_reason,
     validate_llm_verdict,
 )
 from database import insert_item
@@ -41,6 +43,101 @@ class FakeLLMReviewer:
 class CandidateReviewerTest(unittest.TestCase):
     def setUp(self):
         self.taxonomy = load_taxonomy()
+
+    def robot_skill(self, **changes):
+        item = {
+            "full_name": "example/robot-workflow", "name": "robot-workflow",
+            "description": "Configure ROS2 robot simulation and validate deliverables.",
+            "source": "github-skill", "decision": "review",
+            "url": "https://github.com/example/robot-workflow",
+            "source_repo": "https://github.com/example/robot-workflow",
+            "topics": "[]", "stars": 0,
+            "raw_data": json.dumps({
+                "metadata": {"name": "robot-workflow", "description": "Configure ROS2 simulation."},
+                "skill_content": "---\nname: robot-workflow\ndescription: Configure ROS2 simulation.\n---\n"
+                "## Workflow\nConfigure ROS2 simulation, define acceptance criteria, validate robot assets.\n"
+                + "Use the skill library and documentation search to resolve Isaac Sim APIs.\n" * 8,
+            }),
+        }
+        item.update(changes)
+        return item
+
+    def test_incidental_exclusions_do_not_hard_reject_domain_workflow(self):
+        baseline = review_item("skill", self.robot_skill(), self.taxonomy)
+        self.assertTrue(baseline["evidence"]["exclusions"])
+        self.assertIsNone(deterministic_reject_reason(baseline))
+
+    def test_mcp_readme_supplies_domain_evidence(self):
+        item = {
+            "full_name": "example/scene-tools", "description": "Agent tools", "topics": "[]",
+            "raw_data": json.dumps({"review_readme":
+                "A FastMCP MCP server for ROS2 robot simulation, sensors and Nav2 diagnostics."}),
+        }
+        baseline = review_item("mcp", item, self.taxonomy)
+        self.assertTrue(baseline["evidence"]["physical_anchors"])
+        self.assertIsNone(deterministic_reject_reason(baseline))
+
+    def test_zero_star_workflow_reaches_semantic_review(self):
+        baseline = review_item("skill", self.robot_skill(), self.taxonomy)
+        self.assertIsNone(deterministic_reject_reason(baseline))
+
+    def test_generic_tool_remains_excluded(self):
+        item = {"full_name": "example/sheets", "topics": "[]", "description": "Google Sheets MCP"}
+        baseline = review_item("mcp", item, self.taxonomy)
+        self.assertEqual(deterministic_reject_reason(baseline), "matches a global exclusion")
+
+    def test_unsafe_primary_control_is_rejected_but_defensive_detection_is_not(self):
+        offensive = self.robot_skill(description="ROS2 DDS network attack using message injection.")
+        self.assertEqual(deterministic_reject_reason(review_item("skill", offensive, self.taxonomy)),
+                         "primary purpose is offensive or unsafe control")
+        defensive = self.robot_skill(description="Detect GPS jamming to validate drone localization safety.")
+        self.assertIsNone(deterministic_reject_reason(review_item("skill", defensive, self.taxonomy)))
+
+    def test_rejected_candidate_does_not_reserve_duplicate_identity(self):
+        class RejectFirst(FakeLLMReviewer):
+            def review(self, *args):
+                result = super().review(*args)
+                if self.calls == 1:
+                    result["decision"] = "remove"
+                return result
+
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            for source in ("first", "second"):
+                insert_item("skill", self.robot_skill(source=source, full_name=f"example/{source}"), db)
+            reviewer = RejectFirst()
+            report = review_candidates(db, self.taxonomy, llm_reviewer=reviewer)
+            self.assertEqual(reviewer.calls, 2)
+            self.assertEqual(report["summary"]["keep"], 1)
+
+    def test_same_repository_skill_and_mcp_are_not_duplicates(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            item = self.robot_skill()
+            insert_item("skill", item, db)
+            insert_item("mcp", {**item, "raw_data": json.dumps({
+                "review_readme": "FastMCP MCP server for ROS2 robot control and simulation."
+            })}, db)
+            reviewer = FakeLLMReviewer()
+            report = review_candidates(db, self.taxonomy, llm_reviewer=reviewer)
+            self.assertEqual(reviewer.calls, 2)
+            self.assertEqual(report["summary"]["keep"], 2)
+
+    def test_failed_candidate_does_not_reserve_duplicate_identity(self):
+        class FailFirst(FakeLLMReviewer):
+            def review(self, *args):
+                if self.calls == 0:
+                    self.calls += 1
+                    raise LLMReviewError("temporary model failure")
+                return super().review(*args)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            db = Path(temporary) / "hub.db"
+            for source in ("first", "second"):
+                insert_item("skill", self.robot_skill(source=source, full_name=f"example/{source}"), db)
+            report = review_candidates(db, self.taxonomy, llm_reviewer=FailFirst())
+            self.assertEqual(report["summary"]["retry"], 1)
+            self.assertEqual(report["summary"]["keep"], 1)
 
     def test_real_ros_mcp_is_recommended(self):
         item = {

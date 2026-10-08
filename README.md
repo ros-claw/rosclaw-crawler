@@ -6,7 +6,7 @@ An intelligent crawler for discovering, evaluating, and curating high-quality MC
 
 - **LLM-Powered Evaluation**: Uses DeepSeek API to intelligently judge repository relevance
 - **Multi-Source Discovery**: Searches GitHub, awesome lists, and specialized directories
-- **Strict Quality Control**: Embodied AI/robotics-focused with "宁可错杀" philosophy
+- **Evidence-Based Quality Control**: Physical-system relevance and authentic Skill/MCP interfaces, with resumable false-negative audits
 - **Local Database**: SQLite-based tracking of all discovered and evaluated items
 - **Batch Upload**: Automated upload to rosclaw.io with proper authentication
 - **Audit Trail**: Complete history of all LLM judgments and decisions
@@ -158,6 +158,28 @@ allowlist is required:
 ```bash
 python src/candidate_reviewer.py --enrich-github --llm --apply
 ```
+
+Recheck historical rejections with an authenticated local Codex CLI:
+
+```bash
+python src/rejection_audit.py --enrich-github --apply --workers 4 --batch-size 24
+python src/upload_to_site.py
+```
+
+The audit shares the pipeline lock, snapshots previous rejected records in the
+`rejection_audits` SQLite table, and checkpoints every semantic batch. Repeating
+the command resumes unchanged evidence instead of paying for the same reviews.
+Older reviewer records are retained. Failed model requests remain queued, never
+silently approved or rejected. The JSON report distinguishes deterministic
+exclusions, semantic decisions and unresolved retries.
+
+Review the primary purpose rather than incidental exclusion keywords. Concrete
+robot planning, simulator orchestration, USD composition, validation and domain
+documentation workflows can be genuine Skills without bundled executables.
+Ordinary trusted-local or simulated execution is not equivalent to unsafe real
+hardware actuation. Missing test/release evidence is unknown, not proof of low
+authenticity. Deduplication is type-specific and only approved candidates reserve
+identities; rejected or failed candidates cannot suppress later valid copies.
 
 `run_periodic_sync.sh` and the systemd timer execute discovery, evidence
 enrichment, AI review, decision application, Hub create/update/delete in that

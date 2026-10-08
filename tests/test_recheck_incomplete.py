@@ -173,12 +173,12 @@ Use scripts/navigate.py to send a safe navigation goal.
         self.assertEqual(row["content_status"], "incomplete")
         self.assertIsNone(row["content_next_check"])
 
-    def test_bootstrap_marks_relevant_historical_missing_readme(self):
+    def test_bootstrap_marks_relevant_missing_readme_despite_incidental_exclusion(self):
         conn = connect(self.db)
         item_id = conn.execute("SELECT id FROM skills").fetchone()[0]
         evidence = {
             "physical_anchors": ["robot", "ros2"],
-            "exclusions": [],
+            "exclusions": ["skill library"],
             "has_readme": False,
         }
         conn.execute("""
@@ -212,7 +212,7 @@ Use scripts/navigate.py to send a safe navigation goal.
         conn = connect(self.db)
         evidence = {
             "physical_anchors": ["robot", "ros2"],
-            "exclusions": [],
+            "exclusions": ["documentation search"],
             "has_readme": False,
         }
         conn.execute("""
@@ -232,6 +232,27 @@ Use scripts/navigate.py to send a safe navigation goal.
         self.assertEqual(applied["incomplete_recheck"], 1)
         self.assertEqual(row["content_recheck_eligible"], 1)
         self.assertIn("7-day recheck", row["reason"])
+
+    def test_readme_cache_is_invalidated_when_source_revision_changes(self):
+        client = FakeGitHubClient({
+            "/repos/example/skills": self._repo(),
+            "/repos/example/skills/readme": encoded("ROS2 navigation instructions", "readme-1"),
+        })
+        with patch("candidate_reviewer.GitHubClient", return_value=client):
+            self.assertEqual(enrich_readmes(self.db, "test", workers=1)["enriched"], 1)
+            self.assertEqual(enrich_readmes(self.db, "test", workers=1)["planned"], 0)
+            conn = connect(self.db)
+            conn.execute("UPDATE skills SET source_revision='sha-2'")
+            conn.commit()
+            conn.close()
+            client.responses["/repos/example/skills/readme"] = encoded(
+                "Updated ROS2 robot diagnostics and simulation tools", "readme-2"
+            )
+            self.assertEqual(enrich_readmes(self.db, "test", workers=1)["enriched"], 1)
+        raw = json.loads(self._row()["raw_data"])
+        self.assertEqual(raw["review_evidence_revision"], "sha-2")
+        self.assertEqual(raw["review_readme_sha"], "readme-2")
+        self.assertIn("Updated ROS2", raw["review_readme"])
 
     def test_bootstrap_excludes_directory_hashed_official_catalogs(self):
         conn = connect(self.db)

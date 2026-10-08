@@ -81,7 +81,6 @@ def bootstrap_content_status(db_path: Path) -> dict:
                 continue
             eligible = bool(
                 evidence.get("physical_anchors")
-                and not evidence.get("exclusions")
                 and not evidence.get("duplicate_of_published_item")
                 and row["domain_score"] >= 18
             )
