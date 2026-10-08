@@ -47,11 +47,18 @@ class RegistrySyncTest(unittest.TestCase):
 
     def test_pagination_cap_is_explicit_in_report(self):
         errors = []
+        cursors = {}
         with patch("registry_sync.fetch_json", return_value={
             "servers": [], "metadata": {"nextCursor": "more"},
         }):
-            search_registry("https://registry.example", ["robot"], max_pages=1, errors=errors)
-        self.assertEqual(errors[0]["error"], "pagination limit reached")
+            search_registry("https://registry.example", ["robot"], max_pages=1,
+                            errors=errors, cursors=cursors)
+        self.assertEqual(errors, [])
+        self.assertEqual(cursors, {"robot": "more"})
+        with patch("registry_sync.fetch_json", return_value={"servers": []}) as fetch:
+            search_registry("https://registry.example", ["robot"], cursors=cursors)
+        self.assertIn("cursor=more", fetch.call_args.args[0])
+        self.assertEqual(cursors, {})
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Optional, Tuple
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 import requests
 
@@ -189,6 +189,16 @@ class HubClient:
             timeout=30,
         )
 
+    def find(self, item_type: str, name: str) -> Optional[dict]:
+        response = self.session.get(
+            f"{self.base_url}/api/{self.endpoint(item_type)}/{quote(name, safe='/')}",
+            timeout=30,
+        )
+        if response.status_code == 404:
+            return None
+        response.raise_for_status()
+        return response.json()
+
     def update(self, item_type: str, site_id: str, payload: dict) -> requests.Response:
         return self.session.put(
             f"{self.base_url}/api/{self.endpoint(item_type)}/{site_id}",
@@ -210,6 +220,25 @@ def _site_identity(item: dict) -> Tuple[str, str]:
     )
 
 
+def _request_write(client, item_type, payload, remote, operation):
+    if operation == "deleted":
+        return client.delete(item_type, remote["id"]), operation, remote
+    if operation == "updated":
+        response = client.update(item_type, remote["id"], payload)
+        if response.status_code != 404:
+            return response, operation, remote
+    response = client.create(item_type, payload)
+    if response.status_code in (400, 409) and any(
+        term in response.text.lower() for term in ("already exists", "duplicate")
+    ) and hasattr(client, "find"):
+        # List endpoints may cap their results. Resolve a conflicting name
+        # directly instead of repeatedly attempting a duplicate creation.
+        existing = client.find(item_type, payload["name"])
+        if existing:
+            return client.update(item_type, existing["id"], payload), "updated", existing
+    return response, "created", None
+
+
 def _upload_batches(rows, item_type, client, by_name, by_url, workers):
     """Parallelize independent writes; serialize rows sharing a Hub identity."""
     pending = deque(rows)
@@ -227,6 +256,8 @@ def _upload_batches(rows, item_type, client, by_name, by_url, workers):
                 else:
                     name, url = _site_identity(payload)
                     remote = by_name.get(name) or (by_url.get(url) if url else None)
+                    if remote is None and row.get("site_id"):
+                        remote = {"id": row["site_id"]}
                     keys = {("name", name)}
                     if url:
                         keys.add(("url", url))
@@ -237,12 +268,9 @@ def _upload_batches(rows, item_type, client, by_name, by_url, workers):
                     break
                 identities.update(keys)
                 pending.popleft()
-                if operation == "deleted":
-                    future = executor.submit(client.delete, item_type, remote["id"]) if remote else None
-                elif operation == "updated":
-                    future = executor.submit(client.update, item_type, remote["id"], payload)
-                else:
-                    future = executor.submit(client.create, item_type, payload)
+                future = None if operation == "deleted" and not remote else executor.submit(
+                    _request_write, client, item_type, payload, remote, operation
+                )
                 batch.append((row, payload, remote, operation, future))
             yield from batch
 
@@ -320,7 +348,7 @@ def sync_type(
                 )
                 conn.commit()
                 continue
-            response = future.result()
+            response, operation, remote = future.result()
             if response.status_code not in (200, 201, 204) and not (
                 operation == "deleted" and response.status_code == 404
             ):

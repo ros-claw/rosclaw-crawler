@@ -143,6 +143,9 @@ acknowledged write is committed immediately, and an already deleted entry's
 HTTP 404 counts as a completed deletion. Standalone upload processes also hold
 a database-specific lock. A source change during upload keeps the new revision
 queued for review rather than marking it uploaded.
+Known Hub IDs remain usable when the listing endpoint caps its results. A
+duplicate creation response triggers a direct name lookup and update; an update
+to an externally deleted ID can recreate the approved entry.
 
 Candidate review uses `physical_ai_taxonomy.yaml` to score format authenticity,
 physical-domain anchors, operational usefulness, repository quality, duplicate
@@ -173,8 +176,11 @@ truncated trees are explicitly reported as incomplete discovery.
 Unchanged GitHub Skill blobs reuse stored `SKILL.md` content by immutable blob
 SHA, reducing API requests without skipping detection of changed content.
 Registry searches use three concurrent workers and retain completed pages when
-a later page times out. Query errors, repeated cursors and pagination limits
-are reported as partial coverage instead of silently appearing successful.
+a later page times out. Per-keyword cursors in `data/<source>_cursors.json` resume
+bounded scans on the next run instead of repeatedly scanning the first pages.
+Query errors and repeated cursors fail the source stage; normal pagination
+limits are tracked as partial coverage with a continuation, not as a failed run.
+When a keyword scan reaches the end, its next scan starts from the beginning.
 
 GitHub candidates with missing README or unavailable source content are recorded
 separately in SQLite (`content_status`, `content_issue`, check timestamps and

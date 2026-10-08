@@ -16,6 +16,7 @@ from typing import Dict, Iterable, Optional
 import yaml
 
 from database import insert_item, record_source_sync, utc_now
+from reporting import write_json_report
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -53,14 +54,16 @@ def search_registry(
     page_size: int = 100,
     errors: Optional[list] = None,
     workers: int = 3,
+    cursors: Optional[dict] = None,
 ) -> Dict[str, dict]:
     """Search each domain keyword and retain only the latest server version."""
     latest = {}
     errors = errors if errors is not None else []
+    cursors = cursors if cursors is not None else {}
 
     def search_keyword(keyword):
         matches = {}
-        cursor: Optional[str] = None
+        cursor: Optional[str] = cursors.get(keyword)
         seen_cursors = set()
         for _ in range(max_pages):
             params = {"limit": page_size, "search": keyword}
@@ -71,6 +74,10 @@ def search_registry(
             except Exception as exc:
                 # Keep completed pages even if a later page fails.
                 errors.append({"keyword": keyword, "error": str(exc), "cursor": cursor})
+                if getattr(exc, "code", None) == 400:
+                    cursors.pop(keyword, None)
+                elif cursor:
+                    cursors[keyword] = cursor
                 return matches
             for entry in payload.get("servers", []):
                 server = entry.get("server", {})
@@ -87,17 +94,19 @@ def search_registry(
                     matches[name] = (entry, metadata, keyword)
             cursor = payload.get("metadata", {}).get("nextCursor")
             if not cursor:
+                cursors.pop(keyword, None)
                 break
             if cursor in seen_cursors:
                 errors.append({"keyword": keyword, "error": "repeated pagination cursor"})
+                cursors.pop(keyword, None)
                 return matches
             seen_cursors.add(cursor)
         else:
-            errors.append({"keyword": keyword, "error": "pagination limit reached",
-                           "cursor": cursor})
+            if cursor:
+                cursors[keyword] = cursor
         return matches
 
-    keyword_list = list(keywords)
+    keyword_list = list(dict.fromkeys(keywords))
     with ThreadPoolExecutor(max_workers=max(1, min(workers, len(keyword_list) or 1))) as executor:
         futures = {
             executor.submit(search_keyword, keyword): keyword for keyword in keyword_list
@@ -162,12 +171,18 @@ def build_record(source_key: str, source: dict, entry: dict) -> dict:
 def sync_registry(source_key: str, source: dict, db_path: Path, dry_run=False) -> dict:
     started_at = utc_now()
     keyword_errors = []
+    state_path = db_path.parent / f"{source_key}_cursors.json"
+    try:
+        cursors = json.loads(state_path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        cursors = {}
     entries = search_registry(
         source["endpoint"],
         source.get("keywords", []),
         source.get("max_pages", 100),
         errors=keyword_errors,
         workers=source.get("workers", 3),
+        cursors=cursors,
     )
     records = [build_record(source_key, source, entries[name]) for name in sorted(entries)]
     stats = {
@@ -180,7 +195,8 @@ def sync_registry(source_key: str, source: dict, db_path: Path, dry_run=False) -
         "unchanged": 0,
         "missing": 0,
         "status": "dry-run" if dry_run else ("partial" if keyword_errors else "complete"),
-        "details": {"keyword_errors": keyword_errors},
+        "details": {"keyword_errors": keyword_errors, "continuations": cursors,
+                    "coverage": "partial" if keyword_errors or cursors else "complete"},
         "items": records if dry_run else [],
     }
     if dry_run:
@@ -188,6 +204,7 @@ def sync_registry(source_key: str, source: dict, db_path: Path, dry_run=False) -
     for record in records:
         result = insert_item("mcp", record, db_path)
         stats[result] += 1
+    write_json_report(state_path, cursors)
     record_source_sync(source_key, stats, db_path)
     return stats
 

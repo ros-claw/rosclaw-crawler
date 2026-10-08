@@ -263,6 +263,43 @@ class UploadToSiteTest(unittest.TestCase):
                 "SELECT decision, site_status, site_id FROM skills"
             ).fetchone(), ("review", "pending_review_update", "site-123"))
 
+    def test_known_site_id_is_used_when_listing_is_capped(self):
+        insert_item("skill", self.record, self.db)
+        with sqlite3.connect(self.db) as conn:
+            conn.execute("UPDATE skills SET site_id='known-id', site_status='pending_update'")
+
+        class CappedHub(FakeHubClient):
+            def list_items(self, item_type):
+                return []
+
+        client = CappedHub()
+        stats = sync_type("skill", self.db, client)
+        self.assertEqual(stats["updated"], 1)
+        self.assertEqual(client.updated[0][1], "known-id")
+        self.assertEqual(client.created, [])
+
+    def test_duplicate_create_resolves_existing_item_outside_listing(self):
+        insert_item("skill", self.record, self.db)
+
+        class CappedHub(FakeHubClient):
+            def list_items(self, item_type):
+                return []
+
+            def create(self, item_type, payload):
+                response = FakeResponse()
+                response.status_code = 409
+                response.text = "Skill already exists"
+                return response
+
+            def find(self, item_type, name):
+                return {"id": "outside-list"}
+
+        client = CappedHub()
+        stats = sync_type("skill", self.db, client)
+        self.assertEqual(stats["updated"], 1)
+        self.assertEqual(stats["failed"], 0)
+        self.assertEqual(client.updated[0][1], "outside-list")
+
 
 if __name__ == "__main__":
     unittest.main()
