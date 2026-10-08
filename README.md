@@ -129,6 +129,22 @@ unit, run `systemctl --user daemon-reload` to apply the restart policy.
 The service has a two-hour deadline so a hung subprocess cannot occupy the
 pipeline indefinitely; completed review/upload checkpoints survive a restart.
 
+Before retiring a crawler machine, create a private migration archive outside
+the workspace:
+
+```bash
+python3 src/migration_backup.py --output-directory ../migration_backups
+```
+
+The archive includes a consistent SQLite snapshot, review history, source
+cursors, reports, caches, Git history and uncommitted workspace files. It also
+contains a manifest and restore instructions, with an external SHA-256 file.
+The tool refuses to run while the pipeline or uploader holds its lock.
+Credential files are excluded; migrate or rotate keys separately and
+authenticate the review provider again. This is a private operational backup,
+not a sanitized public dataset. Copy it off the machine and verify restoration
+before deleting the machine. On a different user/path, update the service paths.
+
 The complete pipeline holds a database-specific lock across discovery, content
 rechecks, review and upload. Failures in one stage do not prevent later stages
 from processing existing work; the final exit status still reports the failure.
